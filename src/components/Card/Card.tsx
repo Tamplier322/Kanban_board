@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardItem } from './Card.styles';
+import { CardItem, PriorityLabel, CardTitle, CardDescription } from './Card.styles';
 
 interface CardProps {
   card: { id: string; title: string; description: string; priority: string };
@@ -8,9 +8,9 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ card }) => {
   return (
     <CardItem>
-      <h3>{card.title}</h3>
-      <p>{card.description}</p>
-      <small>Priority: {card.priority}</small>
+      <PriorityLabel priority={card.priority}>{card.priority}</PriorityLabel>
+      <CardTitle>{card.title}</CardTitle>
+      <CardDescription>{card.description}</CardDescription>
     </CardItem>
   );
 };

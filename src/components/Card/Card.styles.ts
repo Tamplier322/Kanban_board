@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-export const CardItem = styled.div`
+interface CardItemProps {}
+
+export const CardItem = styled.div<CardItemProps>`
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 24px;
   padding: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   cursor: grab;
@@ -12,19 +14,58 @@ export const CardItem = styled.div`
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
+`;
 
-  h3 {
-    font-size: 1rem;
-    margin-bottom: 5px;
-  }
+interface PriorityLabelProps {
+  priority: string | undefined;
+}
 
-  p {
-    font-size: 0.8rem;
-    color: #555;
-  }
+const priorityColors: Record<string, string | undefined> = {
+  High: '#f44336',
+  Medium: '#ff9800',
+  Low: '#4caf50',
+  Important: '#f44336',
+  'High Priority': '#f44336',
+  'Low Priority': '#4caf50',
+};
 
-  small {
-    font-size: 0.7rem;
-    color: #888;
+export const PriorityLabel = styled.span<PriorityLabelProps>`
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: ${(props) => (props.priority ? priorityColors[props.priority] : '#888')};
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 3px 5px;
+  border-radius: 15px;
+  border: none;
+  background-color: ${(props) => props.priority ? `${priorityColors[props.priority]}33` : 'transparent'};
+`;
+
+export const CardTitle = styled.h3`
+  font-size: 1rem;
+  margin-bottom: 5px;
+`;
+
+export const CardDescription = styled.p`
+  font-size: 0.8rem;
+  color: #555;
+`;
+
+interface AddTaskCardProps {}
+
+export const AddTaskCardItem = styled.div<AddTaskCardProps>`
+  background-color: #fff;
+  border-radius: 24px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
   }
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;

@@ -1,38 +1,45 @@
 import React from 'react';
-import { ColumnContainer, ColumnTitle, CardContainer } from './Column.styles';
+import {
+  ColumnContainer,
+  ColumnHeader,
+  ColumnTitle,
+  AddCardButton,
+  CardContainer,
+  CountBadge,
+  ColumnTitleWrapper,
+  AddTaskCard,
+} from './Column.styles';
 import Card from '../Card';
+import { AddTaskCardItem } from '../Card/Card.styles';
 
 interface ColumnProps {
-  column: { id: string; title: string; color: string };
+  column: { id: string; title: string; color: string; cards: { id: string; title: string; description: string; priority: string }[] };
+  onAddTask: () => void;
 }
 
-const Column: React.FC<ColumnProps> = ({ column }) => {
-  const cards = [
-    {
-      id: '1',
-      title: 'Task 1',
-      description: 'Description 1',
-      priority: 'High',
-    },
-    {
-      id: '2',
-      title: 'Task 2',
-      description: 'Description 2',
-      priority: 'Medium',
-    },
-  ];
+const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
 
-  const renderCard = (card: {
-    id: string;
-    title: string;
-    description: string;
-    priority: string;
-  }) => <Card key={card.id} card={card} />;
+  const handleAddTaskClick = () => {
+    onAddTask();
+  };
 
   return (
     <ColumnContainer color={column.color}>
-      <ColumnTitle color={column.color}>{column.title}</ColumnTitle>
-      <CardContainer>{cards.map(renderCard)}</CardContainer>
+      <ColumnHeader color={column.color}>
+        <ColumnTitleWrapper>
+          <CountBadge color={column.color}>{column.cards.length}</CountBadge>
+          <ColumnTitle color={column.color}>{column.title}</ColumnTitle>
+        </ColumnTitleWrapper>
+        <AddCardButton color={column.color}>+</AddCardButton>
+      </ColumnHeader>
+      <CardContainer>
+        {column.cards.map((card) => (
+          <Card key={card.id} card={card} />
+        ))}
+        <AddTaskCardItem onClick={handleAddTaskClick}>
+          <AddTaskCard color={column.color}>Add task...</AddTaskCard>
+        </AddTaskCardItem>
+      </CardContainer>
     </ColumnContainer>
   );
 };
