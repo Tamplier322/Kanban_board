@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AppContainer = styled.div`
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #F8FAFC;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

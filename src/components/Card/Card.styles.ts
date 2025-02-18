@@ -36,7 +36,7 @@ export const PriorityLabel = styled.span<PriorityLabelProps>`
   display: inline-block;
   margin-bottom: 5px;
   padding: 3px 5px;
-  border-radius: 15px;
+  border-radius: 24px;
   border: none;
   background-color: ${(props) => props.priority ? `${priorityColors[props.priority]}33` : 'transparent'};
 `;
@@ -59,13 +59,18 @@ export const AddTaskCardItem = styled.div<AddTaskCardProps>`
   padding: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
   &:hover {
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
-  
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+
+   /* Hide on small screens */
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;

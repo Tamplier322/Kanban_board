@@ -5,7 +5,7 @@ interface ColumnContainerProps {
 }
 
 export const ColumnContainer = styled.div<ColumnContainerProps>`
-  background-color: rgba(248, 250, 252, 0.01);
+  background-color: rgba(248, 250, 252, 1);
   border-radius: 32px;
   padding: 10px;
   width: 300px;
@@ -14,9 +14,8 @@ export const ColumnContainer = styled.div<ColumnContainerProps>`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px solid #e0e0e0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 390px) {
     width: 100%;
     min-width: auto;
   }
@@ -96,7 +95,7 @@ interface CountBadgeProps {
 
 export const CountBadge = styled.span<CountBadgeProps>`
   background-color: #fff;
-  color: ${(props) => props.color};
+  color: ${(props) => `${props.color}65`};
   font-size: 0.7rem;
   padding: 3px 6px;
   border-radius: 50%;
@@ -129,4 +128,8 @@ export const AddTaskCard = styled.button<AddTaskCardProps>`
     background-color: ${(props) => `${props.color}55`};
   }
   border-radius: 15px;
+  /* Hide on small screens */
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;
