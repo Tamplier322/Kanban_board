@@ -16,28 +16,22 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, columnId, onAddC
 
   const handleSave = () => {
     if (columnId) {
-      // Ensure required fields are not empty before saving
       if (!title || !description || !priority) {
         alert('Please fill in all fields.');
         return;
       }
-      // Create a new card object with a unique ID
       const newCard = {
-        id: uuidv4(), // Generate a unique ID using uuid
+        id: uuidv4(),
         title: title,
         description: description,
         priority: priority
       };
 
-      // Call the onAddCard function to add the new card to the specified column
       onAddCard(columnId, newCard);
 
-      // Clear the form fields
       setTitle('');
       setDescription('');
       setPriority('Medium');
-
-      // Close the modal window after saving
       onClose();
     }
   };

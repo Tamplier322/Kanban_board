@@ -1,10 +1,9 @@
-// src/App.tsx
 import React, { useState, useEffect, useCallback } from 'react';
 import Board from './components/Board';
 import TaskModal from './components/TaskModal';
 import ColumnModal from './components/ColumnModal';
 import { AppContainer, AppHeader, AppTitle, AddColumnButton } from './App.styles';
-import { v4 as uuidv4 } from 'uuid'; //  For unique IDs
+import { v4 as uuidv4 } from 'uuid';
 
 interface CardType {
   id: string;
@@ -20,18 +19,15 @@ interface ColumnType {
   cards: CardType[];
 }
 
-const LOCAL_STORAGE_KEY = 'kanban-data'; // Key for storing data in localStorage
+const LOCAL_STORAGE_KEY = 'kanban-data';
 
 const App: React.FC = () => {
   const [columns, setColumns] = useState<ColumnType[]>(() => {
-    // Load data from localStorage on initial load
     try {
       const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (storedData) {
-        console.log("Загружены данные из localstorage")
         return JSON.parse(storedData);
       } else {
-        console.log("Данных нет в localstorage")
         return [
           { id: 'todo', title: 'To Do', color: '#4F46E5', cards: [] },
           { id: 'inprogress', title: 'In Progress', color: '#F59E0B', cards: [] },
@@ -67,7 +63,6 @@ const App: React.FC = () => {
   };
 
   const handleAddCard = (columnId: string, newCard: CardType) => {
-      console.log("Добавляем новую карточку")
       setColumns(prevColumns => {
         const updatedColumns = prevColumns.map(col => {
           if (col.id === columnId) {
@@ -75,9 +70,8 @@ const App: React.FC = () => {
           }
           return col;
         });
-
         try {
-           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
         } catch (e) {
           console.log("Ошибка при добавлении карты в localstorage")
         }
@@ -96,7 +90,7 @@ const App: React.FC = () => {
       <TaskModal 
       isOpen={isTaskModalOpen} 
       onClose={handleCloseTaskModal} 
-      columnId={columnIdForTask} // Pass columnId to TaskModal
+      columnId={columnIdForTask}
       onAddCard={handleAddCard}
       />
       <ColumnModal isOpen={isColumnModalOpen} onClose={handleCloseColumnModal} />
