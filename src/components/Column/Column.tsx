@@ -14,13 +14,12 @@ import { AddTaskCardItem } from '../Card/Card.styles';
 
 interface ColumnProps {
   column: { id: string; title: string; color: string; cards: { id: string; title: string; description: string; priority: string }[] };
-  onAddTask: () => void;
+  onAddTask: (columnId: string) => void;
 }
 
 const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
-
   const handleAddTaskClick = () => {
-    onAddTask();
+    onAddTask(column.id);
   };
 
   return (
@@ -30,7 +29,7 @@ const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
           <CountBadge color={column.color}>{column.cards.length}</CountBadge>
           <ColumnTitle color={column.color}>{column.title}</ColumnTitle>
         </ColumnTitleWrapper>
-        <AddCardButton color={column.color}>+</AddCardButton>
+        <AddCardButton color={column.color} onClick={handleAddTaskClick}>+</AddCardButton>
       </ColumnHeader>
       <CardContainer>
         {column.cards.map((card) => (

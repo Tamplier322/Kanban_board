@@ -15,14 +15,13 @@ interface BoardProps {
       title: string;
       color: string;
       cards: CardType[];
-      onAddTask: () => void;
     }[];
-    onAddTask: () => void;
+    onAddTask: (columnId: string) => void;
 }
 
 const Board: React.FC<BoardProps> = ({ columns, onAddTask }) => {
 
-  const renderColumn = (column: { id: string; title: string; color: string; cards: CardType[]; onAddTask: () => void }) => (
+  const renderColumn = (column: { id: string; title: string; color: string; cards: CardType[]; }) => (
     <Column key={column.id} column={column} onAddTask={onAddTask} />
   );
 

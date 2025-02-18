@@ -8,9 +8,9 @@ export const BoardContainer = styled.div`
   gap: 20px;
   min-height: 100vh;
   align-items: flex-start;
-  background-color: #f0f2f5;
+  background-color: #FFFFFF;
 
-  @media (max-width: 768px) {
+  @media (max-width: 390px) {
     flex-direction: column;
     align-items: stretch;
   }
