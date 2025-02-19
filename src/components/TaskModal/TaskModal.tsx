@@ -26,9 +26,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, columnId, onAddC
         description: description,
         priority: priority
       };
-
       onAddCard(columnId, newCard);
-
       setTitle('');
       setDescription('');
       setPriority('Medium');
