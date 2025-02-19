@@ -28,11 +28,13 @@ const App: React.FC = () => {
       if (storedData) {
         return JSON.parse(storedData);
       } else {
-        return [
+        const initialData: ColumnType[] = [
           { id: 'todo', title: 'To Do', color: '#4F46E5', cards: [] },
           { id: 'inprogress', title: 'In Progress', color: '#F59E0B', cards: [] },
           { id: 'done', title: 'Done', color: '#22C55E', cards: [] },
         ];
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(initialData));
+        return initialData;
       }
     } catch (error) {
       console.error('Error loading data from localStorage:', error);
@@ -62,6 +64,23 @@ const App: React.FC = () => {
     setColumnModalOpen(false);
   };
 
+  const handleNewColumn = (newColumn: {id: string;
+  title: string;
+  color: string;
+  cards: CardType[];}) => {
+        setColumns(prevColumns => {
+            const updatedColumns = [...prevColumns, newColumn];
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
+            } catch (e) {
+                console.log("Error saving column")
+            }
+
+            return updatedColumns
+        })
+
+    }
+
   const handleAddCard = (columnId: string, newCard: CardType) => {
       setColumns(prevColumns => {
         const updatedColumns = prevColumns.map(col => {
@@ -73,12 +92,20 @@ const App: React.FC = () => {
         try {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
         } catch (e) {
-          console.log("Ошибка при добавлении карты в localstorage")
+          console.log("Error saving data to localStorage")
         }
         
         return updatedColumns;
       });
   };
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(columns));
+    } catch (error) {
+      console.error('Error saving data to localStorage:', error);
+    }
+  }, [columns]);
 
   return (
     <AppContainer>
@@ -93,7 +120,10 @@ const App: React.FC = () => {
       columnId={columnIdForTask}
       onAddCard={handleAddCard}
       />
-      <ColumnModal isOpen={isColumnModalOpen} onClose={handleCloseColumnModal} />
+      <ColumnModal 
+      isOpen={isColumnModalOpen} 
+      onClose={handleCloseColumnModal} 
+      onAddColumn={handleNewColumn}/>
     </AppContainer>
   );
 };
