@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   ColumnContainer,
   ColumnHeader,
@@ -10,17 +10,41 @@ import {
   AddTaskCard,
 } from './Column.styles';
 import Card from '../Card';
-import { AddTaskCardItem } from '../Card/Card.styles';
+import { AddTaskCardItem } from "../Card/Card.styles";
+import NewTaskCard from "../NewTaskCard/NewTaskCard";
 
-interface ColumnProps {
-  column: { id: string; title: string; color: string; cards: { id: string; title: string; description: string; priority: string }[] };
-  onAddTask: (columnId: string) => void;
+interface CardType {
+  id: string;
+  title: string;
+  description: string;
+  priority: string;
 }
 
-const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
+interface ColumnProps {
+  column: { id: string; title: string; color: string; cards: CardType[] };
+  onAddCard: (columnId: string, newCard: CardType) => void;
+}
+
+const Column: React.FC<ColumnProps> = ({ column, onAddCard }) => {
+  const [isAddingTask, setIsAddingTask] = useState(false);
+
   const handleAddTaskClick = () => {
-    onAddTask(column.id);
+    setIsAddingTask(true);
   };
+
+  const handleCloseNewTaskCard = () => {
+    setIsAddingTask(false);
+  };
+
+  const handleSaveNewTask = useCallback((newTask: { title: string; description: string; priority: string }) => {
+    onAddCard(column.id, {
+      id: Date.now().toString(),
+      title: newTask.title,
+      description: newTask.description,
+      priority: newTask.priority,
+    });
+    setIsAddingTask(false);
+  }, [column.id, onAddCard]);
 
   return (
     <ColumnContainer color={column.color}>
@@ -35,9 +59,17 @@ const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
         {column.cards.map((card) => (
           <Card key={card.id} card={card} />
         ))}
-        <AddTaskCardItem onClick={handleAddTaskClick}>
-          <AddTaskCard color={column.color}>Add task...</AddTaskCard>
-        </AddTaskCardItem>
+        {isAddingTask ? (
+          <NewTaskCard
+            color={column.color}
+            onClose={handleCloseNewTaskCard}
+            onSave={handleSaveNewTask}
+          />
+        ) : (
+          <AddTaskCardItem onClick={handleAddTaskClick}>
+            <AddTaskCard color={column.color}>Add task...</AddTaskCard>
+          </AddTaskCardItem>
+        )}
       </CardContainer>
     </ColumnContainer>
   );

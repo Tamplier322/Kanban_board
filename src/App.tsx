@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Board from './components/Board';
-import TaskModal from './components/TaskModal';
 import ColumnModal from './components/ColumnModal';
 import { AppContainer, AppHeader, AppTitle, AddColumnButton } from './App.styles';
 import { v4 as uuidv4 } from 'uuid';
@@ -42,21 +41,9 @@ const App: React.FC = () => {
     }
   });
 
-  const [isTaskModalOpen, setTaskModalOpen] = useState(false);
-  const [columnIdForTask, setColumnIdForTask] = useState<string | null>(null);
-
   const [isColumnModalOpen, setColumnModalOpen] = useState(false);
 
-  const handleAddTask = useCallback((columnId: string) => {
-    setColumnIdForTask(columnId);
-    setTaskModalOpen(true);
-  }, []);
-
-  const handleCloseTaskModal = () => {
-    setTaskModalOpen(false);
-    setColumnIdForTask(null);
-  };
-    const handleAddColumn = () => {
+  const handleAddColumn = () => {
     setColumnModalOpen(true);
   };
 
@@ -64,16 +51,13 @@ const App: React.FC = () => {
     setColumnModalOpen(false);
   };
 
-  const handleNewColumn = (newColumn: {id: string;
-  title: string;
-  color: string;
-  cards: CardType[];}) => {
+  const handleNewColumn = (newColumn: ColumnType) => {
         setColumns(prevColumns => {
             const updatedColumns = [...prevColumns, newColumn];
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.log("Error saving column")
+                console.log("Error loading data")
             }
 
             return updatedColumns
@@ -81,23 +65,24 @@ const App: React.FC = () => {
 
     }
 
-  const handleAddCard = (columnId: string, newCard: CardType) => {
-      setColumns(prevColumns => {
-        const updatedColumns = prevColumns.map(col => {
-          if (col.id === columnId) {
-            return { ...col, cards: [...col.cards, newCard] };
-          }
-          return col;
+    const handleAddCard = (columnId: string, newCard: CardType) => {
+        setColumns(prevColumns => {
+            const updatedColumns = prevColumns.map(col => {
+                if (col.id === columnId) {
+                    return {...col, cards: [...col.cards, newCard]};
+                }
+                return col;
+            });
+
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
+            } catch (e) {
+                console.log("Ошибка при добавлении карты в localStorage", e);
+            }
+
+            return updatedColumns;
         });
-        try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
-        } catch (e) {
-          console.log("Error saving data to localStorage")
-        }
-        
-        return updatedColumns;
-      });
-  };
+    };
 
   useEffect(() => {
     try {
@@ -113,16 +98,10 @@ const App: React.FC = () => {
         <AppTitle>Kanban Dashboard</AppTitle>
         <AddColumnButton onClick={handleAddColumn}>+</AddColumnButton>
       </AppHeader>
-      <Board columns={columns} onAddTask={handleAddTask} />
-      <TaskModal 
-      isOpen={isTaskModalOpen} 
-      onClose={handleCloseTaskModal} 
-      columnId={columnIdForTask}
-      onAddCard={handleAddCard}
-      />
-      <ColumnModal 
-      isOpen={isColumnModalOpen} 
-      onClose={handleCloseColumnModal} 
+      <Board columns={columns}  onAddCard={handleAddCard} />
+      <ColumnModal
+      isOpen={isColumnModalOpen}
+      onClose={handleCloseColumnModal}
       onAddColumn={handleNewColumn}/>
     </AppContainer>
   );

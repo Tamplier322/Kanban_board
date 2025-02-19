@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-interface ColumnContainerProps {
-  color: string;
+interface ColumnProps {
+    color: string;
 }
 
-export const ColumnContainer = styled.div<ColumnContainerProps>`
-  background-color: rgba(248, 250, 252, 1);
+export const ColumnContainer = styled.div < ColumnProps > `
+  background-color: rgba(248, 250, 252, 0.01);
   border-radius: 32px;
   padding: 10px;
   width: 300px;
@@ -16,22 +16,22 @@ export const ColumnContainer = styled.div<ColumnContainerProps>`
   gap: 10px;
 
   @media (max-width: 390px) {
-    width: 100%;
-    min-width: auto;
+        width: 100%;
+        min-width: auto;
   }
 `;
 
 interface ColumnHeaderProps {
-  color: string;
+    color: string;
 }
 
-export const ColumnHeader = styled.div<ColumnHeaderProps>`
+export const ColumnHeader = styled.div < ColumnHeaderProps > `
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5px;
   margin-bottom: 5px;
-  background-color: ${(props) => props.color};
+  background-color: ${ props => props.color };
   border-radius: 30px;
   padding: 4px 8px;
   color: #fff;
@@ -39,10 +39,10 @@ export const ColumnHeader = styled.div<ColumnHeaderProps>`
 `;
 
 interface ColumnTitleProps {
-  color: string;
+    color: string;
 }
 
-export const ColumnTitle = styled.h2<ColumnTitleProps>`
+export const ColumnTitle = styled.h2 < ColumnTitleProps > `
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
@@ -60,27 +60,29 @@ export const ColumnTitleWrapper = styled.div`
 `;
 
 interface AddCardButtonProps {
-  color: string;
+    color: string;
 }
 
-export const AddCardButton = styled.button<AddCardButtonProps>`
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-  margin-left: auto;
-  padding: 0;
+export const AddCardButton = styled.button < AddCardButtonProps > `
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    margin-left: auto;
+    padding: 0;
 `;
 
 export const CardContainer = styled.div`
@@ -90,33 +92,34 @@ export const CardContainer = styled.div`
 `;
 
 interface CountBadgeProps {
-  color: string;
+    color: string;
 }
 
-export const CountBadge = styled.span<CountBadgeProps>`
-  background-color: #fff;
-  color: ${(props) => `${props.color}65`};
-  font-size: 0.7rem;
-  padding: 3px 6px;
-  border-radius: 50%;
-  margin-right: 5px;
-  min-width: 20px;
-  min-height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const CountBadge = styled.span < CountBadgeProps > `
+    background-color: #fff;
+    color: ${ props => `${props.color}65`};
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    margin-right: 5px;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
 `;
 
 interface AddTaskCardProps {
-  color: string;
+    color: string;
 }
 
-export const AddTaskCard = styled.button<AddTaskCardProps>`
-  background-color:  ${(props) => `${props.color}33`};
+export const AddTaskCard = styled.button < AddTaskCardProps > `
+  background-color:  ${ props => `${props.color}33`};
   border: none;
-  color: ${(props) => props.color};
+  color: ${ props => props.color };
   border-radius: 30px;
-  padding: 4px 8px;                      
+  padding: 4px 8px;
   cursor: pointer;
   font-size: 0.8rem;
   text-align: center;
@@ -125,11 +128,12 @@ export const AddTaskCard = styled.button<AddTaskCardProps>`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: ${(props) => `${props.color}55`};
+        background-color: ${ props => `${props.color}55`};
   }
+
   border-radius: 15px;
-  /* Hide on small screens */
+
   @media (max-width: 390px) {
-    display: none;
+        display: none;
   }
 `;
