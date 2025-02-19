@@ -77,7 +77,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.log("Ошибка при добавлении карты в localStorage", e);
+                console.log("Error saving data to localStorage", e);
             }
 
             return updatedColumns;

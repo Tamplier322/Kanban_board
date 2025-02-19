@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { StyledInput } from '../common/StyledInput';
-import { StyledButton } from '../common/StyledButton';
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -17,11 +16,18 @@ export const ModalContainer = styled.div`
 
 export const ModalContent = styled.div`
   background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 300px;
+  min-height: 130px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
 `;
 
 export const ModalTitle = styled.h2`
@@ -36,4 +42,52 @@ export const ModalLabel = styled.label`
   font-weight: bold;
 `;
 
-export { StyledInput, StyledButton };
+export const StyledInputTitle = styled.input`
+  margin-left: 12px;
+  margin-top: 100px;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  width: 90%;
+  padding: 0;
+  outline: none;
+  opacity: 0.9;
+  font-weight: bold;
+  color: #222;
+`;
+
+export const StyledInputColor = styled.input`
+  margin-left: 12px;
+  margin-top: 20px;
+`;
+
+
+export const StyledButton = styled.button`
+  background-color: #ffffff};
+  color: ${ props => props.color };
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 20px;
+  width: auto;
+  display: inline-block;
+  padding-inline: 0px;
+  transition: background-color 0.2s ease;
+  opacity: 0.55;
+
+  &:hover {
+    background-color: ${ props => `${props.color}55`};
+  }
+  background-color: transparent;
+`;
+
+export const StyledButton1 = styled.button`
+  border-radius: 14px;
+  background-color:rgb(230, 230, 230);
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+`;
+
+export { StyledInput };

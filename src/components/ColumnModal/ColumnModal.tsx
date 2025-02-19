@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledInput, StyledButton } from './ColumnModal.styles';
+import React, { useState, useEffect } from 'react';
+import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledInput, StyledButton1, StyledInputColor, StyledInputTitle } from './ColumnModal.styles';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ColumnModalProps {
@@ -16,8 +16,14 @@ interface CardType {
 }
 
 const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn }) => {
-  const [title, setTitle] = useState('');
-  const [color, setColor] = useState('#ffffff');
+  const [title, setTitle] = useState('Add title');
+  const [color, setColor] = useState('#3242a8');
+
+  useEffect(() => {
+    if (isOpen) {
+      setTitle('Add title');
+    }
+  }, [isOpen]);
 
   const handleSave = () => {
     if (title) {
@@ -29,7 +35,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
       };
       onAddColumn(newColumn);
       setTitle('');
-      setColor('#ffffff');
+      setColor('#3242a8');
       onClose();
     } else {
       alert('Please enter a column title.');
@@ -41,16 +47,16 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
   return (
     <ModalContainer>
       <ModalContent>
-        <ModalTitle>Column Description</ModalTitle>
-
-        <ModalLabel htmlFor="title">Column Title:</ModalLabel>
-        <StyledInput type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-
-        <ModalLabel htmlFor="color">Column Color:</ModalLabel>
-        <StyledInput type="color" id="color" value={color} onChange={(e) => setColor(e.target.value)} />
-
-        <StyledButton backgroundColor="#007bff" color="#fff" onClick={handleSave}>Save</StyledButton>
-        <StyledButton onClick={onClose}>Cancel</StyledButton>
+        <div>
+        <StyledInputTitle type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </div>
+        <div>
+        <StyledInputColor type="color" id="color" value={color} onChange={(e) => setColor(e.target.value)} />
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px' }}>
+        <StyledButton1 onClick={handleSave} >Save</StyledButton1>
+        <StyledButton1 onClick={onClose} >Close</StyledButton1>
+        </div>
       </ModalContent>
     </ModalContainer>
   );

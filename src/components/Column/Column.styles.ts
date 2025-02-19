@@ -5,7 +5,7 @@ interface ColumnProps {
 }
 
 export const ColumnContainer = styled.div < ColumnProps > `
-  background-color: rgba(248, 250, 252, 0.01);
+  background-color: #F8FAFC;
   border-radius: 32px;
   padding: 10px;
   width: 300px;
