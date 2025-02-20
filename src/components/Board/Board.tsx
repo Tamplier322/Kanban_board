@@ -16,16 +16,20 @@ interface BoardProps {
       color: string;
       cards: CardType[];
     }[];
-      onAddCard: (columnId: string, newCard: CardType) => void;
+    onAddCard: (columnId: string, newCard: CardType) => void;
+    onDeleteCard: (cardId: string, columnId: string) => void;
+    onDeleteColumn: (columnId:string) => void;
 }
 
-const Board: React.FC<BoardProps> = ({ columns, onAddCard }) => {
+const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn }) => {
+
+  const renderColumn = (column: { id: string; title: string; color: string; cards: CardType[]; }) => (
+    <Column key={column.id} column={column} onAddCard={onAddCard} onDeleteCard = {onDeleteCard} onDeleteColumn = {onDeleteColumn}/>
+  );
 
   return (
     <BoardContainer>
-      {columns.map((column) => (
-        <Column key={column.id} column={column} onAddCard={onAddCard} />
-      ))}
+      {columns.map(renderColumn)}
     </BoardContainer>
   );
 };
