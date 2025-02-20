@@ -11,8 +11,7 @@ export const CardItem = styled.div<CardItemProps>`
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.15);
   }
 `;
 

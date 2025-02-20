@@ -65,6 +65,39 @@ const App: React.FC = () => {
 
     }
 
+    const handleDeleteColumn = (columnId: string) => {
+      setColumns(prevColumns => {
+          const updatedColumns = prevColumns.filter(col => col.id !== columnId);
+          try {
+              localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
+          } catch (e) {
+              console.log("Error deleting column", e);
+          }
+
+          return updatedColumns;
+      });
+  };
+
+    const handleDeleteCard = (cardId: string, columnId: string) => {
+      setColumns(prevColumns => {
+          const updatedColumns = prevColumns.map(col => {
+              if (col.id === columnId) {
+                  const updatedCards = col.cards.filter(card => card.id !== cardId);
+                  return { ...col, cards: updatedCards };
+              }
+              return col;
+          });
+
+          try {
+              localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
+          } catch (e) {
+              console.log("Error deleting card", e); 
+          }
+
+          return updatedColumns;
+      });
+  };
+
     const handleAddCard = (columnId: string, newCard: CardType) => {
         setColumns(prevColumns => {
             const updatedColumns = prevColumns.map(col => {
@@ -98,7 +131,7 @@ const App: React.FC = () => {
         <AppTitle>Kanban Dashboard</AppTitle>
         <AddColumnButton onClick={handleAddColumn}>+</AddColumnButton>
       </AppHeader>
-      <Board columns={columns}  onAddCard={handleAddCard} />
+      <Board columns={columns} onAddCard={handleAddCard} onDeleteCard={handleDeleteCard} onDeleteColumn = {handleDeleteColumn}/>
       <ColumnModal
       isOpen={isColumnModalOpen}
       onClose={handleCloseColumnModal}
