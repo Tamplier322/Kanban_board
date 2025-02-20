@@ -48,7 +48,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
     <ModalContainer>
       <ModalContent>
         <div>
-        <StyledInputTitle type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <StyledInputTitle maxLength={15} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div>
         <StyledInputColor type="color" id="color" value={color} onChange={(e) => setColor(e.target.value)} />

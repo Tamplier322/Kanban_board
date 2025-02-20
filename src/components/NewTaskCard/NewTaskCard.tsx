@@ -50,10 +50,10 @@ return (
         </PriorityLabel>
         </div>
         <div>
-        <StyledInputTitle type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <StyledInputTitle maxLength={40} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div>
-        <StyledInputDescription value={description} onChange={(e) => setDescription(e.target.value)} />
+        <StyledInputDescription maxLength={100} value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px' }}>
         <StyledButton onClick={handleSaveClick} >Save</StyledButton>
