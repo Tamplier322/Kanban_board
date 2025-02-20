@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback  } from 'react';
 import styled from 'styled-components';
 import {ContextMenuContainer, ContextMenuOption} from '../ContextMenu/ContextMenu.styles'
 
@@ -26,16 +26,18 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose, options }) => 
     };
     }, [onClose]);
 
-return (
-    <ContextMenuContainer ref={menuRef} style={{ left: x, top: y }}>
-        {options.map((option, index) => (
+    const renderOption = useCallback((option: { label: string; onClick: () => void }, index: number) => (
         <ContextMenuOption key={index} onClick={() => {
             option.onClick();
             onClose();
         }}>
             {option.label}
         </ContextMenuOption>
-        ))}
+    ), [onClose]);
+
+return (
+    <ContextMenuContainer ref={menuRef} style={{ left: x, top: y }}>
+        {options.map(renderOption)}
     </ContextMenuContainer>
     );
 };
