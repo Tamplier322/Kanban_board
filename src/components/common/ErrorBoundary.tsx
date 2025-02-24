@@ -1,5 +1,6 @@
 import React from 'react';
 import { ErrorMessage, StyledButton } from './ErrorBoudary.styles';
+import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "../../constants/errors";
 
 interface ErrorBoundaryProps {
     children: React.ReactNode;
@@ -22,7 +23,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     }
 
     componentDidCatch(error: Error, info: React.ErrorInfo) {
-        console.error("Caught an error: ", error, info);
+        console.error(CAUGHT_AN_ERROR, error, info);
         this.setState({ errorInfo: info });
     }
 
@@ -30,15 +31,15 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         if (this.state.hasError) {
         return (
             <div>
-            <h2>Something went wrong.</h2>
-            <StyledButton onClick={() => {
-                window.location.reload()
-            }}>Попробовать еще раз</StyledButton>
-            <ErrorMessage style={{ whiteSpace: 'pre-wrap' }}>
-                {this.state.error && this.state.error.toString()}
-                <br />
-                {this.state.errorInfo && this.state.errorInfo.componentStack}
-            </ErrorMessage>
+                <h2>{SOMETHING_WENT_WRONG}</h2>
+                <StyledButton onClick={() => {
+                    window.location.reload()
+                }}>{TRY_AGAIN_LABEL}</StyledButton>
+                <ErrorMessage>
+                    {this.state.error && this.state.error.toString()}
+                    <br />
+                    {this.state.errorInfo && this.state.errorInfo.componentStack}
+                </ErrorMessage>
             </div>
         );
         }

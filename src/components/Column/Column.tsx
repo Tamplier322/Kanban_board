@@ -13,6 +13,7 @@ import Card from '../Card';
 import { AddTaskCardItem } from "../Card/Card.styles";
 import NewTaskCard from "../NewTaskCard/NewTaskCard";
 import ContextMenu from "../ContextMenu/ContextMenu";
+import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
 
 interface CardType {
   id: string;
@@ -33,46 +34,57 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number, cardId: string, columnId: string } | null>(null);
 
 
-  const handleAddTaskClick = () => {
+  const handleAddTaskClick = useCallback(() => {
     setIsAddingTask(true);
-  };
+  }, [setIsAddingTask]);
 
-  const handleCloseNewTaskCard = () => {
+  const handleCloseNewTaskCard = useCallback(() => {
     setIsAddingTask(false);
-  };
+  }, [setIsAddingTask]);
 
-    const handleContextMenu = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, columnId: string) => {
-        event.preventDefault();
-        setContextMenu({ x: event.clientX, y: event.clientY, cardId: "", columnId: columnId });
-    };
+  const handleContextMenu = useCallback((event: React.MouseEvent<HTMLDivElement, MouseEvent>, columnId: string) => {
+    event.preventDefault();
+    setContextMenu({ x: event.clientX, y: event.clientY, cardId: "", columnId: columnId });
+  }, [setContextMenu, column.id]);
 
-  const handleCloseContextMenu = () => {
-      setContextMenu(null);
-  };
+  const handleCloseContextMenu = useCallback(() => {
+    setContextMenu(null);
+  }, [setContextMenu]);
 
-  const handleSaveNewTask = (newTask: { title: string; description: string; priority: string }) => {
+  const handleSaveNewTask = useCallback((newTask: { title: string; description: string; priority: string }) => {
     onAddCard(column.id, {
       id: Date.now().toString(),
       title: newTask.title,
       description: newTask.description,
-      priority: newTask.priority,
+      priority: newTask.priority
     });
     setIsAddingTask(false);
-  };
+  }, [column.id, onAddCard,setIsAddingTask]);
 
-    const handleDeleteCard = () => {
-        if(contextMenu) {
-            onDeleteCard(contextMenu?.cardId, column.id)
-            handleCloseContextMenu()
-        }
-    };
+  const handleDeleteCard = useCallback(() => {
+    if (contextMenu) {
+      onDeleteCard(contextMenu.cardId, column.id)
+      handleCloseContextMenu()
+    }
+  },[onDeleteCard, column.id, handleCloseContextMenu, contextMenu]);
 
-    const handleDeleteColumn = () => {
-      if(contextMenu) {
-          onDeleteColumn(contextMenu?.columnId)
-          handleCloseContextMenu()
-      }
-  };
+  const handleDeleteColumn = useCallback(() => {
+    if (contextMenu) {
+      onDeleteColumn(contextMenu.columnId)
+      handleCloseContextMenu()
+    }
+  },[onDeleteColumn, handleCloseContextMenu, contextMenu]);
+
+  const renderCard = useCallback((card: CardType) => (
+    <Card
+      key={card.id}
+      card={card}
+      onDeleteCard={onDeleteCard}
+      columnId={column.id}
+    />
+  ), [onDeleteCard, column.id]);
+
+  const cardElements = column.cards.map(renderCard);
 
   return (
     <ColumnContainer color={column.color}>
@@ -84,17 +96,10 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
         <AddCardButton color={column.color} onClick={handleAddTaskClick}>+</AddCardButton>
       </ColumnHeader>
       <CardContainer>
-        {column.cards.map((card) => (
-          <Card 
-              key={card.id} 
-              card={card}
-              onDeleteCard = {onDeleteCard}
-              columnId = {column.id}
-              />
-        ))}
+        {cardElements}
         {!isAddingTask && (
-            <AddTaskCardItem onClick={handleAddTaskClick}>
-            <AddTaskCard color={column.color}>Add task...</AddTaskCard>
+          <AddTaskCardItem onClick={handleAddTaskClick}>
+            <AddTaskCard color={column.color}>{ADD_TASK_LABEL}</AddTaskCard>
           </AddTaskCardItem>
         )}
         {isAddingTask && (
@@ -105,13 +110,13 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
           />
         )}
       </CardContainer>
-          {contextMenu && (
+      {contextMenu && (
         <ContextMenu
           x={contextMenu.x}
           y={contextMenu.y}
           onClose={handleCloseContextMenu}
           options={[
-            { label: 'Delete Column', onClick: () => handleDeleteColumn() },
+            { label: DELETE_COLUMN_LABEL, onClick: handleDeleteColumn },
           ]}
         />
       )}

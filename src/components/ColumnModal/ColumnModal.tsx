@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledButton1, StyledInputColor, StyledInputTitle } from './ColumnModal.styles';
+import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledButton1, StyledInputColor, StyledInputTitle, ButtonContainer  } from './ColumnModal.styles';
 import { v4 as uuidv4 } from 'uuid';
+import { DEFAULT_COLUMN_COLOR } from "../../constants/colors";
+import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../../constants/labels";
+import { COLUMN_TITLE_ERROR } from "../../constants/errors";
+import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
 
 interface ColumnModalProps {
   isOpen: boolean;
@@ -16,12 +20,12 @@ interface CardType {
 }
 
 const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn }) => {
-  const [title, setTitle] = useState('Add title');
-  const [color, setColor] = useState('#3242a8');
+  const [title, setTitle] = useState(ADD_TITLE_PLACEHOLDER);
+  const [color, setColor] = useState(DEFAULT_COLUMN_COLOR);
 
   useEffect(() => {
     if (isOpen) {
-      setTitle('Add title');
+      setTitle(ADD_TITLE_PLACEHOLDER);
     }
   }, [isOpen]);
 
@@ -34,11 +38,11 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
         cards: [],
       };
       onAddColumn(newColumn);
-      setTitle('');
-      setColor('#3242a8');
+      setTitle(EMPLTY_INPUT);
+      setColor(DEFAULT_COLUMN_COLOR);
       onClose();
     } else {
-      alert('Please enter a column title.');
+      alert(COLUMN_TITLE_ERROR);
     }
   };
 
@@ -48,15 +52,15 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
     <ModalContainer>
       <ModalContent>
         <div>
-        <StyledInputTitle maxLength={15} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <StyledInputTitle maxLength={MAX_COLUMN_TITLE_LENGTH} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div>
         <StyledInputColor type="color" id="color" value={color} onChange={(e) => setColor(e.target.value)} />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '20px' }}>
-        <StyledButton1 onClick={handleSave} >Save</StyledButton1>
-        <StyledButton1 onClick={onClose} >Close</StyledButton1>
-        </div>
+        <ButtonContainer>
+          <StyledButton1 onClick={handleSave} >Save</StyledButton1>
+          <StyledButton1 onClick={onClose} >Close</StyledButton1>
+        </ButtonContainer>
       </ModalContent>
     </ModalContainer>
   );

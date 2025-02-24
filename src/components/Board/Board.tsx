@@ -25,15 +25,15 @@ interface BoardProps {
 
 const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn }) => {
 
-    const renderColumn = useCallback((column: ColumnType) => (
-        <Column
-            key={column.id}
-            column={column}
-            onAddCard={onAddCard}
-            onDeleteCard={onDeleteCard}
-            onDeleteColumn={onDeleteColumn}
-        />
-    ), [onAddCard, onDeleteCard, onDeleteColumn]);
+  const renderColumn = useCallback((column: ColumnType) => (
+    <Column
+      key={column.id}
+      column={column}
+      onAddCard={onAddCard}
+      onDeleteCard={onDeleteCard}
+      onDeleteColumn={onDeleteColumn}
+    />
+  ), [onAddCard, onDeleteCard, onDeleteColumn]);
 
   const columnElements = columns.map(renderColumn);
 

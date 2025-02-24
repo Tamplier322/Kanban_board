@@ -2,10 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { CardItem, PriorityLabel, CardTitle, CardDescription } from './Card.styles';
 import styled from 'styled-components';
 import ContextMenu from "../ContextMenu/ContextMenu";
+import { DELETE_CARD_LABEL } from "../../constants/labels";
 
 interface CardProps {
   card: { id: string; title: string; description: string; priority: string };
-  onDeleteCard: (cardId:string, columnId: string) => void
+  onDeleteCard: (cardId: string, columnId: string) => void
   columnId: string
 }
 
@@ -22,10 +23,10 @@ const Card: React.FC<CardProps> = ({ card, onDeleteCard, columnId }) => {
     setContextMenu(null);
   };
 
-    const handleDeleteCard = () => {
-        onDeleteCard(card.id, columnId);
-        handleCloseContextMenu()
-    }
+  const handleDeleteCard = () => {
+    onDeleteCard(card.id, columnId);
+    handleCloseContextMenu()
+  }
 
   return (
     <CardItem onContextMenu={handleContextMenu}>
@@ -38,7 +39,7 @@ const Card: React.FC<CardProps> = ({ card, onDeleteCard, columnId }) => {
           y={contextMenu.y}
           onClose={handleCloseContextMenu}
           options={[
-            { label: 'Delete Card', onClick: () => handleDeleteCard() },
+            { label: DELETE_CARD_LABEL, onClick: handleDeleteCard },
           ]}
         />
       )}
