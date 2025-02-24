@@ -1,6 +1,8 @@
-import React, { useCallback,useEffect, useRef  } from 'react';
+import React, { useCallback } from 'react';
+import styled from 'styled-components';
 
-import {ContextMenuContainer, ContextMenuOption} from '../ContextMenu/ContextMenu.styles'
+import useClickOutside from '../../utils/useClickOutside';
+import { ContextMenuContainer, ContextMenuOption } from './ContextMenu.styles';
 
 interface ContextMenuProps {
     x: number;
@@ -10,33 +12,18 @@ interface ContextMenuProps {
 }
 
 const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose, options }) => {
-    const menuRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-            onClose();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [onClose]);
+    const menuRef = useClickOutside<HTMLDivElement>(onClose);
 
     const renderOption = useCallback((option: { label: string; onClick: () => void }, index: number) => (
-        <ContextMenuOption key={index} onClick={() => {
-            option.onClick();
-            onClose();
-        }}>
+        <ContextMenuOption key={index} onClick={option.onClick}>
             {option.label}
         </ContextMenuOption>
-    ), [onClose]);
+    ), []);
 
-return (
-    <ContextMenuContainer ref={menuRef} style={{ left: x, top: y }}>
-        {options.map(renderOption)}
-    </ContextMenuContainer>
+    return (
+        <ContextMenuContainer ref={menuRef} x={x} y={y}>
+            {options.map(renderOption)}
+        </ContextMenuContainer>
     );
 };
 
