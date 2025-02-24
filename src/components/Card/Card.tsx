@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { CardItem, PriorityLabel, CardTitle, CardDescription } from './Card.styles';
-import styled from 'styled-components';
-import ContextMenu from "../ContextMenu/ContextMenu";
+import React, { useEffect,useRef, useState } from 'react';
+
 import { DELETE_CARD_LABEL } from "../../constants/labels";
+import ContextMenu from "../ContextMenu/ContextMenu";
+import { CardDescription,CardItem, CardTitle, PriorityLabel } from './Card.styles';
 
 interface CardProps {
   card: { id: string; title: string; description: string; priority: string };

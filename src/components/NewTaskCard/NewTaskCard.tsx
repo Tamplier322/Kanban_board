@@ -1,11 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import { CardItem, PriorityLabel } from '../Card/Card.styles';
-import { StyledButton, StyledSelect, StyledInputTitle, StyledInputDescription, TaskCardHeader, CloseButton, PrioritySelectContainer, ButtonContainer, SelectContainer } from './NewTaskCard.styles';
-import styled from 'styled-components';
-import { priorityColors } from "../../constants/colors";
-import { DEFAULT_PRIORITY, TASK_DESCRIPTION_PLACEHOLDER, TASK_TITLE_PLACEHOLDER } from "../../constants/labels";
+import React, { useCallback,useState } from 'react';
+
 import { FILL_ALL_FIELDS } from "../../constants/errors";
-import { MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH } from '../../constants/numbers';
+import { DEFAULT_PRIORITY, TASK_DESCRIPTION_PLACEHOLDER, TASK_TITLE_PLACEHOLDER } from "../../constants/labels";
+import { MAX_DESCRIPTION_LENGTH,MAX_TITLE_LENGTH } from '../../constants/numbers';
+import { CardItem, PriorityLabel } from '../Card/Card.styles';
+import { ButtonContainer, PrioritySelectContainer, SelectContainer,StyledButton, StyledInputDescription, StyledInputTitle, StyledSelect } from './NewTaskCard.styles';
 
 interface NewTaskCardProps {
     color: string;
