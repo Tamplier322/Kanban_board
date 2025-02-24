@@ -1,70 +1,72 @@
-import React, { useEffect,useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
 
-import { DEFAULT_COLUMN_COLOR } from "../../constants/colors";
 import { COLUMN_TITLE_ERROR } from "../../constants/errors";
-import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../../constants/labels";
 import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
-import { ButtonContainer,ModalContainer, ModalContent, StyledButton1, StyledInputColor, StyledInputTitle  } from './ColumnModal.styles';
-
-interface ColumnModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onAddColumn: (newColumn: { id: string; title: string; color: string; cards: CardType[]; }) => void;
-}
-
-interface CardType {
-  id: string;
-  title: string;
-  description: string;
-  priority: string;
-}
+import useColumnModalForm from "../../utils/useColumnModalForm";
+import {
+  ButtonContainer,
+  ModalContainer,
+  ModalContent,
+  StyledButton1,
+  StyledInputColor,
+  StyledInputTitle,
+} from './ColumnModal.styles';
+import { ColumnModalProps } from './interface';
 
 const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn }) => {
-  const [title, setTitle] = useState(ADD_TITLE_PLACEHOLDER);
-  const [color, setColor] = useState(DEFAULT_COLUMN_COLOR);
+    const {
+        title,
+        setTitle,
+        color,
+        setColor,
+        handleSave
+    } = useColumnModalForm({ onAddColumn, onClose, isOpen });
 
-  useEffect(() => {
-    if (isOpen) {
-      setTitle(ADD_TITLE_PLACEHOLDER);
-    }
-  }, [isOpen]);
+    if (!isOpen) return null;
 
-  const handleSave = () => {
-    if (title) {
-      const newColumn = {
-        id: uuidv4(),
-        title: title,
-        color: color,
-        cards: [],
-      };
-      onAddColumn(newColumn);
-      setTitle(EMPLTY_INPUT);
-      setColor(DEFAULT_COLUMN_COLOR);
-      onClose();
-    } else {
-      alert(COLUMN_TITLE_ERROR);
-    }
-  };
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value);
+    };
 
-  if (!isOpen) return null;
+    const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setColor(e.target.value);
+    };
 
-  return (
-    <ModalContainer>
-      <ModalContent>
-        <div>
-        <StyledInputTitle maxLength={MAX_COLUMN_TITLE_LENGTH} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div>
-        <StyledInputColor type="color" id="color" value={color} onChange={(e) => setColor(e.target.value)} />
-        </div>
-        <ButtonContainer>
-          <StyledButton1 onClick={handleSave} >Save</StyledButton1>
-          <StyledButton1 onClick={onClose} >Close</StyledButton1>
-        </ButtonContainer>
-      </ModalContent>
-    </ModalContainer>
-  );
+    const handleSaveClick = () => {
+        if (!title) {
+            alert(COLUMN_TITLE_ERROR);
+            return;
+        }
+
+        handleSave();
+    };
+
+    return (
+        <ModalContainer>
+            <ModalContent>
+                <div>
+                    <StyledInputTitle
+                        maxLength={MAX_COLUMN_TITLE_LENGTH}
+                        type="text"
+                        value={title}
+                        onChange={handleTitleChange}
+                    />
+                </div>
+                <div>
+                    <StyledInputColor
+                        type="color"
+                        id="color"
+                        value={color}
+                        onChange={handleColorChange}
+                    />
+                </div>
+                <ButtonContainer>
+                    <StyledButton1 onClick={handleSaveClick}>Save</StyledButton1>
+                    <StyledButton1 onClick={onClose}>Close</StyledButton1>
+                </ButtonContainer>
+            </ModalContent>
+        </ModalContainer>
+    );
 };
 
 export default ColumnModal;

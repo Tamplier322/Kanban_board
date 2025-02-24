@@ -1,4 +1,4 @@
-import { ColumnType } from "../App";
+import { ColumnType } from '../components/Board/Board';
 
 export const initialData: ColumnType[] = [
     { id: 'todo', title: 'To Do', color: '#4F46E5', cards: [] },

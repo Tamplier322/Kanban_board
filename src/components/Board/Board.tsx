@@ -3,14 +3,14 @@ import React, { useCallback } from 'react';
 import Column from '../Column';
 import { BoardContainer } from './Board.styles';
 
-interface CardType {
+export interface CardType {
   id: string;
   title: string;
   description: string;
   priority: string;
 }
 
-interface ColumnType {
+export interface ColumnType {
   id: string;
   title: string;
   color: string;

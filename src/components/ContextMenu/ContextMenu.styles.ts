@@ -14,7 +14,13 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const ContextMenuContainer = styled.div`
+interface ContextMenuContainerProps {
+  x: number;
+  y: number;
+}
+
+
+export const ContextMenuContainer = styled.div<ContextMenuContainerProps>`
   position: absolute;
   background-color: ${props => props.theme.colors.cardBackground};
   border: ${props => props.theme.borderWidth} ${props => props.theme.borderStyle} ${props => props.theme.colors.lightGray};
@@ -23,6 +29,7 @@ export const ContextMenuContainer = styled.div`
   padding: ${props => props.theme.spacing.xs} 0;
   min-width: 150px;
   z-index: 1000;
+  
 `;
 
 export const ContextMenuOption = styled.div`
