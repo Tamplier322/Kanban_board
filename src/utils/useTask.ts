@@ -1,18 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { CardType } from '../components/Board/Board';
-
-interface UseTaskProps {
-    columnId: string;
-    onAddCard: (columnId: string, newCard: CardType) => void;
-}
-
-type UseTaskResult = [
-    boolean,
-    () => void,
-    () => void,
-    (newTask: { title: string; description: string; priority: string }) => void
-];
+import { UseTaskProps, UseTaskResult } from '../types/index';
 
 function useTask({ columnId, onAddCard }: UseTaskProps): UseTaskResult {
     const [isAddingTask, setIsAddingTask] = useState(false);

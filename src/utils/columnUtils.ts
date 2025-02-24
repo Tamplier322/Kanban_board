@@ -1,4 +1,4 @@
-import { CardType,ColumnType } from '../components/Board/Board';
+import { CardType, ColumnType } from '../types/index';
 
 export const addNewColumn = (prevColumns: ColumnType[], newColumn: ColumnType): ColumnType[] => {
     return [...prevColumns, newColumn];

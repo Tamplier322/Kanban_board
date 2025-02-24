@@ -1,10 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useCallback,useState } from 'react';
 
-type UseTaskAddingResult = [
-    boolean,
-    () => void,
-    () => void
-];
+import { UseTaskAddingResult } from '../types/index';
 
 function useTaskAdding(): UseTaskAddingResult {
     const [isAddingTask, setIsAddingTask] = useState(false);

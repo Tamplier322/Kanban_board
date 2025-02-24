@@ -1,17 +1,8 @@
 import React from 'react';
 
 import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "../../constants/errors";
+import { ErrorBoundaryProps, ErrorBoundaryState } from '../../types/index';
 import { ErrorMessage, StyledButton } from './ErrorBoudary.styles';
-
-interface ErrorBoundaryProps {
-    children: React.ReactNode;
-}
-
-interface ErrorBoundaryState {
-    hasError: boolean;
-    error: Error | null;
-    errorInfo: React.ErrorInfo | null;
-}
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {

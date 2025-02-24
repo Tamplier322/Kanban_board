@@ -1,15 +1,10 @@
 import React, { useCallback } from 'react';
 
 import { DELETE_CARD_LABEL } from "../../constants/labels";
+import { CardProps } from '../../types/index';
 import useContextMenu from '../../utils/useContextMenu';
 import ContextMenu from "../ContextMenu/ContextMenu";
 import { CardDescription, CardItem, CardTitle, PriorityLabel } from './Card.styles';
-
-interface CardProps {
-  card: { id: string; title: string; description: string; priority: string };
-  onDeleteCard: (cardId: string, columnId: string) => void;
-  columnId: string;
-}
 
 const Card: React.FC<CardProps> = ({ card, onDeleteCard, columnId }) => {
     const [contextMenu, handleContextMenu, handleCloseContextMenu] = useContextMenu();

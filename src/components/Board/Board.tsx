@@ -1,28 +1,8 @@
 import React, { useCallback } from 'react';
 
+import { BoardProps,ColumnType } from '../../types/index';
 import Column from '../Column';
 import { BoardContainer } from './Board.styles';
-
-export interface CardType {
-  id: string;
-  title: string;
-  description: string;
-  priority: string;
-}
-
-export interface ColumnType {
-  id: string;
-  title: string;
-  color: string;
-  cards: CardType[];
-}
-
-interface BoardProps {
-  columns: ColumnType[];
-  onAddCard: (columnId: string, newCard: CardType) => void;
-  onDeleteCard: (cardId: string, columnId: string) => void;
-  onDeleteColumn: (columnId: string) => void;
-}
 
 const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn }) => {
 
