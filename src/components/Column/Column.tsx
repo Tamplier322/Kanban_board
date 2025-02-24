@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 
 import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
+import { CardType, ColumnProps } from '../../types/index';
 import useContextMenu from '../../utils/useContextMenu';
 import useTask from '../../utils/useTask';
-import { ColumnType } from '../Board/Board';
 import Card from '../Card';
 import { AddTaskCardItem } from "../Card/Card.styles";
 import ContextMenu from "../ContextMenu/ContextMenu";
@@ -18,20 +18,6 @@ import {
     ColumnTitleWrapper,
     CountBadge,
 } from './Column.styles';
-
-interface CardType {
-    id: string;
-    title: string;
-    description: string;
-    priority: string;
-}
-
-interface ColumnProps {
-    column: ColumnType;
-    onAddCard: (columnId: string, newCard: CardType) => void;
-    onDeleteCard: (cardId: string, columnId: string) => void;
-    onDeleteColumn: (columnId: string) => void;
-}
 
 const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn }) => {
     const [contextMenu, handleContextMenu, handleCloseContextMenu] = useContextMenu();

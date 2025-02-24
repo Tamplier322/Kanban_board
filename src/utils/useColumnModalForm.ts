@@ -1,22 +1,9 @@
 import { useCallback, useEffect,useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ColumnType } from '../components/Board/Board';
 import { DEFAULT_COLUMN_COLOR } from "../constants/colors";
 import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../constants/labels";
-interface UseColumnModalFormProps {
-    onAddColumn: (newColumn: ColumnType) => void;
-    onClose: () => void;
-    isOpen: boolean
-}
-
-interface UseColumnModalFormResult {
-    title: string;
-    color: string;
-    setTitle: (title: string) => void;
-    setColor: (color: string) => void;
-    handleSave: () => void;
-}
+import { UseColumnModalFormProps, UseColumnModalFormResult } from '../types/index';
 
 const useColumnModalForm = ({ onAddColumn, onClose, isOpen }: UseColumnModalFormProps): UseColumnModalFormResult => {
     const [title, setTitle] = useState(ADD_TITLE_PLACEHOLDER);

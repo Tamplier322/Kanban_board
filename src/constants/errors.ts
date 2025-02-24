@@ -6,6 +6,6 @@ export const DELETING_CARD_DATA_ERROR = "Error deleting card from localStorage"
 export const ADDING_CARD_DATA_ERROR = "Error adding card to localStorage"
 export const SAVING_DATA_ERROR = "Error saving data to localStorage:"
 export const SOMETHING_WENT_WRONG = "Something went wrong.";
-export const TRY_AGAIN_LABEL = "Попробовать еще раз";
+export const TRY_AGAIN_LABEL = "Try one more time";
 export const CAUGHT_AN_ERROR = "Caught an error: ";
 export const FILL_ALL_FIELDS = "Please fill all the fields!"

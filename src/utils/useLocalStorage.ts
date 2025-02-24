@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { ColumnType } from '../components/Board/Board';
 import { LOAD_DATA_ERROR, SAVING_DATA_ERROR } from '../constants/errors';
 import { initialData } from '../constants/initial-data';
 import { LOCAL_STORAGE_KEY } from '../constants/labels';
+import { ColumnType } from '../types/index';
 
 function useLocalStorageColumns(): [ColumnType[], React.Dispatch<React.SetStateAction<ColumnType[]>>] {
     const [columns, setColumns] = useState<ColumnType[]>(() => {

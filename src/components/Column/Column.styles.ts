@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-interface ColumnContainerProps {
-    color: string;
-}
+import { ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, AddCardButtonProps, CountBadgeProps, AddTaskCardPropsStyles } from '../../types/index';
 
 export const ColumnContainer = styled.div < ColumnContainerProps > `
   background-color: ${props => props.theme.colors.appBackground};
-  border-radius: ${props => props.theme.borderRadius.xxl};
+  border-radius: ${props => props.theme.borderRadius.xxxl};
   padding: ${props => props.theme.spacing.md};
   width: ${props => props.theme.columnWidth};
   min-width: ${props => props.theme.columnWidth};
@@ -21,10 +19,6 @@ export const ColumnContainer = styled.div < ColumnContainerProps > `
   }
 `;
 
-interface ColumnHeaderProps {
-    color: string;
-}
-
 export const ColumnHeader = styled.div < ColumnHeaderProps > `
   display: flex;
   align-items: center;
@@ -32,15 +26,11 @@ export const ColumnHeader = styled.div < ColumnHeaderProps > `
   gap: ${props => props.theme.spacing.sm};
   margin-bottom: ${props => props.theme.spacing.sm};
   background-color: ${ props => props.color };
-  border-radius: ${props => props.theme.borderRadius.xxxl};
+  border-radius: ${props => props.theme.borderRadius.xxxxl};
   padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.ms};
   color: ${props => props.theme.colors.white};
   height: ${props => props.theme.hitZone.big};
 `;
-
-interface ColumnTitleProps {
-    color: string;
-}
 
 export const ColumnTitle = styled.h2 < ColumnTitleProps > `
   font-size: ${props => props.theme.fontSizes.regular};
@@ -58,10 +48,6 @@ export const ColumnTitleWrapper = styled.div`
   margin-right: ${props => props.theme.spacing.xs};
   justify-content: flex-start;
 `;
-
-interface AddCardButtonProps {
-    color: string;
-}
 
 export const AddCardButton = styled.button < AddCardButtonProps > `
     color: ${props => props.theme.colors.white};
@@ -91,10 +77,6 @@ export const CardContainer = styled.div`
   gap: ${props => props.theme.spacing.md};
 `;
 
-interface CountBadgeProps {
-    color: string;
-}
-
 export const CountBadge = styled.span < CountBadgeProps > `
     background-color: ${props => props.theme.colors.white};
     color: ${ props => `${props.color}65`};
@@ -109,11 +91,7 @@ export const CountBadge = styled.span < CountBadgeProps > `
     align-items: center;
 `;
 
-interface AddTaskCardProps {
-    color: string;
-}
-
-export const AddTaskCard = styled.button < AddTaskCardProps > `
+export const AddTaskCard = styled.button < AddTaskCardPropsStyles > `
   background-color:  ${ props => `${props.color}33`};
   border: none;
   color: ${ props => props.color };

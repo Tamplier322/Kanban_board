@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ContextMenuContainerProps } from '../../types/index';
+
 export const StyledButton = styled.button`
   padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
   border-radius: ${props => props.theme.borderRadius.sm};
@@ -13,12 +15,6 @@ export const StyledButton = styled.button`
     background-color: ${props => props.theme.colors.light};
   }
 `;
-
-interface ContextMenuContainerProps {
-  x: number;
-  y: number;
-}
-
 
 export const ContextMenuContainer = styled.div<ContextMenuContainerProps>`
   position: absolute;

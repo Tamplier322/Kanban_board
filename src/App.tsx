@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components';
 
 import { AddColumnButton, AppContainer, AppHeader, AppTitle } from './App.styles';
 import Board from './components/Board';
-import { CardType,ColumnType } from './components/Board/Board';
 import ColumnModal from './components/ColumnModal';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import {
@@ -12,6 +11,7 @@ import {
     DELETING_COLUMN_DATA_ERROR
 } from "./constants/errors";
 import { theme } from './theme';
+import { CardType,ColumnType } from './types/index';
 import { addCard,addNewColumn, deleteCard, deleteColumn } from './utils/columnUtils';
 import useLocalStorageColumns from './utils/useLocalStorage';
 

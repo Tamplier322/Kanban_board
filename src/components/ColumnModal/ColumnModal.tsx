@@ -2,14 +2,16 @@ import React from 'react';
 
 import { COLUMN_TITLE_ERROR } from "../../constants/errors";
 import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
+import useAlert from "../../utils/useAlert";
 import useColumnModalForm from "../../utils/useColumnModalForm";
+import Alert from "../Alert/Alert";
 import {
-  ButtonContainer,
-  ModalContainer,
-  ModalContent,
-  StyledButton1,
-  StyledInputColor,
-  StyledInputTitle,
+    ButtonContainer,
+    ModalContainer,
+    ModalContent,
+    StyledButton1,
+    StyledInputColor,
+    StyledInputTitle,
 } from './ColumnModal.styles';
 import { ColumnModalProps } from './interface';
 
@@ -22,6 +24,8 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
         handleSave
     } = useColumnModalForm({ onAddColumn, onClose, isOpen });
 
+    const [alertMessage, showAlert, closeAlert] = useAlert();  
+    
     if (!isOpen) return null;
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,11 +38,12 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
 
     const handleSaveClick = () => {
         if (!title) {
-            alert(COLUMN_TITLE_ERROR);
+            handleSave();
             return;
         }
-
-        handleSave();
+        else {
+            showAlert(COLUMN_TITLE_ERROR);
+        }
     };
 
     return (
@@ -65,6 +70,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
                     <StyledButton1 onClick={onClose}>Close</StyledButton1>
                 </ButtonContainer>
             </ModalContent>
+            {alertMessage && <Alert message={alertMessage} onClose={closeAlert} />}
         </ModalContainer>
     );
 };

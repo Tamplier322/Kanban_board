@@ -1,15 +1,8 @@
 import React, { useCallback } from 'react';
-import styled from 'styled-components';
 
+import { ContextMenuProps } from '../../types/index';
 import useClickOutside from '../../utils/useClickOutside';
 import { ContextMenuContainer, ContextMenuOption } from './ContextMenu.styles';
-
-interface ContextMenuProps {
-    x: number;
-    y: number;
-    onClose: () => void;
-    options: { label: string; onClick: () => void }[];
-}
 
 const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose, options }) => {
     const menuRef = useClickOutside<HTMLDivElement>(onClose);

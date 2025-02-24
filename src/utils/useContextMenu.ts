@@ -1,17 +1,6 @@
 import { useState } from 'react';
 
-interface ContextMenuState {
-    x: number;
-    y: number;
-    cardId: string | null;
-    columnId: string | null;
-}
-
-type UseContextMenuResult = [
-    ContextMenuState | null,
-    (event: React.MouseEvent, columnId: string) => void,
-    () => void
-    ];
+import { ContextMenuState, UseContextMenuResult } from '../types/index';
 
 function useContextMenu(): UseContextMenuResult {
     const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null);

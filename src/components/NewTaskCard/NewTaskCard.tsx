@@ -1,26 +1,19 @@
-import React, { useCallback,useState } from 'react';
+import React, { useState } from 'react';
 
 import { FILL_ALL_FIELDS } from "../../constants/errors";
 import { DEFAULT_PRIORITY, TASK_DESCRIPTION_PLACEHOLDER, TASK_TITLE_PLACEHOLDER } from "../../constants/labels";
 import { MAX_DESCRIPTION_LENGTH,MAX_TITLE_LENGTH } from '../../constants/numbers';
+import { NewTaskCardProps } from '../../types/index';
+import useAlert from "../../utils/useAlert";
+import Alert from "../Alert/Alert";
 import { CardItem, PriorityLabel } from '../Card/Card.styles';
 import { ButtonContainer, PrioritySelectContainer, SelectContainer,StyledButton, StyledInputDescription, StyledInputTitle, StyledSelect } from './NewTaskCard.styles';
-
-interface NewTaskCardProps {
-    color: string;
-    onClose: () => void;
-    onSave: (newTask: { title: string; description: string; priority: string }) => void;
-}
-
-interface PriorityLabelProps {
-    priority: string | undefined;
-    color: string;
-}
 
 const NewTaskCard: React.FC<NewTaskCardProps> = ({ color, onClose, onSave }) => {
     const [title, setTitle] = useState(TASK_TITLE_PLACEHOLDER);
     const [description, setDescription] = useState(TASK_DESCRIPTION_PLACEHOLDER);
     const [priority, setPriority] = useState(DEFAULT_PRIORITY);
+    const [alertMessage, showAlert, closeAlert] = useAlert();   
     const handleSaveClick = () => {
         if (title !== TASK_TITLE_PLACEHOLDER && description !== TASK_DESCRIPTION_PLACEHOLDER && priority) {
             onSave({ title, description, priority });
@@ -28,7 +21,7 @@ const NewTaskCard: React.FC<NewTaskCardProps> = ({ color, onClose, onSave }) => 
             setDescription(TASK_DESCRIPTION_PLACEHOLDER);
             setPriority(DEFAULT_PRIORITY);
         } else {
-            alert(FILL_ALL_FIELDS);
+            showAlert(FILL_ALL_FIELDS);
         }
     };
 
@@ -55,6 +48,7 @@ const NewTaskCard: React.FC<NewTaskCardProps> = ({ color, onClose, onSave }) => 
                 <StyledButton onClick={handleSaveClick} >Save</StyledButton>
                 <StyledButton onClick={onClose} >Close</StyledButton>
             </ButtonContainer>
+        {alertMessage && <Alert message={alertMessage} onClose={closeAlert} />}
         </CardItem>
     );
 };

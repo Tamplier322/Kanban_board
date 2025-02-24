@@ -1,20 +1,18 @@
 import styled from 'styled-components';
 
+import { AddTaskCardProps,PriorityLabelPropsStyles } from '../../types/index';
+
 interface CardItemProps {}
 
 export const CardItem = styled.div<CardItemProps>`
   background-color: ${props => props.theme.colors.cardBackground};
-  border-radius: ${props => props.theme.borderRadius.xxl};
+  border-radius: ${props => props.theme.borderRadius.xxxl};
   padding: ${props => props.theme.spacing.md};
   box-shadow: ${props => props.theme.boxShadow};
   cursor: grab;
   transition: ${props => props.theme.transition};
   min-height: 70px;
 `;
-
-interface PriorityLabelProps {
-  priority: string | undefined;
-}
 
 const priorityColors: Record<string, string | undefined> = {
   High: '#f44336',
@@ -25,7 +23,7 @@ const priorityColors: Record<string, string | undefined> = {
   'Low Priority': '#4caf50'
 };
 
-export const PriorityLabel = styled.span<PriorityLabelProps>`
+export const PriorityLabel = styled.span<PriorityLabelPropsStyles>`
   font-size: ${props => props.theme.fontSizes.small};
   font-weight: ${props => props.theme.fontWeights.bold};
   color: ${(props) => (props.priority ? priorityColors[props.priority] : props.theme.colors.gray)};
@@ -53,11 +51,9 @@ export const CardDescription = styled.p`
   max-height: 70px
 `;
 
-interface AddTaskCardProps {}
-
 export const AddTaskCardItem = styled.div<AddTaskCardProps>`
   background-color: ${props => props.theme.colors.cardBackground};
-  border-radius: ${props => props.theme.borderRadius.xxl};
+  border-radius: ${props => props.theme.borderRadius.xxxl};
   padding: ${props => props.theme.spacing.md};
   box-shadow: ${props => props.theme.boxShadow};
   transition: ${props => props.theme.transition};
