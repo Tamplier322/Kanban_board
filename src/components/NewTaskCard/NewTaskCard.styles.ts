@@ -8,8 +8,8 @@ export const StyledSelect = styled.select`
   outline: none;
   font-size: ${props => props.theme.fontSizes.small};
   font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${(props) => props.color};
-  background-color: transparent; 
+  color: ${props => props.theme.colors.textPrimary};
+  background-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -73,4 +73,22 @@ export const CloseButton = styled.span`
   position: absolute;
   right: ${props => props.theme.spacing.md};
   top: ${props => props.theme.spacing.xs};
+`;
+
+export const PrioritySelectContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: ${props => props.theme.spacing.xl};
+`;
+export const SelectContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

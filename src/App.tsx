@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 import ErrorBoundary from './/components/common/ErrorBoundary';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import { LOCAL_STORAGE_KEY } from "./constants/labels";
+import { initialData } from "./constants/initial-data";
+import { LOAD_DATA_ERROR, SAVING_COLUMN_DATA_ERROR, DELETING_COLUMN_DATA_ERROR, DELETING_CARD_DATA_ERROR, ADDING_CARD_DATA_ERROR, SAVING_DATA_ERROR } from './constants/errors';
 
 interface CardType {
     id: string;
@@ -14,14 +17,12 @@ interface CardType {
     priority: string;
 }
 
-interface ColumnType {
+export interface ColumnType {
     id: string;
     title: string;
     color: string;
     cards: CardType[];
 }
-
-const LOCAL_STORAGE_KEY = 'kanban-data';
 
 const App: React.FC = () => {
     const [columns, setColumns] = useState<ColumnType[]>(() => {
@@ -30,16 +31,11 @@ const App: React.FC = () => {
             if (storedData) {
                 return JSON.parse(storedData);
             } else {
-                const initialData: ColumnType[] = [
-                    {id: 'todo', title: 'To Do', color: '#4F46E5', cards: []},
-                    {id: 'inprogress', title: 'In Progress', color: '#F59E0B', cards: []},
-                    {id: 'done', title: 'Done', color: '#22C55E', cards: []},
-                ];
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(initialData));
                 return initialData;
             }
         } catch (error) {
-            console.error('Error loading data from localStorage:', error);
+            console.error(LOAD_DATA_ERROR, error);
             return [];
         }
     });
@@ -60,7 +56,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.error("Error saving new column to localStorage", e);
+                console.error(SAVING_COLUMN_DATA_ERROR, e);
             }
 
             return updatedColumns
@@ -73,7 +69,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.error("Error deleting column from localStorage", e);
+                console.error(DELETING_COLUMN_DATA_ERROR, e);
             }
 
             return updatedColumns;
@@ -93,7 +89,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.error("Error deleting card from localStorage", e);
+                console.error(DELETING_CARD_DATA_ERROR, e);
             }
 
             return updatedColumns;
@@ -112,7 +108,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.error("Error adding card to localStorage", e);
+                console.error(ADDING_CARD_DATA_ERROR, e);
             }
 
             return updatedColumns;
@@ -123,7 +119,7 @@ const App: React.FC = () => {
         try {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(columns));
         } catch (error) {
-            console.error('Error saving data to localStorage:', error);
+            console.error(SAVING_DATA_ERROR, error);
         }
     }, [columns]);
 

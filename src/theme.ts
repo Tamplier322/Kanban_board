@@ -21,11 +21,11 @@ export const theme = {
         textSecondary: '#555',
     },
     fontSizes: {
-        small: '0.7rem',
-        medium: '0.8rem',
-        regular: '1rem',
-        large: '1.5rem',
-        extraLarge: '2em',
+        extraLarge: '32px',
+        large: '24px',
+        medium: '13px',
+        regular: '16px',
+        small: '11px',
     },
     fontWeights: {
         light: 300,

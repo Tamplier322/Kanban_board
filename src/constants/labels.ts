@@ -1,0 +1,9 @@
+export const LOCAL_STORAGE_KEY = 'kanban-data';
+export const DELETE_CARD_LABEL = 'Delete Card';
+export const DELETE_COLUMN_LABEL = 'Delete Column';
+export const ADD_TASK_LABEL = 'Add task...';
+export const ADD_TITLE_PLACEHOLDER = 'Add title';
+export const EMPLTY_INPUT = '';
+export const TASK_TITLE_PLACEHOLDER = 'Task title';
+export const TASK_DESCRIPTION_PLACEHOLDER = 'Add description';
+export const DEFAULT_PRIORITY = "Medium"

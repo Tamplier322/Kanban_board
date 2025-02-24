@@ -1,0 +1,11 @@
+export const COLUMN_TITLE_ERROR = "Please enter a column title."
+export const LOAD_DATA_ERROR = "Error loading data from localStorage"
+export const SAVING_COLUMN_DATA_ERROR = "Error saving new column to localStorage"
+export const DELETING_COLUMN_DATA_ERROR = "Error deleting column from localStorage"
+export const DELETING_CARD_DATA_ERROR = "Error deleting card from localStorage"
+export const ADDING_CARD_DATA_ERROR = "Error adding card to localStorage"
+export const SAVING_DATA_ERROR = "Error saving data to localStorage:"
+export const SOMETHING_WENT_WRONG = "Something went wrong.";
+export const TRY_AGAIN_LABEL = "Попробовать еще раз";
+export const CAUGHT_AN_ERROR = "Caught an error: ";
+export const FILL_ALL_FIELDS = "Please fill all the fields!"

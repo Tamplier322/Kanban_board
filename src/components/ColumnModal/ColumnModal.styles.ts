@@ -88,3 +88,10 @@ export const StyledButton1 = styled.button`
   cursor: pointer;
   border: none;
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: ${props => props.theme.spacing.xl};
+`;
