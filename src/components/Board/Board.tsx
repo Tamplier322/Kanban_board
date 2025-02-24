@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import { BoardContainer } from './Board.styles';
+
 import Column from '../Column';
+import { BoardContainer } from './Board.styles';
 
 interface CardType {
   id: string;

@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback,useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+
+import ErrorBoundary from './/components/common/ErrorBoundary';
+import { AddColumnButton,AppContainer, AppHeader, AppTitle } from './App.styles';
 import Board from './components/Board';
 import ColumnModal from './components/ColumnModal';
-import { AppContainer, AppHeader, AppTitle, AddColumnButton } from './App.styles';
-import { v4 as uuidv4 } from 'uuid';
-import ErrorBoundary from './/components/common/ErrorBoundary';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './theme';
-import { LOCAL_STORAGE_KEY } from "./constants/labels";
+import { ADDING_CARD_DATA_ERROR, DELETING_CARD_DATA_ERROR, DELETING_COLUMN_DATA_ERROR, LOAD_DATA_ERROR, SAVING_COLUMN_DATA_ERROR, SAVING_DATA_ERROR } from './constants/errors';
 import { initialData } from "./constants/initial-data";
-import { LOAD_DATA_ERROR, SAVING_COLUMN_DATA_ERROR, DELETING_COLUMN_DATA_ERROR, DELETING_CARD_DATA_ERROR, ADDING_CARD_DATA_ERROR, SAVING_DATA_ERROR } from './constants/errors';
+import { LOCAL_STORAGE_KEY } from "./constants/labels";
+import { theme } from './theme';
 
 interface CardType {
     id: string;

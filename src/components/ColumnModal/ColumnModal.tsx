@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledButton1, StyledInputColor, StyledInputTitle, ButtonContainer  } from './ColumnModal.styles';
+import React, { useEffect,useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import { DEFAULT_COLUMN_COLOR } from "../../constants/colors";
-import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../../constants/labels";
 import { COLUMN_TITLE_ERROR } from "../../constants/errors";
+import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../../constants/labels";
 import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
+import { ButtonContainer,ModalContainer, ModalContent, StyledButton1, StyledInputColor, StyledInputTitle  } from './ColumnModal.styles';
 
 interface ColumnModalProps {
   isOpen: boolean;

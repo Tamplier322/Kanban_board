@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useCallback  } from 'react';
-import styled from 'styled-components';
+import React, { useCallback,useEffect, useRef  } from 'react';
+
 import {ContextMenuContainer, ContextMenuOption} from '../ContextMenu/ContextMenu.styles'
 
 interface ContextMenuProps {

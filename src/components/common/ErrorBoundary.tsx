@@ -1,6 +1,7 @@
 import React from 'react';
-import { ErrorMessage, StyledButton } from './ErrorBoudary.styles';
+
 import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "../../constants/errors";
+import { ErrorMessage, StyledButton } from './ErrorBoudary.styles';
 
 interface ErrorBoundaryProps {
     children: React.ReactNode;

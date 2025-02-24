@@ -1,19 +1,20 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
+
+import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
+import Card from '../Card';
+import { AddTaskCardItem } from "../Card/Card.styles";
+import ContextMenu from "../ContextMenu/ContextMenu";
+import NewTaskCard from "../NewTaskCard/NewTaskCard";
 import {
+  AddCardButton,
+  AddTaskCard,
+  CardContainer,
   ColumnContainer,
   ColumnHeader,
   ColumnTitle,
-  AddCardButton,
-  CardContainer,
-  CountBadge,
   ColumnTitleWrapper,
-  AddTaskCard,
+  CountBadge,
 } from './Column.styles';
-import Card from '../Card';
-import { AddTaskCardItem } from "../Card/Card.styles";
-import NewTaskCard from "../NewTaskCard/NewTaskCard";
-import ContextMenu from "../ContextMenu/ContextMenu";
-import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
 
 interface CardType {
   id: string;
