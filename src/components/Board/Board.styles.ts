@@ -4,11 +4,11 @@ export const BoardContainer = styled.div`
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  padding: 20px;
-  gap: 20px;
-  min-height: 100vh;
+  padding: ${props => props.theme.spacing.xl};
+  gap: ${props => props.theme.spacing.xl};
+  min-height: ${props => props.theme.app.minHeight};
   align-items: flex-start;
-  background-color: #FFFFFF;
+  background-color: ${props => props.theme.colors.appBackground};
 
   @media (max-width: 390px) {
     flex-direction: column;

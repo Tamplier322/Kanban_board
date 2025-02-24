@@ -4,6 +4,8 @@ import ColumnModal from './components/ColumnModal';
 import { AppContainer, AppHeader, AppTitle, AddColumnButton } from './App.styles';
 import { v4 as uuidv4 } from 'uuid';
 import ErrorBoundary from './/components/common/ErrorBoundary';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
 
 interface CardType {
     id: string;
@@ -91,7 +93,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.error("Ошибка при удалении карты из localStorage", e);
+                console.error("Error deleting card from localStorage", e);
             }
 
             return updatedColumns;
@@ -110,7 +112,7 @@ const App: React.FC = () => {
             try {
                 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             } catch (e) {
-                console.error("Ошибка при добавлении карты в localStorage", e);
+                console.error("Error adding card to localStorage", e);
             }
 
             return updatedColumns;
@@ -126,23 +128,25 @@ const App: React.FC = () => {
     }, [columns]);
 
     return (
-        <AppContainer>
-            <AppHeader>
-                <AppTitle>Kanban Dashboard</AppTitle>
-                <AddColumnButton onClick={handleAddColumn}>+</AddColumnButton>
-            </AppHeader>
-            <ErrorBoundary>
-              <Board
-                  columns={columns}
-                  onAddCard={handleAddCard}
-                  onDeleteCard={handleDeleteCard}
-                  onDeleteColumn={handleDeleteColumn}/>
-              </ErrorBoundary>
-            <ColumnModal
-                isOpen={isColumnModalOpen}
-                onClose={handleCloseColumnModal}
-                onAddColumn={handleNewColumn}/>
-        </AppContainer>
+        <ThemeProvider theme={theme}>
+            <AppContainer>
+                <AppHeader>
+                    <AppTitle>Kanban Dashboard</AppTitle>
+                    <AddColumnButton onClick={handleAddColumn}>+</AddColumnButton>
+                </AppHeader>
+                <ErrorBoundary>
+                    <Board
+                        columns={columns}
+                        onAddCard={handleAddCard}
+                        onDeleteCard={handleDeleteCard}
+                        onDeleteColumn={handleDeleteColumn}/>
+                    </ErrorBoundary>
+                <ColumnModal
+                    isOpen={isColumnModalOpen}
+                    onClose={handleCloseColumnModal}
+                    onAddColumn={handleNewColumn}/>
+            </AppContainer>
+        </ThemeProvider>
     );
 };
 

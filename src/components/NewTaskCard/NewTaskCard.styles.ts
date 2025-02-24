@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledSelect = styled.select`
-  padding: 4px 8px;
-  border-radius: 15px;
+  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
+  border-radius: ${props => props.theme.borderRadius.xl};
   border: none;
   width: auto;
   outline: none;
-  font-size: 0.7rem;
-  font-weight: bold;
+  font-size: ${props => props.theme.fontSizes.small};
+  font-weight: ${props => props.theme.fontWeights.bold};
   color: ${(props) => props.color};
   background-color: transparent; 
   -webkit-appearance: none;
@@ -17,27 +17,27 @@ export const StyledSelect = styled.select`
 
 export const StyledInputTitle = styled.input`
   border: none;
-  font-size: 1rem;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  font-size: ${props => props.theme.fontSizes.regular};
+  margin-bottom: ${props => props.theme.spacing.xs};
+  margin-top: ${props => props.theme.spacing.md};
   width: 100%;
   padding: 0;
   outline: none;
   opacity: 0.9;
-  font-weight: bold;
-  color: #222;
+  font-weight: ${props => props.theme.fontWeights.bold};
+  color: ${props => props.theme.colors.textPrimary};
 `;
 
 export const StyledInputDescription = styled.input`
   border: none;
-  font-size: 0.8rem;
-  margin-bottom: 5px;
+  font-size: ${props => props.theme.fontSizes.medium};
+  margin-bottom: ${props => props.theme.spacing.xs};
   width: 100%;
   padding: 0;
   outline: none;
   font-weight: normal;
   opacity: 0.7;
-  color: #222;
+  color: ${props => props.theme.colors.textPrimary};
 `;
 
 export const StyledButton = styled.button`
@@ -45,13 +45,13 @@ export const StyledButton = styled.button`
   border: none;
   color: ${ props => props.color };
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: ${props => props.theme.fontSizes.small};
   text-align: center;
   width: auto;
   display: inline-block;
   padding-inline: 0px;
-  transition: background-color 0.2s ease;
-  opacity: 0.55;
+  transition: ${props => props.theme.transition};
+  opacity: ${props => props.theme.opacity.disable};
 
   &:hover {
         background-color: ${ props => `${props.color}55`};
@@ -68,9 +68,9 @@ export const TaskCardHeader = styled.div`
 
 export const CloseButton = styled.span`
   cursor: pointer;
-  color: red;
-  font-size: 1rem;
+  color: ${props => props.theme.colors.danger};
+  font-size: ${props => props.theme.fontSizes.regular};
   position: absolute;
-  right: 10px;
-  top: 5px;
+  right: ${props => props.theme.spacing.md};
+  top: ${props => props.theme.spacing.xs};
 `;

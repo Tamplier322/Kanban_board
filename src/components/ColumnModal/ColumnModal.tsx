@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledInput, StyledButton1, StyledInputColor, StyledInputTitle } from './ColumnModal.styles';
+import { ModalContainer, ModalContent, ModalTitle, ModalLabel, StyledButton1, StyledInputColor, StyledInputTitle } from './ColumnModal.styles';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ColumnModalProps {

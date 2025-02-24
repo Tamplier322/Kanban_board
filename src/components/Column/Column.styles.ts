@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
-interface ColumnProps {
+interface ColumnContainerProps {
     color: string;
 }
 
-export const ColumnContainer = styled.div < ColumnProps > `
-  background-color: #F8FAFC;
-  border-radius: 32px;
-  padding: 10px;
-  width: 300px;
-  min-width: 300px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+export const ColumnContainer = styled.div < ColumnContainerProps > `
+  background-color: ${props => props.theme.colors.appBackground};
+  border-radius: ${props => props.theme.borderRadius.xxl};
+  padding: ${props => props.theme.spacing.md};
+  width: ${props => props.theme.columnWidth};
+  min-width: ${props => props.theme.columnWidth};
+  box-shadow: ${props => props.theme.boxShadow};
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${props => props.theme.spacing.md};
 
   @media (max-width: 390px) {
         width: 100%;
@@ -29,13 +29,13 @@ export const ColumnHeader = styled.div < ColumnHeaderProps > `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5px;
-  margin-bottom: 5px;
+  gap: ${props => props.theme.spacing.sm};
+  margin-bottom: ${props => props.theme.spacing.sm};
   background-color: ${ props => props.color };
-  border-radius: 30px;
-  padding: 4px 8px;
-  color: #fff;
-  height: 35px;
+  border-radius: ${props => props.theme.borderRadius.xxxl};
+  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.ms};
+  color: ${props => props.theme.colors.white};
+  height: ${props => props.theme.hitZone.big};
 `;
 
 interface ColumnTitleProps {
@@ -43,19 +43,19 @@ interface ColumnTitleProps {
 }
 
 export const ColumnTitle = styled.h2 < ColumnTitleProps > `
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
+  font-size: ${props => props.theme.fontSizes.regular};
+  font-weight: ${props => props.theme.fontWeights.bold};
+  color: ${props => props.theme.colors.white};
   text-align: center;
-  padding: 4px 8px;
-  border-radius: 20px;
+  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
+  border-radius: ${props => props.theme.borderRadius.md};
 `;
 
 export const ColumnTitleWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
-  margin-right: 5px;
+  margin-right: ${props => props.theme.spacing.xs};
   justify-content: flex-start;
 `;
 
@@ -64,12 +64,12 @@ interface AddCardButtonProps {
 }
 
 export const AddCardButton = styled.button < AddCardButtonProps > `
-    color: #fff;
+    color: ${props => props.theme.colors.white};
     border: none;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    font-size: 20px;
+    border-radius: ${props => props.theme.borderRadius.circle};
+    width: ${props => props.theme.hitZone.small};
+    height: ${props => props.theme.hitZone.small};
+    font-size: ${props => props.theme.fontSizes.xl};
     line-height: 1;
     cursor: pointer;
     display: flex;
@@ -88,7 +88,7 @@ export const AddCardButton = styled.button < AddCardButtonProps > `
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${props => props.theme.spacing.md};
 `;
 
 interface CountBadgeProps {
@@ -96,17 +96,16 @@ interface CountBadgeProps {
 }
 
 export const CountBadge = styled.span < CountBadgeProps > `
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.white};
     color: ${ props => `${props.color}65`};
-    font-size: 0.7rem;
-    padding: 3px 6px;
-    border-radius: 50%;
-    margin-right: 5px;
-    min-width: 20px;
-    min-height: 20px;
+    font-size: ${props => props.theme.fontSizes.medium};
+    padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
+    border-radius: ${props => props.theme.borderRadius.circle};
+    margin-right: ${props => props.theme.spacing.xs};
+    min-width: ${props => props.theme.hitZone.medium};
+    min-height: ${props => props.theme.hitZone.medium};
     display: flex;
     justify-content: center;
-    align-items: center;
     align-items: center;
 `;
 
@@ -118,10 +117,10 @@ export const AddTaskCard = styled.button < AddTaskCardProps > `
   background-color:  ${ props => `${props.color}33`};
   border: none;
   color: ${ props => props.color };
-  border-radius: 30px;
-  padding: 4px 8px;
+  border-radius: ${props => props.theme.borderRadius.xl};
+  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: ${props => props.theme.fontSizes.small};
   text-align: center;
   width: auto;
   display: inline-block;
@@ -130,8 +129,6 @@ export const AddTaskCard = styled.button < AddTaskCardProps > `
   &:hover {
         background-color: ${ props => `${props.color}55`};
   }
-
-  border-radius: 15px;
 
   @media (max-width: 390px) {
         display: none;

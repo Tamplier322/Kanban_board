@@ -1,34 +1,34 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  padding: 5px 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  color: #333;
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
+  border-radius: ${props => props.theme.borderRadius.sm};
+  border: ${props => props.theme.borderWidth} ${props => props.theme.borderStyle} ${props => props.theme.colors.lightGray};
+  background-color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.textPrimary};
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: ${props => props.theme.transition};
 
   &:hover {
-    background-color: #eee;
+    background-color: ${props => props.theme.colors.light};
   }
 `;
 
 export const ContextMenuContainer = styled.div`
   position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 5px 0;
+  background-color: ${props => props.theme.colors.cardBackground};
+  border: ${props => props.theme.borderWidth} ${props => props.theme.borderStyle} ${props => props.theme.colors.lightGray};
+  border-radius: ${props => props.theme.borderRadius.sm};
+  box-shadow: ${props => props.theme.boxShadow};
+  padding: ${props => props.theme.spacing.xs} 0;
   min-width: 150px;
   z-index: 1000;
 `;
 
 export const ContextMenuOption = styled.div`
-  padding: 8px 15px;
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.xl};
   cursor: pointer;
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${props => props.theme.colors.light};
   }
 `;

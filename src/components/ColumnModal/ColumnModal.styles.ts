@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { StyledInput } from '../common/StyledInput';
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -15,66 +14,66 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background-color: #fff;
-  border-radius: 14px;
-  padding: 10px;
+  background-color: ${props => props.theme.colors.cardBackground};
+  border-radius: ${props => props.theme.borderRadius.md};
+  padding: ${props => props.theme.spacing.md};
   min-width: 300px;
   min-height: 130px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: ${props => props.theme.boxShadow};
   cursor: grab;
-  transition: all 0.2s ease-in-out;
+  transition: ${props => props.theme.transition};
 
   &:hover {
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    box-shadow: ${props => props.theme.boxShadowHover};
     transform: translateY(-2px);
   }
 `;
 
 export const ModalTitle = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: ${props => props.theme.fontSizes.large};
+  margin-bottom: ${props => props.theme.spacing.lg};
   text-align: center;
 `;
 
 export const ModalLabel = styled.label`
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: ${props => props.theme.spacing.xs};
+  font-weight: ${props => props.theme.fontWeights.bold};
 `;
 
 export const StyledInputTitle = styled.input`
-  margin-left: 12px;
+  margin-left: ${props => props.theme.spacing.md};
   margin-top: 100px;
   border: none;
-  font-size: 1rem;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  font-size: ${props => props.theme.fontSizes.regular};
+  margin-bottom: ${props => props.theme.spacing.xs};
+  margin-top: ${props => props.theme.spacing.md};
   width: 90%;
   padding: 0;
   outline: none;
   opacity: 0.9;
-  font-weight: bold;
-  color: #222;
+  font-weight: ${props => props.theme.fontWeights.bold};
+  color: ${props => props.theme.colors.textPrimary};
 `;
 
 export const StyledInputColor = styled.input`
-  margin-left: 12px;
-  margin-top: 20px;
+  margin-left: ${props => props.theme.spacing.md};
+  margin-top: ${props => props.theme.spacing.xl};
 `;
 
 
 export const StyledButton = styled.button`
-  background-color: #ffffff};
+  background-color: ${props => props.theme.colors.white};
   color: ${ props => props.color };
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: ${props => props.theme.fontSizes.small};
   text-align: center;
-  border-radius: 20px;
+  border-radius: ${props => props.theme.borderRadius.xl};
   width: auto;
   display: inline-block;
   padding-inline: 0px;
-  transition: background-color 0.2s ease;
-  opacity: 0.55;
+  transition: ${props => props.theme.transition};
+  opacity: ${props => props.theme.opacity.disable};
 
   &:hover {
     background-color: ${ props => `${props.color}55`};
@@ -83,11 +82,9 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledButton1 = styled.button`
-  border-radius: 14px;
-  background-color:rgb(230, 230, 230);
-  padding: 5px 10px;
+  border-radius: ${props => props.theme.borderRadius.md};
+  background-color: ${props => props.theme.colors.lightGray};
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
   cursor: pointer;
   border: none;
 `;
-
-export { StyledInput };

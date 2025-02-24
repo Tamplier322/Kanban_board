@@ -2,22 +2,22 @@ import styled from 'styled-components';
 
 export const ErrorMessage = styled.details`
     white-space: pre-wrap;
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: #f44336;
+    margin-top: ${props => props.theme.spacing.md};
+    font-size: ${props => props.theme.fontSizes.small};
+    color: ${props => props.theme.colors.danger};
     display: none;
 `;
 
 export const StyledButton = styled.button`
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #333;
+    padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
+    border-radius: ${props => props.theme.borderRadius.sm};
+    border: ${props => props.theme.borderWidth} ${props => props.theme.borderStyle} ${props => props.theme.colors.lightGray};
+    background-color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.textPrimary};
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: ${props => props.theme.transition};
 
     &:hover {
-        background-color: #eee;
+        background-color: ${props => props.theme.colors.light};
     }
 `;
