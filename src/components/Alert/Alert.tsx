@@ -6,13 +6,6 @@ import { AlertContainer } from './Alert.styles';
 const Alert: React.FC<AlertProps> = ({ message, onClose }) => {
     const [isVisible, setIsVisible] = useState(true);
 
-    const handleClose = useCallback(() => {
-        setIsVisible(false);
-        setTimeout(() => {
-            onClose();
-        }, 1000);
-    }, [onClose, setIsVisible])
-
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);

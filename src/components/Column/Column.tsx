@@ -26,13 +26,6 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
         onAddCard
     });
 
-    const handleDeleteCard = useCallback(() => {
-        if (contextMenu && contextMenu.cardId) {
-            onDeleteCard(contextMenu.cardId, column.id);
-            handleCloseContextMenu();
-        }
-    }, [onDeleteCard, column.id, handleCloseContextMenu, contextMenu]);
-
     const handleDeleteColumn = useCallback(() => {
         if (contextMenu && contextMenu.columnId) {
             onDeleteColumn(contextMenu.columnId);
