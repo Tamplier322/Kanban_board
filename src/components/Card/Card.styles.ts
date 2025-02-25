@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-import { AddTaskCardProps,PriorityLabelPropsStyles } from '../../types/index';
+import { AddTaskCardProps,CardItemPropsStyles,PriorityLabelPropsStyles } from '../../types/index';
 
-interface CardItemProps {}
-
-export const CardItem = styled.div<CardItemProps>`
+export const CardItem = styled.div<CardItemPropsStyles>`
   background-color: ${props => props.theme.colors.cardBackground};
   border-radius: ${props => props.theme.borderRadius.xxxl};
   padding: ${props => props.theme.spacing.md};

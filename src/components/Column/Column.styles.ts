@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, AddCardButtonProps, CountBadgeProps, AddTaskCardPropsStyles } from '../../types/index';
+import { AddCardButtonProps, AddTaskCardPropsStyles,ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, CountBadgeProps } from '../../types/index';
 
 export const ColumnContainer = styled.div < ColumnContainerProps > `
   background-color: ${props => props.theme.colors.appBackground};

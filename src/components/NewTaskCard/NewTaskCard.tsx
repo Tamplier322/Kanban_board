@@ -9,7 +9,7 @@ import Alert from "../Alert/Alert";
 import { CardItem, PriorityLabel } from '../Card/Card.styles';
 import { ButtonContainer, PrioritySelectContainer, SelectContainer,StyledButton, StyledInputDescription, StyledInputTitle, StyledSelect } from './NewTaskCard.styles';
 
-const NewTaskCard: React.FC<NewTaskCardProps> = ({ color, onClose, onSave }) => {
+const NewTaskCard: React.FC<NewTaskCardProps> = ({ onClose, onSave }) => {
     const [title, setTitle] = useState(TASK_TITLE_PLACEHOLDER);
     const [description, setDescription] = useState(TASK_DESCRIPTION_PLACEHOLDER);
     const [priority, setPriority] = useState(DEFAULT_PRIORITY);

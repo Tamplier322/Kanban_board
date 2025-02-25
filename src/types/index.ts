@@ -119,8 +119,6 @@ export interface AlertContainerProps {
     isVisible: boolean;
 }
 
-export interface AddTaskCardProps {}
-
 export interface PriorityLabelPropsStyles {
     priority: string | undefined;
 }
@@ -154,3 +152,6 @@ export interface ContextMenuContainerProps {
     x: number;
     y: number;
 }
+
+export type AddTaskCardProps = object;
+export type CardItemPropsStyles = object;
