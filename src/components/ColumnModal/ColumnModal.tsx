@@ -13,6 +13,7 @@ import {
     StyledInputColor,
     StyledInputTitle,
 } from './ColumnModal.styles';
+import { ADD_TITLE_PLACEHOLDER } from '../../constants/labels';
 import { ColumnModalProps } from './interface';
 
 const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn }) => {
@@ -37,7 +38,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
     };
 
     const handleSaveClick = () => {
-        if (!title) {
+        if (title !== ADD_TITLE_PLACEHOLDER) {
             handleSave();
             return;
         }
