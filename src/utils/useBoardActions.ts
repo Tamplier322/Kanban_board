@@ -37,6 +37,7 @@ const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProp
             }
         });
     }, [setColumns]);
+    
 
     const handleDeleteCard = useCallback((cardId: string, columnId: string) => {
         setColumns(prevColumns => {
@@ -76,7 +77,7 @@ const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProp
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedColumns));
             return updatedColumns;
         });
-    }, [setColumns])
+    }, [setColumns]);
 
     return {
         handleAddColumn,
@@ -85,7 +86,7 @@ const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProp
         handleDeleteColumn,
         handleDeleteCard,
         handleAddCard,
-        handleEditCard
+        handleEditCard,
     };
 };
 

@@ -13,9 +13,10 @@ export const ColumnContainer = styled.div < ColumnContainerProps > `
   flex-direction: column;
   gap: ${props => props.theme.spacing.md};
 
-  @media (max-width: 390px) {
+  @media (max-width: 699px) {
         width: 100%;
         min-width: auto;
+        box-sizing: border-box;
   }
 `;
 
@@ -113,7 +114,7 @@ export const AddTaskCard = styled.button < AddTaskCardPropsStyles > `
         background-color: ${ props => `${props.color}55`};
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 699px) {
         display: none;
   }
 `;
