@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 
 import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
 import { CardType, ColumnProps } from '../../types/index';
+import useColumnActions from "../../utils/useColumnActions";
+import useColumnDragAndDrop from "../../utils/useColumnDragAndDrop";
 import useContextMenu from '../../utils/useContextMenu';
 import useTask from '../../utils/useTask';
 import Card from '../Card';
@@ -17,35 +19,52 @@ import {
     ColumnTitle,
     ColumnTitleWrapper,
     CountBadge,
+    DragLine,
 } from './Column.styles';
 
-const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn }) => {
+const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, dropPosition, onSetDropPosition }) => {
     const [contextMenu, handleContextMenu, handleCloseContextMenu] = useContextMenu();
     const [isAddingTask, handleAddTaskClick, handleCloseNewTaskCard, handleSaveNewTask] = useTask({
         columnId: column.id,
         onAddCard
     });
 
-    const handleDeleteColumn = useCallback(() => {
-        if (contextMenu && contextMenu.columnId) {
-            onDeleteColumn(contextMenu.columnId);
-            handleCloseContextMenu();
+    const {handleDeleteColumn} = useColumnActions({onDeleteColumn, handleCloseContextMenu, contextMenu, column})
+    
+    const handleOnDrop = useCallback(() => {
+        if (onDrop && dropPosition) {
+            onDrop(column.id, dropPosition.index || 0);
         }
-    }, [onDeleteColumn, handleCloseContextMenu, contextMenu]);
+    }, [onDrop, column.id, dropPosition]);
 
-    const renderCard = useCallback((card: CardType) => (
-        <Card
-            key={card.id}
-            card={card}
-            onDeleteCard={onDeleteCard}
-            columnId={column.id}
-        />
-    ), [onDeleteCard, column.id]);
+    const { handleDragOver, handleDragEnter } = useColumnDragAndDrop({
+        columnId: column.id,
+        onSetDropPosition,
+        dropPosition
+    });
+
+    const renderCard = useCallback((card: CardType, index: number) => (
+        <React.Fragment key={card.id}>
+            <div
+                onDragEnter={(event) => handleDragEnter(index, event)}
+            >
+                <Card
+                    card={card}
+                    onDeleteCard={onDeleteCard}
+                    columnId={column.id}
+                    onDragStart={onDragStart}
+                />
+            </div>
+            {dropPosition && dropPosition.columnId === column.id && dropPosition.index === index && (
+                <DragLine/>
+            )}
+        </React.Fragment>
+    ), [onDeleteCard, column.id, onDragStart, handleDragEnter, dropPosition, ]);
 
     const cardElements = column.cards.map(renderCard);
 
     return (
-        <ColumnContainer color={column.color}>
+        <ColumnContainer color={column.color} onDrop={handleOnDrop} onDragOver={handleDragOver}>
             <ColumnHeader
                 color={column.color}
                 onContextMenu={(event) => handleContextMenu(event, column.id)}
@@ -83,6 +102,6 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
             )}
         </ColumnContainer>
     );
-};
+}
 
 export default Column;
