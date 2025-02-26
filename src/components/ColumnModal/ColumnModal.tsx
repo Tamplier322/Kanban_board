@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { COLUMN_TITLE_ERROR } from "../../constants/errors";
+import { ADD_TITLE_PLACEHOLDER } from '../../constants/labels';
 import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
 import useAlert from "../../utils/useAlert";
 import useColumnModalForm from "../../utils/useColumnModalForm";
@@ -13,7 +14,6 @@ import {
     StyledInputColor,
     StyledInputTitle,
 } from './ColumnModal.styles';
-import { ADD_TITLE_PLACEHOLDER } from '../../constants/labels';
 import { ColumnModalProps } from './interface';
 
 const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn }) => {

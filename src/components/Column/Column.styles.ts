@@ -71,6 +71,11 @@ export const AddCardButton = styled.button < AddCardButtonProps > `
     padding: 0;
 `;
 
+export const DragLine = styled.div`
+  border-bottom: 1px dashed rgb(78, 174, 187);
+  margin-bottom: 5px;
+`;
+
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;

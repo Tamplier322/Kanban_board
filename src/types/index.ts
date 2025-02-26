@@ -41,20 +41,15 @@ export type UseContextMenuResult = [
 
 export interface UseTaskProps {
     columnId: string;
-    onAddCard: (columnId: string, newCard: CardType) => void;
+    onAddCard: (columnId: string, newCard: CardType, index: number | null) => void;
 }
 
 export type UseTaskResult = [
     boolean,
     () => void,
     () => void,
-    (newTask: { title: string; description: string; priority: string }) => void
-];
-
-export type UseTaskAddingResult = [
-    boolean,
-    () => void,
-    () => void
+    (newTask: { title: string; description: string; priority: string }) => void,
+    (index: number | null) => void
 ];
 
 export interface BoardProps {
@@ -62,19 +57,29 @@ export interface BoardProps {
     onAddCard: (columnId: string, newCard: CardType) => void;
     onDeleteCard: (cardId: string, columnId: string) => void;
     onDeleteColumn: (columnId: string) => void;
+    onDragStart: (cardId: string, columnId: string) => void;
+    onDrop: (targetColumnId: string, index: number | null) => void;
+    dropPosition:{ columnId: string | null;
+        index: number | null;
+        position: string | null },
+    onSetDropPosition:(columnId: string, index: number | null) => void
 }
 
 export interface CardProps {
     card: { id: string; title: string; description: string; priority: string };
     onDeleteCard: (cardId: string, columnId: string) => void;
     columnId: string;
+    onDragStart: (cardId: string, columnId: string) => void;
 }
-
 export interface ColumnProps {
     column: ColumnType;
     onAddCard: (columnId: string, newCard: CardType) => void;
     onDeleteCard: (cardId: string, columnId: string) => void;
     onDeleteColumn: (columnId: string) => void;
+    onDragStart: (cardId: string, columnId: string) => void;
+    onDrop: (targetColumnId: string, index: number | null) => void;
+    dropPosition: { columnId: string | null; index: number | null };
+    onSetDropPosition: (columnId: string, index: number | null) => void
 }
 
 export interface ErrorBoundaryProps {
@@ -155,3 +160,72 @@ export interface ContextMenuContainerProps {
 
 export type AddTaskCardProps = object;
 export type CardItemPropsStyles = object;
+
+export interface DropPosition {
+    index: number | null;
+    position: 'before' | 'after' | null;
+}
+
+export interface DropPositionBoard {
+    columnId: string | null;
+    index: number | null;
+    position: 'before' | 'after' | null;
+}
+
+export interface DraggedItem {
+    cardId: string;
+    sourceColumnId: string;
+}
+
+export interface DropPositionDND {
+    columnId: string | null;
+    index: number | null;
+    position: string | null;
+}
+
+export interface UseBoardDragAndDropProps {
+    setColumns: React.Dispatch<React.SetStateAction<ColumnType[]>>;
+}
+
+export interface UseBoardDragAndDropResult {
+    draggedItem: DraggedItem | null;
+    dropPosition: DropPositionDND;
+    handleDragStart: (cardId: string, columnId: string) => void;
+    handleDrop: (targetColumnId: string, dropIndex: number | null) => void;
+    handleOnDragEnter: (columnId: string, index: number | null) => void;
+}
+
+export interface UseColumnActionsProps {
+    column: ColumnProps["column"];
+    onDeleteColumn: ColumnProps["onDeleteColumn"];
+    handleCloseContextMenu: () => void;
+    contextMenu: ContextMenuState | null
+}
+export interface UseColumnActionsResult {
+    handleDeleteColumn: () => void;
+}
+
+export interface UseColumnDragAndDropProps {
+    columnId: string;
+    onSetDropPosition: (columnId: string, index: number | null) => void;
+    dropPosition: {columnId: string | null; index: number | null; }
+}
+
+export interface UseColumnDragAndDropResult {
+    handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+    handleDragEnter: (index: number | null, event: React.DragEvent<HTMLDivElement>) => void;
+}
+
+export interface UseBoardActionsProps {
+    setColumns: React.Dispatch<React.SetStateAction<ColumnType[]>>;
+    setColumnModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface UseBoardActionsResult {
+    handleAddColumn: () => void;
+    handleCloseColumnModal: () => void;
+    handleNewColumn: (newColumn: ColumnType) => void;
+    handleDeleteColumn: (columnId: string) => void;
+    handleDeleteCard: (cardId: string, columnId: string) => void;
+    handleAddCard: (columnId: string, newCard: CardType) => void;
+}
