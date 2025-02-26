@@ -57,7 +57,7 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
                 />
             </div>
         </React.Fragment>
-    ), [onDeleteCard, column.id, onDragStart, handleDragEnter, dropPosition, ]);
+    ), [onDeleteCard, column.id, onDragStart, handleDragEnter, dropPosition, onEditCard]);
 
     const cardElements = column.cards.map(renderCard);
 

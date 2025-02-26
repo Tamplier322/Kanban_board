@@ -31,7 +31,7 @@ const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDelet
             onSetDropPosition = {handleOnDragEnter}
             onEditCard = {onEditCard}
         />
-    ), [onAddCard, onDeleteCard, onDeleteColumn, onDragStart, dropPosition, handleOnDragEnter, handleOnDrop]);
+    ), [onAddCard, onDeleteCard, onDeleteColumn, onDragStart, dropPosition, handleOnDragEnter, handleOnDrop, onEditCard]);
 
     const columnElements = columns.map(renderColumn);
 
