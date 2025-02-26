@@ -9,6 +9,13 @@ export const CardItem = styled.div<CardItemPropsStyles>`
   box-shadow: ${props => props.theme.boxShadow};
   cursor: grab;
   transition: ${props => props.theme.transition};
+
+  @media (max-width: 699px) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
   min-height: 70px;
 `;
 
@@ -65,7 +72,7 @@ export const AddTaskCardItem = styled.div<AddTaskCardProps>`
     transform: translateY(-2px);
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 699px) {
     display: none;
   }
 `;

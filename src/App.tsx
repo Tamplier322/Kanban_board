@@ -18,8 +18,8 @@ const App: React.FC = () => {
         handleAddColumn,
         handleDeleteCard,
         handleAddCard,
-        handleEditCard,
-        handleDeleteColumn} = useBoardActions({setColumns, setColumnModalOpen})
+        handleDeleteColumn,
+        handleEditCard} = useBoardActions({setColumns, setColumnModalOpen})
     const { dropPosition, handleDragStart, handleDrop, handleOnDragEnter} = useBoardDragAndDrop({setColumns})
 
     return (

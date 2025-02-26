@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 
 import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
 import { CardType, ColumnProps } from '../../types/index';
-import useColumnActions from "../../utils/useColumnActions";
 import useColumnDragAndDrop from "../../utils/useColumnDragAndDrop";
 import useContextMenu from '../../utils/useContextMenu';
 import useTask from '../../utils/useTask';
@@ -27,9 +26,11 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
         columnId: column.id,
         onAddCard
     });
-
-    const {handleDeleteColumn} = useColumnActions({onDeleteColumn, handleCloseContextMenu, contextMenu, column})
     
+    const handleDeleteColumnCb = useCallback(() => {
+        onDeleteColumn(column.id)
+    }, [onDeleteColumn, column.id]);
+
     const handleOnDrop = useCallback(() => {
         if (onDrop && dropPosition) {
             onDrop(column.id, dropPosition.index || 0);
@@ -93,7 +94,7 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
                     y={contextMenu.y}
                     onClose={handleCloseContextMenu}
                     options={[
-                        { label: DELETE_COLUMN_LABEL, onClick: handleDeleteColumn },
+                        { label: DELETE_COLUMN_LABEL, onClick: handleDeleteColumnCb },
                     ]}
                 />
             )}
