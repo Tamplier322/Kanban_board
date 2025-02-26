@@ -19,10 +19,9 @@ import {
     ColumnTitle,
     ColumnTitleWrapper,
     CountBadge,
-    DragLine,
 } from './Column.styles';
 
-const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, dropPosition, onSetDropPosition }) => {
+const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, dropPosition, onSetDropPosition, onEditCard }) => {
     const [contextMenu, handleContextMenu, handleCloseContextMenu] = useContextMenu();
     const [isAddingTask, handleAddTaskClick, handleCloseNewTaskCard, handleSaveNewTask] = useTask({
         columnId: column.id,
@@ -53,11 +52,9 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
                     onDeleteCard={onDeleteCard}
                     columnId={column.id}
                     onDragStart={onDragStart}
+                    onEditCard = {onEditCard}
                 />
             </div>
-            {dropPosition && dropPosition.columnId === column.id && dropPosition.index === index && (
-                <DragLine/>
-            )}
         </React.Fragment>
     ), [onDeleteCard, column.id, onDragStart, handleDragEnter, dropPosition, ]);
 

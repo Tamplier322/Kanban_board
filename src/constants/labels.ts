@@ -6,4 +6,5 @@ export const ADD_TITLE_PLACEHOLDER = 'Add title';
 export const EMPLTY_INPUT = '';
 export const TASK_TITLE_PLACEHOLDER = 'Task title';
 export const TASK_DESCRIPTION_PLACEHOLDER = 'Add description';
-export const DEFAULT_PRIORITY = "Medium"
+export const DEFAULT_PRIORITY = "Medium";
+export const EDIT_CARD_LABEL = 'Edit card';
