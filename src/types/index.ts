@@ -63,6 +63,7 @@ export interface BoardProps {
         index: number | null;
         position: string | null },
     onSetDropPosition:(columnId: string, index: number | null) => void
+    onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
 }
 
 export interface CardProps {
@@ -70,6 +71,8 @@ export interface CardProps {
     onDeleteCard: (cardId: string, columnId: string) => void;
     columnId: string;
     onDragStart: (cardId: string, columnId: string) => void;
+    onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
+    index?: number | null;
 }
 export interface ColumnProps {
     column: ColumnType;
@@ -80,6 +83,7 @@ export interface ColumnProps {
     onDrop: (targetColumnId: string, index: number | null) => void;
     dropPosition: { columnId: string | null; index: number | null };
     onSetDropPosition: (columnId: string, index: number | null) => void
+    onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
 }
 
 export interface ErrorBoundaryProps {
@@ -228,4 +232,5 @@ export interface UseBoardActionsResult {
     handleDeleteColumn: (columnId: string) => void;
     handleDeleteCard: (cardId: string, columnId: string) => void;
     handleAddCard: (columnId: string, newCard: CardType) => void;
+    handleEditCard: (cardId: string, columnId: string, newCard: { title: string; description: string; priority: string }) => void;
 }

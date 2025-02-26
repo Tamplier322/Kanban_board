@@ -18,6 +18,7 @@ const App: React.FC = () => {
         handleAddColumn,
         handleDeleteCard,
         handleAddCard,
+        handleEditCard,
         handleDeleteColumn} = useBoardActions({setColumns, setColumnModalOpen})
     const { dropPosition, handleDragStart, handleDrop, handleOnDragEnter} = useBoardDragAndDrop({setColumns})
 
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                         onDrop={handleDrop}
                         dropPosition = {dropPosition}
                         onSetDropPosition = {handleOnDragEnter}
+                        onEditCard = {handleEditCard}
                     />
                 </ErrorBoundary>
                 <ColumnModal

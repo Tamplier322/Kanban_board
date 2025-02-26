@@ -5,7 +5,7 @@ import { DropPositionBoard } from '../../types/index';
 import Column from '../Column';
 import { BoardContainer } from './Board.styles';
 
-const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop }) => {
+const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, onEditCard }) => {
 
     const [dropPosition, setDropPosition] = useState<DropPositionBoard>({ columnId: null, index: null, position: 'before' });
 
@@ -29,6 +29,7 @@ const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDelet
             onDrop={handleOnDrop}
             dropPosition = {dropPosition}
             onSetDropPosition = {handleOnDragEnter}
+            onEditCard = {onEditCard}
         />
     ), [onAddCard, onDeleteCard, onDeleteColumn, onDragStart, dropPosition, handleOnDragEnter, handleOnDrop]);
 
