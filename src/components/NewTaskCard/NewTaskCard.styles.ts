@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledSelect = styled.select`
-  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
-  border-radius: ${props => props.theme.borderRadius.xl};
+  padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.xl};
   border: none;
   width: auto;
   outline: none;
-  font-size: ${props => props.theme.fontSizes.small};
-  font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${props => props.theme.colors.textPrimary};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${({ theme }) => theme.colors.textPrimary};
   background-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -17,27 +17,27 @@ export const StyledSelect = styled.select`
 
 export const StyledInputTitle = styled.input`
   border: none;
-  font-size: ${props => props.theme.fontSizes.regular};
-  margin-bottom: ${props => props.theme.spacing.xs};
-  margin-top: ${props => props.theme.spacing.md};
+  font-size: ${({ theme }) => theme.fontSizes.regular};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  margin-top: ${({ theme }) => theme.spacing.md};
   width: 100%;
   padding: 0;
   outline: none;
   opacity: 0.9;
-  font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${props => props.theme.colors.textPrimary};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
 export const StyledInputDescription = styled.input`
   border: none;
-  font-size: ${props => props.theme.fontSizes.medium};
-  margin-bottom: ${props => props.theme.spacing.xs};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   width: 100%;
   padding: 0;
   outline: none;
   font-weight: normal;
   opacity: 0.7;
-  color: ${props => props.theme.colors.textPrimary};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
 export const StyledButton = styled.button`
@@ -45,13 +45,13 @@ export const StyledButton = styled.button`
   border: none;
   color: ${ props => props.color };
   cursor: pointer;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.small};
   text-align: center;
   width: auto;
   display: inline-block;
   padding-inline: 0px;
-  transition: ${props => props.theme.transition};
-  opacity: ${props => props.theme.opacity.disable};
+  transition: ${({ theme }) => theme.transition};
+  opacity: ${({ theme }) => theme.opacity.disable};
 
   &:hover {
         background-color: ${ props => `${props.color}55`};
@@ -68,11 +68,11 @@ export const TaskCardHeader = styled.div`
 
 export const CloseButton = styled.span`
   cursor: pointer;
-  color: ${props => props.theme.colors.danger};
-  font-size: ${props => props.theme.fontSizes.regular};
+  color: ${({ theme }) => theme.colors.danger};
+  font-size: ${({ theme }) => theme.fontSizes.regular};
   position: absolute;
-  right: ${props => props.theme.spacing.md};
-  top: ${props => props.theme.spacing.xs};
+  right: ${({ theme }) => theme.spacing.md};
+  top: ${({ theme }) => theme.spacing.xs};
 `;
 
 export const PrioritySelectContainer = styled.div`
@@ -85,7 +85,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: ${props => props.theme.spacing.xl};
+  margin-top: ${({ theme }) => theme.spacing.xl};
 `;
 export const SelectContainer = styled.div`
   display: flex;

@@ -22,13 +22,13 @@ const fadeOut = keyframes`
 
 export const AlertContainer = styled.div<AlertContainerProps>`
     position: fixed;
-    bottom: ${props => props.theme.spacing.xl};
-    right: ${props => props.theme.spacing.xl};
-    background-color: ${props => props.theme.colors.danger};
-    color: ${props => props.theme.colors.white};
-    padding: ${props => props.theme.spacing.md};
-    border-radius: ${props => props.theme.borderRadius.xxl};
-    box-shadow: ${props => props.theme.boxShadow};
+    bottom: ${({ theme }) => theme.spacing.xl};
+    right: ${({ theme }) => theme.spacing.xl};
+    background-color: ${({ theme }) => theme.colors.danger};
+    color: ${({ theme }) => theme.colors.white};
+    padding: ${({ theme }) => theme.spacing.md};
+    border-radius: ${({ theme }) => theme.borderRadius.xxl};
+    box-shadow: ${({ theme }) => theme.boxShadow};
     z-index: 1000;
     animation: ${props => props.isVisible ? fadeIn : fadeOut} 1s forwards;
     opacity: ${props => props.isVisible ? 1 : 0};

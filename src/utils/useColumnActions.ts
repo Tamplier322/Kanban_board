@@ -2,17 +2,17 @@ import { useCallback } from 'react';
 
 import { UseColumnActionsProps, UseColumnActionsResult } from '../types/index';
 
-const useColumnActions = ({ onDeleteColumn, handleCloseContextMenu, contextMenu }: UseColumnActionsProps): UseColumnActionsResult => {
+const useColumnActions = ({ onDeleteColumn, handleCloseContextMenu, contextMenu, column }: UseColumnActionsProps): UseColumnActionsResult => {
 
-    const handleDeleteColumn = useCallback(() => {
+    const handleDeleteColumnCb = useCallback(() => {
         if (contextMenu && contextMenu.columnId) {
-            onDeleteColumn(contextMenu.columnId);
+            onDeleteColumn(column.id);
             handleCloseContextMenu();
         }
-    }, [onDeleteColumn, handleCloseContextMenu, contextMenu]);
+    }, [onDeleteColumn, handleCloseContextMenu, contextMenu, column.id]);
 
     return {
-        handleDeleteColumn
+        handleDeleteColumn: handleDeleteColumnCb
     };
 };
 

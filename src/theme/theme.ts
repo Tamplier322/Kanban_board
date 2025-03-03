@@ -1,24 +1,24 @@
 export const theme = {
     colors: {
-        primary: '#4F46E5',
-        secondary: '#F59E0B',
-        success: '#22C55E',
-        danger: '#f44336',
-        warning: '#ff9800',
-        info: '#4caf50',
-        light: '#f8f9fa',
-        dark: '#343a40',
-        white: '#fff',
-        black: '#000',
-        gray: '#888',
-        lightGray: '#e0e0e0',
-        appBackground: '#F8FAFC',
-        cardBackground: '#fff',
-        priorityHigh: '#f44336',
-        priorityMedium: '#ff9800',
-        priorityLow: '#4caf50',
-        textPrimary: '#333',
-        textSecondary: '#555',
+        primary: 'rgb(79, 70, 229)',
+        secondary: 'rgb(245, 158, 11)',
+        success: 'rgb(34, 197, 94)',
+        danger: 'rgb(244, 67, 54)',
+        warning: 'rgb(255, 152, 0)',
+        info: 'rgb(76, 175, 80)',
+        light: 'rgb(248, 249, 250)',
+        dark: 'rgb(52, 58, 64)',
+        white: 'rgb(255, 255, 255)',
+        black: 'rgb(0, 0, 0)',
+        gray: 'rgb(136, 136, 136)',
+        lightGray: 'rgb(224, 224, 224)',
+        appBackground: 'rgb(248, 250, 252)',
+        priorityHigh: 'rgb(244, 67, 54)',
+        priorityMedium: 'rgb(255, 152, 0)',
+        priorityLow: 'rgb(76, 175, 80)',
+        textPrimary: 'rgb(51, 51, 51)',
+        textSecondary: 'rgb(85, 85, 85)',
+        hoverColor: 'rgb(208, 208, 208)',
     },
     fontSizes: {
         extraLarge: '32px',
@@ -71,5 +71,8 @@ export const theme = {
     },
     opacity: {
         disable: '0.55'
+    },
+    height:{
+        xxl: '70px'
     }
 };

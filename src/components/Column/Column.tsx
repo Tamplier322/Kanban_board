@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
+import { ADD_LABEL, ADD_TASK_LABEL, DELETE_COLUMN_LABEL } from "../../constants/labels";
 import { CardType, ColumnProps } from '../../types/index';
 import useColumnDragAndDrop from "../../utils/useColumnDragAndDrop";
 import useContextMenu from '../../utils/useContextMenu';
@@ -26,16 +26,6 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
         columnId: column.id,
         onAddCard
     });
-    
-    const handleDeleteColumnCb = useCallback(() => {
-        onDeleteColumn(column.id)
-    }, [onDeleteColumn, column.id]);
-
-    const handleOnDrop = useCallback(() => {
-        if (onDrop && dropPosition) {
-            onDrop(column.id, dropPosition.index || 0);
-        }
-    }, [onDrop, column.id, dropPosition]);
 
     const { handleDragOver, handleDragEnter } = useColumnDragAndDrop({
         columnId: column.id,
@@ -43,8 +33,20 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
         dropPosition
     });
 
+    const handleOnDropCb = useCallback(() => {
+        onDrop(column.id, dropPosition?.index || 0);
+    }, [onDrop, column.id, dropPosition]);
+
+    const handleContextMenuCb = useCallback((event:React.MouseEvent) => {
+        handleContextMenu(event, column.id)
+    }, [handleContextMenu, column.id]);
+
+    const handleDeleteColumnCb = useCallback(() => {
+        onDeleteColumn(column.id)
+    }, [onDeleteColumn, column.id]);
+
     const renderCard = useCallback((card: CardType, index: number) => (
-        <React.Fragment key={card.id}>
+        <>
             <div
                 onDragEnter={(event) => handleDragEnter(index, event)}
             >
@@ -56,22 +58,22 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
                     onEditCard = {onEditCard}
                 />
             </div>
-        </React.Fragment>
+        </>
     ), [onDeleteCard, column.id, onDragStart, handleDragEnter, onEditCard]);
 
     const cardElements = column.cards.map(renderCard);
 
     return (
-        <ColumnContainer color={column.color} onDrop={handleOnDrop} onDragOver={handleDragOver}>
+        <ColumnContainer color={column.color} onDrop={handleOnDropCb} onDragOver={handleDragOver}>
             <ColumnHeader
                 color={column.color}
-                onContextMenu={(event) => handleContextMenu(event, column.id)}
+                onContextMenu={handleContextMenuCb}
             >
                 <ColumnTitleWrapper>
                     <CountBadge color={column.color}>{column.cards.length}</CountBadge>
                     <ColumnTitle color={column.color}>{column.title}</ColumnTitle>
                 </ColumnTitleWrapper>
-                <AddCardButton color={column.color} onClick={handleAddTaskClick}>+</AddCardButton>
+                <AddCardButton color={column.color} onClick={handleAddTaskClick}>{ADD_LABEL}</AddCardButton>
             </ColumnHeader>
             <CardContainer>
                 {cardElements}

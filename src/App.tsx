@@ -5,7 +5,8 @@ import { AddColumnButton, AppContainer, AppHeader, AppTitle } from './App.styles
 import Board from './components/Board';
 import ColumnModal from './components/ColumnModal';
 import ErrorBoundary from './components/common/ErrorBoundary';
-import { theme } from './theme';
+import { ADD_LABEL, DASH } from './constants/labels';
+import { theme } from './theme/theme';
 import useBoardActions from "./utils/useBoardActions";
 import useBoardDragAndDrop from "./utils/useBoardDragAndDrop";
 import useLocalStorageColumns from './utils/useLocalStorage';
@@ -26,8 +27,8 @@ const App: React.FC = () => {
         <ThemeProvider theme={theme}>
             <AppContainer>
                 <AppHeader>
-                    <AppTitle>Kanban Dashboard</AppTitle>
-                    <AddColumnButton onClick={handleAddColumn}>+</AddColumnButton>
+                    <AppTitle>{DASH}</AppTitle>
+                    <AddColumnButton onClick={handleAddColumn}>{ADD_LABEL}</AddColumnButton>
                 </AppHeader>
                 <ErrorBoundary>
                     <Board

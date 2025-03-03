@@ -6,7 +6,7 @@ import { CardType,ColumnType } from '../types';
 import { UseBoardActionsProps, UseBoardActionsResult } from '../types';
 import { addCard, addNewColumn, deleteCard, deleteColumn } from '../utils/columnUtils';
 
-const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProps): UseBoardActionsResult => {
+export const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProps): UseBoardActionsResult => {
 
     const handleAddColumn = useCallback(() => {
         setColumnModalOpen(true);
@@ -37,7 +37,6 @@ const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProp
             }
         });
     }, [setColumns]);
-    
 
     const handleDeleteCard = useCallback((cardId: string, columnId: string) => {
         setColumns(prevColumns => {

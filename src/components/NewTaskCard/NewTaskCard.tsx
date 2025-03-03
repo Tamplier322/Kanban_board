@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 
 import { FILL_ALL_FIELDS } from "../../constants/errors";
 import { DEFAULT_PRIORITY, TASK_DESCRIPTION_PLACEHOLDER, TASK_TITLE_PLACEHOLDER } from "../../constants/labels";
-import { MAX_DESCRIPTION_LENGTH,MAX_TITLE_LENGTH } from '../../constants/numbers';
 import { NewTaskCardProps } from '../../types/index';
 import useAlert from "../../utils/useAlert";
 import Alert from "../Alert/Alert";
-import { CardItem, PriorityLabel } from '../Card/Card.styles';
-import { ButtonContainer, PrioritySelectContainer, SelectContainer,StyledButton, StyledInputDescription, StyledInputTitle, StyledSelect } from './NewTaskCard.styles';
+import { CardItem } from '../Card/Card.styles';
+import TaskForm from "../TaskForm/TaskForm";
 
 const NewTaskCard: React.FC<NewTaskCardProps> = ({ onClose, onSave }) => {
     const [title, setTitle] = useState(TASK_TITLE_PLACEHOLDER);
@@ -27,28 +26,17 @@ const NewTaskCard: React.FC<NewTaskCardProps> = ({ onClose, onSave }) => {
 
     return (
         <CardItem>
-            <PrioritySelectContainer>
-                <SelectContainer>
-                    <PriorityLabel priority={priority} >
-                        <StyledSelect value={priority} onChange={(e) => setPriority(e.target.value)}>
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Low">Low</option>
-                        </StyledSelect>
-                    </PriorityLabel>
-                </SelectContainer>
-            </PrioritySelectContainer>
-            <div>
-                <StyledInputTitle maxLength={MAX_TITLE_LENGTH} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-            </div>
-            <div>
-                <StyledInputDescription maxLength={MAX_DESCRIPTION_LENGTH} value={description} onChange={(e) => setDescription(e.target.value)} />
-            </div>
-            <ButtonContainer>
-                <StyledButton onClick={handleSaveClick} >Save</StyledButton>
-                <StyledButton onClick={onClose} >Close</StyledButton>
-            </ButtonContainer>
-        {alertMessage && <Alert message={alertMessage} onClose={closeAlert} />}
+            <TaskForm
+                title={title}
+                description={description}
+                priority={priority}
+                setTitle={setTitle}
+                setDescription={setDescription}
+                setPriority={setPriority}
+                onSave={handleSaveClick}
+                onCancel={onClose}
+            />
+            {alertMessage && <Alert message={alertMessage} onClose={closeAlert} />}
         </CardItem>
     );
 };

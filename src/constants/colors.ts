@@ -1,10 +1,10 @@
-export const priorityColors = {
-    High: '#f44336',
-    Medium: '#ff9800',
-    Low: '#4caf50',
-    Important: '#f44336',
-    'High Priority': '#f44336',
-    'Low Priority': '#4caf50'
+export const priorityColors: Record<string, string | undefined> = {
+    High: 'rgb(244, 67, 54)',
+    Medium: 'rgb(255, 152, 0)',
+    Low: 'rgb(76, 175, 80)',
+    Important: 'rgb(244, 67, 54)',
+    'High Priority': 'rgb(244, 67, 54)',
+    'Low Priority': 'rgb(76, 175, 80)'
 };
 
-export const DEFAULT_COLUMN_COLOR = '#3242a8';
+export const DEFAULT_COLUMN_COLOR = 'rgb(50, 66, 168)';
