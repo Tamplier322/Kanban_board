@@ -64,6 +64,8 @@ export interface BoardProps {
         position: string | null },
     onSetDropPosition:(columnId: string, index: number | null) => void
     onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
+    onColumnDragStart: (columnId: string) => void
+    onColumnDrop: (targetColumnId: string, index: number | null) => void
 }
 
 export interface CardProps {
@@ -84,6 +86,8 @@ export interface ColumnProps {
     dropPosition: { columnId: string | null; index: number | null };
     onSetDropPosition: (columnId: string, index: number | null) => void
     onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
+    onColumnDragStart:(columnId: string) => void;
+    onColumnDrop: (targetColumnId: string, index: number | null) => void
 }
 
 export interface ErrorBoundaryProps {
@@ -255,15 +259,31 @@ export interface UseColumnActionsResult {
     handleDeleteColumn: () => void;
 }
 
+export interface UseBoardColumnDragAndDropProps {
+    setColumns: React.Dispatch<React.SetStateAction<ColumnType[]>>;
+}
+
+export interface UseBoardColumnDragAndDropResult {
+    draggedColumnId: string | null;
+    handleColumnDragStart: (columnId: string) => void;
+    handleColumnDrop: (targetColumnId: string, dropIndex: number | null) => void;
+}
+
 export interface UseColumnDragAndDropProps {
     columnId: string;
     onSetDropPosition: (columnId: string, index: number | null) => void;
     dropPosition: {columnId: string | null; index: number | null; }
+    onColumnDragStart: (columnId: string) => void;
+    onColumnDrop:  (targetColumnId: string, index: number | null) => void,
+    onDrop: (targetColumnId: string, index: number | null) => void;
 }
 
 export interface UseColumnDragAndDropResult {
     handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
     handleDragEnter: (index: number | null, event: React.DragEvent<HTMLDivElement>) => void;
+    handleOnColumnDragStart:  (event: React.DragEvent<HTMLDivElement>) => void,
+    handleOnColumnDrop: (event: React.DragEvent<HTMLDivElement>) => void
+    handleOnDropCb: () => void;
 }
 
 export interface UseBoardActionsProps {

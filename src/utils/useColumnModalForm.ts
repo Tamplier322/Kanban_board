@@ -4,10 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { DEFAULT_COLUMN_COLOR } from "../constants/colors";
 import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../constants/labels";
 import { UseColumnModalFormProps, UseColumnModalFormResult } from '../types/index';
+import { rgbToHex } from "../utils/colorUtils";
+
 
 const useColumnModalForm = ({ onAddColumn, onClose, isOpen }: UseColumnModalFormProps): UseColumnModalFormResult => {
     const [title, setTitle] = useState(ADD_TITLE_PLACEHOLDER);
-    const [color, setColor] = useState(DEFAULT_COLUMN_COLOR);
+    const [color, setColor] = useState(rgbToHex(DEFAULT_COLUMN_COLOR));
 
     useEffect(() => {
         if (isOpen) {
@@ -25,7 +27,7 @@ const useColumnModalForm = ({ onAddColumn, onClose, isOpen }: UseColumnModalForm
             };
             onAddColumn(newColumn);
             setTitle(EMPLTY_INPUT);
-            setColor(DEFAULT_COLUMN_COLOR);
+            setColor(rgbToHex(DEFAULT_COLUMN_COLOR));
             onClose();
         }
     }, [title, color, onAddColumn, onClose]);

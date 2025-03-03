@@ -20,22 +20,22 @@ import {
     CountBadge,
 } from './Column.styles';
 
-const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, dropPosition, onSetDropPosition, onEditCard }) => {
+const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, dropPosition, onSetDropPosition, onEditCard, 
+    onColumnDrop, onColumnDragStart }) => {
     const [contextMenu, handleContextMenu, handleCloseContextMenu] = useContextMenu();
     const [isAddingTask, handleAddTaskClick, handleCloseNewTaskCard, handleSaveNewTask] = useTask({
         columnId: column.id,
         onAddCard
     });
 
-    const { handleDragOver, handleDragEnter } = useColumnDragAndDrop({
+    const { handleDragOver, handleDragEnter, handleOnColumnDragStart, handleOnColumnDrop, handleOnDropCb } = useColumnDragAndDrop({
         columnId: column.id,
         onSetDropPosition,
-        dropPosition
+        dropPosition,
+        onColumnDragStart,
+        onColumnDrop,
+        onDrop
     });
-
-    const handleOnDropCb = useCallback(() => {
-        onDrop(column.id, dropPosition?.index || 0);
-    }, [onDrop, column.id, dropPosition]);
 
     const handleContextMenuCb = useCallback((event:React.MouseEvent) => {
         handleContextMenu(event, column.id)
@@ -44,6 +44,7 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
     const handleDeleteColumnCb = useCallback(() => {
         onDeleteColumn(column.id)
     }, [onDeleteColumn, column.id]);
+
 
     const renderCard = useCallback((card: CardType, index: number) => (
         <>
@@ -64,10 +65,16 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
     const cardElements = column.cards.map(renderCard);
 
     return (
-        <ColumnContainer color={column.color} onDrop={handleOnDropCb} onDragOver={handleDragOver}>
+        <ColumnContainer
+            color={column.color}
+            onDragOver={handleDragOver}
+            onDrop={handleOnColumnDrop}
+        >
             <ColumnHeader
                 color={column.color}
                 onContextMenu={handleContextMenuCb}
+                draggable
+                onDragStart={handleOnColumnDragStart}
             >
                 <ColumnTitleWrapper>
                     <CountBadge color={column.color}>{column.cards.length}</CountBadge>
@@ -75,7 +82,7 @@ const Column: React.FC<ColumnProps> = ({ column, onAddCard, onDeleteCard, onDele
                 </ColumnTitleWrapper>
                 <AddCardButton color={column.color} onClick={handleAddTaskClick}>{ADD_LABEL}</AddCardButton>
             </ColumnHeader>
-            <CardContainer>
+            <CardContainer onDrop={handleOnDropCb}>
                 {cardElements}
                 {!isAddingTask && (
                     <AddTaskCardItem onClick={handleAddTaskClick}>
