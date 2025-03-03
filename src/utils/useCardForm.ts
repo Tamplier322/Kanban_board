@@ -15,38 +15,38 @@ const useCardForm = ({ card, onEditCard, columnId }: UseCardFormProps): UseCardF
     const handleSaveClick = useCallback(() => {
         onEditCard(card.id, columnId, { title, description, priority });
         setIsEditing(false);
-    }, [onEditCard, card.id, columnId, title, description, priority, setIsEditing]);
+    }, [onEditCard, card.id, columnId, title, description, priority]);
 
     const handleCancelClick = useCallback(() => {
         setTitle(card.title);
         setDescription(card.description);
         setPriority(card.priority);
         setIsEditing(false);
-    }, [card.title, card.description, card.priority, setIsEditing]);
+    }, [card.title, card.description, card.priority]);
 
-    const setTitleCb = useCallback((title: string) => {
-        setTitle(title)
-    }, [setTitle])
+    const setTitleCb = useCallback((value: string) => {
+        setTitle(value);
+    }, [setTitle]);
 
-    const setDescriptionCb = useCallback((description: string) => {
-        setDescription(description)
-    }, [setDescription])
+    const setDescriptionCb = useCallback((value: string) => {
+        setDescription(value);
+    }, [setDescription]);
 
-    const setPriorityCb = useCallback((priority: string) => {
-        setPriority(priority)
-    }, [setPriority])
+    const setPriorityCb = useCallback((value: string) => {
+        setPriority(value);
+    }, [setPriority]);
 
     return {
         isEditing,
         title,
         description,
         priority,
-        setTitle: setTitleCb,
-        setDescription: setDescriptionCb,
-        setPriority: setPriorityCb,
         handleEditClick,
         handleSaveClick,
         handleCancelClick,
+        setTitle: setTitleCb,
+        setDescription: setDescriptionCb,
+        setPriority: setPriorityCb,
     };
 };
 

@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
+import { priorityColors } from '../../constants/colors';
 import { AddTaskCardProps,CardItemPropsStyles,PriorityLabelPropsStyles } from '../../types/index';
 
 export const CardItem = styled.div<CardItemPropsStyles>`
-  background-color: ${props => props.theme.colors.cardBackground};
-  border-radius: ${props => props.theme.borderRadius.xxxl};
-  padding: ${props => props.theme.spacing.md};
-  box-shadow: ${props => props.theme.boxShadow};
+background-color: ${({ theme }) => theme.colors.cardBackground};
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.xxxl};
+  padding: ${({ theme }) => theme.spacing.md};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   cursor: grab;
-  transition: ${props => props.theme.transition};
+  transition: ${({ theme }) => theme.transition};
 
   @media (max-width: 699px) {
     width: 100%;
@@ -16,59 +18,50 @@ export const CardItem = styled.div<CardItemPropsStyles>`
     margin-right: 0;
     box-sizing: border-box;
   }
-  min-height: 70px;
+  min-height: ${({ theme }) => theme.height.xxl};
 `;
 
-const priorityColors: Record<string, string | undefined> = {
-  High: '#f44336',
-  Medium: '#ff9800',
-  Low: '#4caf50',
-  Important: '#f44336',
-  'High Priority': '#f44336',
-  'Low Priority': '#4caf50'
-};
-
 export const PriorityLabel = styled.span<PriorityLabelPropsStyles>`
-  font-size: ${props => props.theme.fontSizes.small};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${(props) => (props.priority ? priorityColors[props.priority] : props.theme.colors.gray)};
   display: inline-block;
-  margin-bottom: ${props => props.theme.spacing.xs};
-  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
-  border-radius: ${props => props.theme.borderRadius.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.xl};
   border: none;
-  background-color: ${(props) => props.priority ? `${priorityColors[props.priority]}33` : 'transparent'};
+  background-color: ${(props) => props.priority ? `rgba(${priorityColors[props.priority]?.match(/\d+/g)?.join(',')}, 0.33)` : 'transparent'}
 `;
 
 export const CardTitle = styled.h3`
-  font-size: ${props => props.theme.fontSizes.regular};
-  margin-bottom: ${props => props.theme.spacing.xs};
+  font-size: ${({ theme }) => theme.fontSizes.regular};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-height: 60px
 `;
 
 export const CardDescription = styled.p`
-  font-size: ${props => props.theme.fontSizes.medium};
-  color: ${props => props.theme.colors.textSecondary};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  color: ${({ theme }) => theme.colors.textSecondary};
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-height: 70px
 `;
 
 export const AddTaskCardItem = styled.div<AddTaskCardProps>`
-  background-color: ${props => props.theme.colors.cardBackground};
-  border-radius: ${props => props.theme.borderRadius.xxxl};
-  padding: ${props => props.theme.spacing.md};
-  box-shadow: ${props => props.theme.boxShadow};
-  transition: ${props => props.theme.transition};
-  border: ${props => props.theme.borderWidth} ${props => props.theme.borderStyle} ${props => props.theme.colors.lightGray};
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.xxxl};
+  padding: ${({ theme }) => theme.spacing.md};
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  transition: ${({ theme }) => theme.transition};
+  border: ${({ theme }) => theme.borderWidth} ${({ theme }) => theme.borderStyle} ${({ theme }) => theme.colors.lightGray};
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
   &:hover {
-    box-shadow: ${props => props.theme.boxShadowHover};
+    box-shadow: ${({ theme }) => theme.boxShadowHover};
     transform: translateY(-2px);
   }
 

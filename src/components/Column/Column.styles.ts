@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-import { AddCardButtonProps, AddTaskCardPropsStyles,ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, CountBadgeProps } from '../../types/index';
+import { AddCardButtonProps, AddTaskCardPropsStyles, ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, CountBadgeProps } from '../../types/index';
 
 export const ColumnContainer = styled.div < ColumnContainerProps > `
-  background-color: ${props => props.theme.colors.appBackground};
-  border-radius: ${props => props.theme.borderRadius.xxxl};
-  padding: ${props => props.theme.spacing.md};
-  width: ${props => props.theme.columnWidth};
-  min-width: ${props => props.theme.columnWidth};
-  box-shadow: ${props => props.theme.boxShadow};
+  background-color: ${({ theme }) => theme.colors.appBackground};
+  border-radius: ${({ theme }) => theme.borderRadius.xxxl};
+  padding: ${({ theme }) => theme.spacing.md};
+  width: ${({ theme }) => theme.columnWidth};
+  min-width: ${({ theme }) => theme.columnWidth};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   display: flex;
   flex-direction: column;
-  gap: ${props => props.theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.md};
 
   @media (max-width: 699px) {
         width: 100%;
@@ -24,39 +24,39 @@ export const ColumnHeader = styled.div < ColumnHeaderProps > `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${props => props.theme.spacing.sm};
-  margin-bottom: ${props => props.theme.spacing.sm};
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
   background-color: ${ props => props.color };
-  border-radius: ${props => props.theme.borderRadius.xxxxl};
-  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.ms};
-  color: ${props => props.theme.colors.white};
-  height: ${props => props.theme.hitZone.big};
+  border-radius: ${({ theme }) => theme.borderRadius.xxxxl};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.ms};
+  color: ${({ theme }) => theme.colors.white};
+  height: ${({ theme }) => theme.hitZone.big};
 `;
 
 export const ColumnTitle = styled.h2 < ColumnTitleProps > `
-  font-size: ${props => props.theme.fontSizes.regular};
-  font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${props => props.theme.colors.white};
+  font-size: ${({ theme }) => theme.fontSizes.regular};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
-  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
-  border-radius: ${props => props.theme.borderRadius.md};
+  padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
 export const ColumnTitleWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
-  margin-right: ${props => props.theme.spacing.xs};
+  margin-right: ${({ theme }) => theme.spacing.xs};
   justify-content: flex-start;
 `;
 
 export const AddCardButton = styled.button < AddCardButtonProps > `
-    color: ${props => props.theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     border: none;
-    border-radius: ${props => props.theme.borderRadius.circle};
-    width: ${props => props.theme.hitZone.small};
-    height: ${props => props.theme.hitZone.small};
-    font-size: ${props => props.theme.fontSizes.xl};
+    border-radius: ${({ theme }) => theme.borderRadius.circle};
+    width: ${({ theme }) => theme.hitZone.small};
+    height: ${({ theme }) => theme.hitZone.small};
+    font-size: ${({ theme }) => theme.fontSizes.extraLarge};
     line-height: 1;
     cursor: pointer;
     display: flex;
@@ -80,18 +80,18 @@ export const DragLine = styled.div`
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${props => props.theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.md};
 `;
 
 export const CountBadge = styled.span < CountBadgeProps > `
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white};
     color: ${ props => `${props.color}65`};
-    font-size: ${props => props.theme.fontSizes.medium};
-    padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
-    border-radius: ${props => props.theme.borderRadius.circle};
-    margin-right: ${props => props.theme.spacing.xs};
-    min-width: ${props => props.theme.hitZone.medium};
-    min-height: ${props => props.theme.hitZone.medium};
+    font-size: ${({ theme }) => theme.fontSizes.medium};
+    padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
+    border-radius: ${({ theme }) => theme.borderRadius.circle};
+    margin-right: ${({ theme }) => theme.spacing.xs};
+    min-width: ${({ theme }) => theme.hitZone.medium};
+    min-height: ${({ theme }) => theme.hitZone.medium};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,10 +101,10 @@ export const AddTaskCard = styled.button < AddTaskCardPropsStyles > `
   background-color:  ${ props => `${props.color}33`};
   border: none;
   color: ${ props => props.color };
-  border-radius: ${props => props.theme.borderRadius.xl};
-  padding: ${props => props.theme.spacing.xxs} ${props => props.theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.xl};
+  padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
   cursor: pointer;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.small};
   text-align: center;
   width: auto;
   display: inline-block;

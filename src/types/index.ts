@@ -162,10 +162,56 @@ export interface ContextMenuContainerProps {
     y: number;
 }
 
+export interface UseBoardRenderProps {
+    onDrop: (targetColumnId: string, index: number | null) => void;
+    onEditCard?: (cardId: string, columnId: string, newCard: { title: string; description: string; priority: string }) => void;
+    onAddCard?: (columnId: string, newCard: CardType) => void;
+    onDeleteCard?: (cardId: string, columnId: string) => void;
+    onDeleteColumn?: (columnId: string) => void;
+    onDragStart?: (cardId: string, columnId: string) => void;
+}
+
+export interface UseColumnHandlersProps {
+    column: ColumnProps['column'];
+    onDrop: (targetColumnId: string, index: number | null) => void;
+    onDeleteColumn: (columnId: string) => void;
+    dropPosition: { columnId: string | null; index: number | null; };
+}
+
+export interface UseColumnHandlersResult {
+    handleOnDrop: () => void;
+}
+
+export interface UseBoardRenderResult {
+    dropPosition: DropPosition;
+    handleOnDragEnter: (columnId: string, index: number | null) => void;
+    handleOnDrop: (targetColumnId: string, index: number | null) => void;
+}
+
+export interface UseCardFormProps {
+    card: {id:string,title:string,description:string,priority:string}
+    onEditCard: (cardId: string, columnId: string, newCard: { title: string; description: string; priority: string }) => void;
+    columnId: string
+}
+
+export interface UseCardFormResult {
+    isEditing: boolean;
+    title: string;
+    description: string;
+    priority: string;
+    setTitle: (value: string) => void;
+    setDescription: (value: string) => void;
+    setPriority: (value: string) => void;
+    handleEditClick: () => void;
+    handleSaveClick: () => void;
+    handleCancelClick: () => void;
+}
+
 export type AddTaskCardProps = object;
 export type CardItemPropsStyles = object;
 
 export interface DropPosition {
+    columnId: string | null;
     index: number | null;
     position: 'before' | 'after' | null;
 }

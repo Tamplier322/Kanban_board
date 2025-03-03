@@ -2,22 +2,22 @@ import styled from 'styled-components';
 
 export const ErrorMessage = styled.details`
     white-space: pre-wrap;
-    margin-top: ${props => props.theme.spacing.md};
-    font-size: ${props => props.theme.fontSizes.small};
-    color: ${props => props.theme.colors.danger};
+    margin-top: ${({ theme }) => theme.spacing.md};
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    color: ${({ theme }) => theme.colors.danger};
     display: none;
 `;
 
 export const StyledButton = styled.button`
-    padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
-    border-radius: ${props => props.theme.borderRadius.sm};
-    border: ${props => props.theme.borderWidth} ${props => props.theme.borderStyle} ${props => props.theme.colors.lightGray};
-    background-color: ${props => props.theme.colors.white};
-    color: ${props => props.theme.colors.textPrimary};
+    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    border-radius: ${({ theme }) => theme.borderRadius.sm};
+    border: ${({ theme }) => theme.borderWidth} ${({ theme }) => theme.borderStyle} ${({ theme }) => theme.colors.lightGray};
+    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.textPrimary};
     cursor: pointer;
-    transition: ${props => props.theme.transition};
+    transition: ${({ theme }) => theme.transition};
 
     &:hover {
-        background-color: ${props => props.theme.colors.light};
+        background-color: ${({ theme }) => theme.colors.light};
     }
 `;
