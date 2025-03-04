@@ -5,7 +5,7 @@ import useBoardRender from "../../utils/useBoardRender";
 import Column from '../Column';
 import { BoardContainer } from './Board.styles';
 
-const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, onEditCard, onColumnDrop, onColumnDragStart }) => {
+const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, onEditCard, onColumnDrop, onColumnDragStart, onEditColumn }) => {
 
     const {handleOnDrop, handleOnDragEnter, dropPosition} = useBoardRender({ onDrop})
 
@@ -23,8 +23,9 @@ const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDelet
             onEditCard = {onEditCard}
             onColumnDragStart= {onColumnDragStart}
             onColumnDrop = {onColumnDrop}
+            onEditColumn = {onEditColumn}
         />
-    ), [onAddCard, onDeleteCard, onDeleteColumn, onDragStart, dropPosition, handleOnDragEnter, handleOnDrop, onEditCard, onColumnDragStart, onColumnDrop]);
+    ), [onAddCard, onDeleteCard, onDeleteColumn, onDragStart, dropPosition, handleOnDragEnter, handleOnDrop, onEditCard, onColumnDragStart, onColumnDrop, onEditColumn]);
 
     const columnElements = columns.map(renderColumn);
 

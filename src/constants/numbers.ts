@@ -1,3 +1,3 @@
 export const MAX_TITLE_LENGTH = 40;
-export const MAX_COLUMN_TITLE_LENGTH = 15;
+export const MAX_COLUMN_TITLE_LENGTH = 12;
 export const MAX_DESCRIPTION_LENGTH = 100

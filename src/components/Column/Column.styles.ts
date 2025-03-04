@@ -118,3 +118,16 @@ export const AddTaskCard = styled.button < AddTaskCardPropsStyles > `
         display: none;
   }
 `;
+
+export const ColumnEditInput = styled.input`
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 4px 8px;
+  border-radius: 20px;
+  outline: none;
+  width: 100%;
+`;

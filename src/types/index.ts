@@ -66,6 +66,7 @@ export interface BoardProps {
     onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
     onColumnDragStart: (columnId: string) => void
     onColumnDrop: (targetColumnId: string, index: number | null) => void
+    onEditColumn: (columnId: string, newColumn: { title: string;}) => void;
 }
 
 export interface CardProps {
@@ -88,6 +89,7 @@ export interface ColumnProps {
     onEditCard: (cardId:string, columnId: string, newCard: { title: string; description: string; priority: string }) => void
     onColumnDragStart:(columnId: string) => void;
     onColumnDrop: (targetColumnId: string, index: number | null) => void
+    onEditColumn: (columnId: string, newColumn: { title: string;}) => void;
 }
 
 export interface ErrorBoundaryProps {
@@ -105,6 +107,7 @@ export interface ContextMenuProps {
     y: number;
     onClose: () => void;
     options: { label: string; onClick: () => void }[];
+    columnId?: string;
 }
 export interface NewTaskCardProps {
     color: string;
@@ -299,4 +302,5 @@ export interface UseBoardActionsResult {
     handleDeleteCard: (cardId: string, columnId: string) => void;
     handleAddCard: (columnId: string, newCard: CardType) => void;
     handleEditCard: (cardId: string, columnId: string, newCard: { title: string; description: string; priority: string }) => void;
+    handleEditColumn: (columnId: string, newColumn: { title: string;}) => void;
 }
