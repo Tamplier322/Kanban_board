@@ -21,7 +21,9 @@ const App: React.FC = () => {
         handleAddColumn,
         handleDeleteCard,
         handleAddCard,
-        handleDeleteColumn, handleEditCard} = useBoardActions({setColumns, setColumnModalOpen})
+        handleDeleteColumn, 
+        handleEditCard,  
+        handleEditColumn } = useBoardActions({setColumns, setColumnModalOpen})
 
     const {dropPosition, handleDragStart, handleDrop, handleOnDragEnter} = useBoardDragAndDrop({setColumns})
     const { handleColumnDrop, handleColumnDragStart } = useBoardColumnDragAndDrop({ setColumns });
@@ -46,6 +48,7 @@ const App: React.FC = () => {
                         onEditCard = {handleEditCard}
                         onColumnDrop = {handleColumnDrop}
                         onColumnDragStart = {handleColumnDragStart}
+                        onEditColumn = {handleEditColumn}
                     />
                 </ErrorBoundary>
                 <ColumnModal

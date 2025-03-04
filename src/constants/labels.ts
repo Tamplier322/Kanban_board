@@ -17,3 +17,4 @@ export const BUTTON_SAVE = "Save";
 export const BUTTON_CANCEL = "Cancel";
 export const DASH = "Kanban Dashboard";
 export const ADD_LABEL = "+";
+export const EDIT_COLUMN_LABEL = 'Edit Column';

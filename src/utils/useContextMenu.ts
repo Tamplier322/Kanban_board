@@ -5,9 +5,9 @@ import { ContextMenuState, UseContextMenuResult } from '../types/index';
 function useContextMenu(): UseContextMenuResult {
     const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null);
 
-    const handleContextMenu = (event: React.MouseEvent, cardId: string) => {
+    const handleContextMenu = (event: React.MouseEvent, columnId: string) => { // Изменили параметры
         event.preventDefault();
-        setContextMenu({ x: event.clientX, y: event.clientY, cardId: cardId, columnId: null });
+        setContextMenu({ x: event.clientX, y: event.clientY, cardId: null, columnId: columnId });
     };
 
     const handleCloseContextMenu = () => {

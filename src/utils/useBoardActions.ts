@@ -78,6 +78,17 @@ export const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActi
         });
     }, [setColumns]);
 
+    const handleEditColumn = useCallback((columnId: string, newColumn: { title: string;}) => {
+        setColumns(prevColumns => {
+            return prevColumns.map(col => {
+                if (col.id === columnId) {
+                    return { ...col, ...newColumn };
+                }
+                return col;
+            });
+        });
+    }, [setColumns]);
+
     return {
         handleAddColumn,
         handleCloseColumnModal,
@@ -86,6 +97,7 @@ export const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActi
         handleDeleteCard,
         handleAddCard,
         handleEditCard,
+        handleEditColumn
     };
 };
 
