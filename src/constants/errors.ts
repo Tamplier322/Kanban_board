@@ -9,3 +9,5 @@ export const SOMETHING_WENT_WRONG = "Something went wrong.";
 export const TRY_AGAIN_LABEL = "Try one more time";
 export const CAUGHT_AN_ERROR = "Caught an error: ";
 export const FILL_ALL_FIELDS = "Please fill all the fields!"
+export const NOT_FOUND = "404 - Not Found!";
+export const NOT_FOUND_TEXT = "Sorry, the page you are looking for does not exist.";

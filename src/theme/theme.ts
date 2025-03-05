@@ -1,6 +1,7 @@
 export const theme = {
     colors: {
         primary: 'rgb(79, 70, 229)',
+        primary_hover: 'rgb(52, 45, 194)',
         secondary: 'rgb(245, 158, 11)',
         success: 'rgb(34, 197, 94)',
         danger: 'rgb(244, 67, 54)',
@@ -19,10 +20,13 @@ export const theme = {
         textPrimary: 'rgb(51, 51, 51)',
         textSecondary: 'rgb(85, 85, 85)',
         hoverColor: 'rgb(208, 208, 208)',
+        NotFoundColor: 'rgb(235, 236, 240)',
     },
     fontSizes: {
+        superLarge: '50px',
         extraLarge: '32px',
         large: '24px',
+        ml: '18px',
         medium: '13px',
         regular: '16px',
         small: '11px',
@@ -34,6 +38,7 @@ export const theme = {
     },
     fontFamily: "'Plus Jakarta Sans', sans-serif",
     spacing: {
+        zero: '0px',
         xxs: '2px',
         xs: '4px',
         sm: '5px',
@@ -42,6 +47,7 @@ export const theme = {
         lg: '15px',
         xl: '20px',
         xxl: '30px',
+        xxxl: '200px'
     },
     borderRadius: {
         sm: '4px',
@@ -73,6 +79,14 @@ export const theme = {
         disable: '0.55'
     },
     height:{
-        xxl: '70px'
+        xxs: '60px',
+        xs: '70px',
+        xxl: '671px',
+    },
+    width:{
+        xxxl: '600px'
+    },
+    transform: {
+        sm: 'translateY(-2px)'
     }
 };
