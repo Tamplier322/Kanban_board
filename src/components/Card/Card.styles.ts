@@ -18,7 +18,7 @@ background-color: ${({ theme }) => theme.colors.cardBackground};
     margin-right: 0;
     box-sizing: border-box;
   }
-  min-height: ${({ theme }) => theme.height.xxl};
+  min-height: ${({ theme }) => theme.height.xs};
 `;
 
 export const PriorityLabel = styled.span<PriorityLabelPropsStyles>`
@@ -38,7 +38,7 @@ export const CardTitle = styled.h3`
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-height: 60px
+  max-height: ${({ theme }) => theme.height.xxs};
 `;
 
 export const CardDescription = styled.p`
@@ -46,7 +46,7 @@ export const CardDescription = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-height: 70px
+  max-height: ${({ theme }) => theme.height.xs};
 `;
 
 export const AddTaskCardItem = styled.div<AddTaskCardProps>`
@@ -62,7 +62,7 @@ export const AddTaskCardItem = styled.div<AddTaskCardProps>`
 
   &:hover {
     box-shadow: ${({ theme }) => theme.boxShadowHover};
-    transform: translateY(-2px);
+    transform: ${({ theme }) => theme.transform.sm};
   }
 
   @media (max-width: 699px) {

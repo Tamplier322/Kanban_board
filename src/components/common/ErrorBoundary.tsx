@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "../../constants/errors";
 import { ErrorBoundaryProps, ErrorBoundaryState } from '../../types/index';
-import { ErrorMessage, StyledButton } from './ErrorBoudary.styles';
+import { ErrorBoundaryContainer, ErrorBoundaryTitle,ErrorMessage, StyledButton } from './ErrorBoundary.styles';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
@@ -22,8 +22,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     render() {
         if (this.state.hasError) {
         return (
-            <div>
-                <h2>{SOMETHING_WENT_WRONG}</h2>
+            <ErrorBoundaryContainer>
+                <ErrorBoundaryTitle>{SOMETHING_WENT_WRONG}</ErrorBoundaryTitle>
                 <StyledButton onClick={() => {
                     window.location.reload()
                 }}>{TRY_AGAIN_LABEL}</StyledButton>
@@ -32,7 +32,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
                     <br />
                     {this.state.errorInfo && this.state.errorInfo.componentStack}
                 </ErrorMessage>
-            </div>
+            </ErrorBoundaryContainer>
         );
         }
 
