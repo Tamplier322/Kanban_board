@@ -1,27 +1,28 @@
 import styled, { keyframes } from "styled-components";
 
+import { ONE, ZERO } from "../../constants/labels";
 import { AlertContainerProps } from '../../types/index';
 
 const fadeIn = keyframes`
     from {
-        opacity: 0;
+        opacity: ${ZERO};
     }
     to {
-        opacity: 1;
+        opacity: ${ONE};
     }
 `;
 
 const fadeOut = keyframes`
     from {
-        opacity: 1;
+        opacity: ${ONE};
     }
     to {
-        opacity: 0;
+        opacity: ${ZERO};
     }
 `;
 
 export const AlertContainer = styled.div<AlertContainerProps>`
-    position: fixed;
+    position: ${({ theme }) => theme.position.fixed};
     bottom: ${({ theme }) => theme.spacing.xl};
     right: ${({ theme }) => theme.spacing.xl};
     background-color: ${({ theme }) => theme.colors.danger};
@@ -29,8 +30,8 @@ export const AlertContainer = styled.div<AlertContainerProps>`
     padding: ${({ theme }) => theme.spacing.md};
     border-radius: ${({ theme }) => theme.borderRadius.xxl};
     box-shadow: ${({ theme }) => theme.boxShadow};
-    z-index: 1000;
-    animation: ${props => props.isVisible ? fadeIn : fadeOut} 1s forwards;
+    z-index: ${({ theme }) => theme.z_index.xl};
+    animation: ${props => props.isVisible ? fadeIn : fadeOut} ${({ theme }) => theme.transform.anim};
     opacity: ${props => props.isVisible ? 1 : 0};
 `;
 

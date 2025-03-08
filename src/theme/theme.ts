@@ -21,6 +21,9 @@ export const theme = {
         textSecondary: 'rgb(85, 85, 85)',
         hoverColor: 'rgb(208, 208, 208)',
         NotFoundColor: 'rgb(235, 236, 240)',
+        addTaskCardButton: 'rgba(255, 255, 255, 0.2);',
+        addTaskCardButtonHover: 'rgba(255, 255, 255, 0.4);',
+        modalContainer: 'rgba(0, 0, 0, 0.5)',
     },
     fontSizes: {
         superLarge: '50px',
@@ -47,7 +50,9 @@ export const theme = {
         lg: '15px',
         xl: '20px',
         xxl: '30px',
-        xxxl: '200px'
+        big: '100px',
+        xxxl: '200px',
+        auto: 'auto'
     },
     borderRadius: {
         sm: '4px',
@@ -63,7 +68,11 @@ export const theme = {
     borderStyle: 'solid',
     boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
     boxShadowHover: '0 3px 7px rgba(0, 0, 0, 0.15)',
-    transition: 'all 0.2s ease-in-out',
+    transition:{
+        sm: 'all 0.2s ease-in-out',
+        xl: '0.3s ease-in-out',
+        xxl: 'background-color 0.2s ease;'
+    },
     columnWidth: '300px',
     hitZone: {
         small: '28px',
@@ -76,17 +85,82 @@ export const theme = {
         flexDirection: 'column',
     },
     opacity: {
-        disable: '0.55'
+        disable: '0.55',
+        zero: '0',
+        one: '1',
+        xl: '0.7',
+        xxl: '0.9',
     },
     height:{
         xxs: '60px',
         xs: '70px',
+        m: '130px',
         xxl: '671px',
+        page: '100vh',
+        page100: '100%'
     },
     width:{
-        xxxl: '600px'
+        sm: '150px',
+        xl: '180px',
+        xxl: '300px',
+        xxxl: '600px',
+        max: '699px',
+        page90: '90%',
+        page: '100%',
+        auto: 'auto',
     },
     transform: {
-        sm: 'translateY(-2px)'
+        sm: 'translateY(-2px)',
+        m: '0',
+        xl: '-100%',
+        anim: '1s forwards',
+    },
+    z_index: {
+        xl: '100',
+    },
+    cursor: {
+        point: 'pointer',
+        grab: 'grab'
+    },
+    nothing: {
+        none: 'none',
+    },
+    justify: {
+        space: 'space-between',
+        flex: 'flex-start',
+        center: 'center'
+    },
+    display: {
+        flex: 'flex',
+        block: 'block',
+        inline_block: 'inline-block'
+    },
+    position: {
+        fixed: 'fixed',
+        absolute: 'absolute',
+        relative: 'relative',
+    },
+    align_items: {
+        center: 'center',
+        flex_start: 'flex-start',
+        stretch: 'stretch',
+        left: 'left',
+    },
+    flex_wrap: {
+        wrap: 'wrap',
+        one: '1'
+    },
+    flex_direction: {
+        row: 'row',
+        column: 'column'
+    },
+    overflow: {
+        x: 'auto'
+    },
+    box_sizing: {
+        box: 'border-box'
+    },
+    word_wrap: {
+        break: 'break-word',
     }
 };
