@@ -1,20 +1,21 @@
-import React from 'react';
-
-import { BUTTON_CANCEL,BUTTON_SAVE, INPUT_TEXT, PRIORITY_HIGH, PRIORITY_LOW, PRIORITY_MEDIUM } from '../../constants/labels';
+import { BUTTON_CANCEL, BUTTON_SAVE, INPUT_TEXT, PRIORITY_HIGH, PRIORITY_LOW, PRIORITY_MEDIUM } from '../../constants/labels';
+import { TaskFormProps } from '../../types';
+import useTaskFormHandlers from '../../utils/useTaskFormHandlers';
 import { PriorityLabel } from '../Card/Card.styles';
 import { ButtonContainer, PrioritySelectContainer, SelectContainer, StyledButton, StyledInputDescription, StyledInputTitle, StyledSelect } from '../NewTaskCard/NewTaskCard.styles';
-interface TaskFormProps {
-    title: string;
-    description: string;
-    priority: string;
-    setTitle: (value: string) => void;
-    setDescription: (value: string) => void;
-    setPriority: (value: string) => void;
-    onSave: () => void;
-    onCancel: () => void;
-}
 
 const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTitle, setDescription, setPriority, onSave, onCancel }) => {
+    const {
+        titleValue,
+        descriptionValue,
+        handleTitleFocus,
+        handleTitleBlur,
+        handleDescriptionFocus,
+        handleDescriptionBlur,
+        handleTitleChange,
+        handleDescriptionChange,
+    } = useTaskFormHandlers({ title, description, setTitle, setDescription });
+
     return (
         <>
             <PrioritySelectContainer>
@@ -29,10 +30,21 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
                 </SelectContainer>
             </PrioritySelectContainer>
             <div>
-                <StyledInputTitle type={INPUT_TEXT} value={title} onChange={(e) => setTitle(e.target.value)} />
+                <StyledInputTitle
+                    type={INPUT_TEXT}
+                    value={titleValue}
+                    onChange={handleTitleChange}
+                    onFocus={handleTitleFocus}
+                    onBlur={handleTitleBlur}
+                />
             </div>
             <div>
-                <StyledInputDescription value={description} onChange={(e) => setDescription(e.target.value)} />
+                <StyledInputDescription
+                    value={descriptionValue}
+                    onChange={handleDescriptionChange}
+                    onFocus={handleDescriptionFocus}
+                    onBlur={handleDescriptionBlur}
+                />
             </div>
             <ButtonContainer>
                 <StyledButton onClick={onSave}>{BUTTON_SAVE}</StyledButton>

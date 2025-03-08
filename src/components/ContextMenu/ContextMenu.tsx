@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { ContextMenuProps } from '../../types/index';
 import useClickOutside from '../../utils/useClickOutside';

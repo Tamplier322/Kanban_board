@@ -1,10 +1,11 @@
-import React from "react";
+import { useCallback } from "react";
 
 import { COLUMN_TITLE_ERROR } from "../../constants/errors";
 import { ADD_TITLE_PLACEHOLDER, BUTTON_CANCEL, BUTTON_SAVE, INPUT_COLOR, INPUT_TEXT } from '../../constants/labels';
 import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
 import useAlert from "../../utils/useAlert";
 import useColumnModalForm from "../../utils/useColumnModalForm";
+import useColumnModalHandlers from "../../utils/useColumnModalHandlers";
 import Alert from "../Alert/Alert";
 import {
     ButtonContainer,
@@ -25,19 +26,16 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
         handleSave
     } = useColumnModalForm({ onAddColumn, onClose, isOpen });
 
-    const [alertMessage, showAlert, closeAlert] = useAlert();  
-    
-    if (!isOpen) return null;
+    const [alertMessage, showAlert, closeAlert] = useAlert();
+    const {
+        titleValue,
+        handleTitleChange,
+        handleTitleFocus,
+        handleTitleBlur,
+        handleColorChange,
+    } = useColumnModalHandlers({ title, setTitle, color, setColor, handleSave, isOpen });
 
-    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
-    };
-
-    const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setColor(e.target.value);
-    };
-
-    const handleSaveClick = () => {
+    const handleSaveClick = useCallback(() => {
         if (title !== ADD_TITLE_PLACEHOLDER) {
             handleSave();
             return;
@@ -45,17 +43,19 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
         else {
             showAlert(COLUMN_TITLE_ERROR);
         }
-    };
+    }, [title, handleSave, showAlert]);
 
-    return (
+    return isOpen ? (
         <ModalContainer>
             <ModalContent>
                 <div>
                     <StyledInputTitle
                         maxLength={MAX_COLUMN_TITLE_LENGTH}
                         type={INPUT_TEXT}
-                        value={title}
+                        value={titleValue}
                         onChange={handleTitleChange}
+                        onFocus={handleTitleFocus}
+                        onBlur={handleTitleBlur}
                     />
                 </div>
                 <div>
@@ -73,7 +73,7 @@ const ColumnModal: React.FC<ColumnModalProps> = ({ isOpen, onClose, onAddColumn 
             </ModalContent>
             {alertMessage && <Alert message={alertMessage} onClose={closeAlert} />}
         </ModalContainer>
-    );
+    ) : null;
 };
 
 export default ColumnModal;
