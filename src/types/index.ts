@@ -304,3 +304,49 @@ export interface UseBoardActionsResult {
     handleEditCard: (cardId: string, columnId: string, newCard: { title: string; description: string; priority: string }) => void;
     handleEditColumn: (columnId: string, newColumn: { title: string;}) => void;
 }
+
+export interface TaskFormProps {
+    title: string;
+    description: string;
+    priority: string;
+    setTitle: (value: string) => void;
+    setDescription: (value: string) => void;
+    setPriority: (value: string) => void;
+    onSave: () => void;
+    onCancel: () => void;
+}
+
+export interface UseTaskFormHandlersProps {
+    title: string;
+    description: string;
+    setTitle: (value: string) => void;
+    setDescription: (value: string) => void;
+}
+
+export interface UseTaskFormHandlersResult {
+    titleValue: string;
+    descriptionValue: string;
+    handleTitleFocus: () => void;
+    handleTitleBlur: () => void;
+    handleDescriptionFocus: () => void;
+    handleDescriptionBlur: () => void;
+    handleTitleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleDescriptionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface UseColumnModalHandlersProps {
+    title: string;
+    setTitle: (value: string) => void;
+    color: string;
+    setColor: (value: string) => void;
+    handleSave: () => void;
+    isOpen: boolean;
+}
+
+export interface UseColumnModalHandlersResult {
+    titleValue: string;
+    handleTitleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleTitleFocus: () => void;
+    handleTitleBlur: () => void;
+    handleColorChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}

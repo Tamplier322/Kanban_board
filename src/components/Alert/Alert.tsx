@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { AlertProps } from '../../types/index'
 import { AlertContainer } from './Alert.styles';

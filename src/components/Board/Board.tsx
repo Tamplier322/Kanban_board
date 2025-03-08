@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { BoardProps, ColumnType } from '../../types/index';
 import useBoardRender from "../../utils/useBoardRender";

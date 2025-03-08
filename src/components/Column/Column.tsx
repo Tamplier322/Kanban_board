@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { ADD_LABEL, ADD_TASK_LABEL, DELETE_COLUMN_LABEL, EDIT_COLUMN_LABEL, INPUT_TEXT } from "../../constants/labels";
 import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';

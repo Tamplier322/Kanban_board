@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { DELETE_CARD_LABEL, EDIT_CARD_LABEL } from "../../constants/labels";
 import { CardProps } from '../../types';

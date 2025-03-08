@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { NOT_FOUND, NOT_FOUND_TEXT } from '../../constants/errors';
 import { NotFoundContainer, NotFoundMessage,NotFoundTitle } from './NotFound.styles';
 
