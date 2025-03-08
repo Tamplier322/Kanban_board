@@ -350,3 +350,13 @@ export interface UseColumnModalHandlersResult {
     handleTitleBlur: () => void;
     handleColorChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface SidebarContainerProps {
+    isOpen: boolean;
+}
+
+export interface SidebarProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onAddColumn: () => void;
+}

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { HALF, OPACITY_65, THIRD_PART_OPACITY, TRANSPARENT } from '../../constants/labels';
 import { AddCardButtonProps, AddTaskCardPropsStyles, ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, CountBadgeProps } from '../../types/index';
 
 export const ColumnContainer = styled.div < ColumnContainerProps > `
@@ -9,21 +10,21 @@ export const ColumnContainer = styled.div < ColumnContainerProps > `
   width: ${({ theme }) => theme.columnWidth};
   min-width: ${({ theme }) => theme.columnWidth};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  display: flex;
-  flex-direction: column;
+  display: ${({ theme }) => theme.display.flex};
+  flex-direction: ${({ theme }) => theme.flex_direction.column};
   gap: ${({ theme }) => theme.spacing.md};
 
-  @media (max-width: 699px) {
-        width: 100%;
-        min-width: auto;
-        box-sizing: border-box;
+  @media (max-width: ${({ theme }) => theme.width.max}) {
+    width: ${({ theme }) => theme.width.page};
+    min-width: ${({ theme }) => theme.width.auto};
+    box-sizing: ${({ theme }) => theme.box_sizing.box}; 
   }
 `;
 
 export const ColumnHeader = styled.div < ColumnHeaderProps > `
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: ${({ theme }) => theme.display.flex};
+  align-items: ${({ theme }) => theme.align_items.center};
+  justify-content: ${({ theme }) => theme.justify.space};
   gap: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   background-color: ${ props => props.color };
@@ -37,97 +38,92 @@ export const ColumnTitle = styled.h2 < ColumnTitleProps > `
   font-size: ${({ theme }) => theme.fontSizes.regular};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.white};
-  text-align: center;
+  text-align: ${({ theme }) => theme.align_items.center};
   padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
 export const ColumnTitleWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
+  display: ${({ theme }) => theme.display.flex};
+  align-items: ${({ theme }) => theme.align_items.center};
+  flex-grow: ${({ theme }) => theme.flex_wrap.one};
   margin-right: ${({ theme }) => theme.spacing.xs};
-  justify-content: flex-start;
+  justify-content:${({ theme }) => theme.justify.flex};
 `;
 
 export const AddCardButton = styled.button < AddCardButtonProps > `
     color: ${({ theme }) => theme.colors.white};
-    border: none;
+    border: ${({ theme }) => theme.nothing.none};
     border-radius: ${({ theme }) => theme.borderRadius.circle};
     width: ${({ theme }) => theme.hitZone.small};
     height: ${({ theme }) => theme.hitZone.small};
     font-size: ${({ theme }) => theme.fontSizes.extraLarge};
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.2);
+    line-height: ${({ theme }) => theme.flex_wrap.one};
+    cursor: ${({ theme }) => theme.cursor.point};
+    display: ${({ theme }) => theme.display.flex};
+    align-items: ${({ theme }) => theme.align_items.center};
+    justify-content: ${({ theme }) => theme.justify.center};
+    background-color: ${({ theme }) => theme.colors.addTaskCardButton};
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.4);
+      background-color: ${({ theme }) => theme.colors.addTaskCardButtonHover};
     }
 
-    margin-left: auto;
-    padding: 0;
-`;
-
-export const DragLine = styled.div`
-  border-bottom: 1px dashed rgb(78, 174, 187);
-  margin-bottom: 5px;
+    margin-left: ${({ theme }) => theme.spacing.auto};
+    padding: ${({ theme }) => theme.spacing.zero};
 `;
 
 export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: ${({ theme }) => theme.display.flex};
+  flex-direction: ${({ theme }) => theme.flex_direction.column};
   gap: ${({ theme }) => theme.spacing.md};
 `;
 
 export const CountBadge = styled.span < CountBadgeProps > `
     background-color: ${({ theme }) => theme.colors.white};
-    color: ${ props => `${props.color}65`};
+    color: ${ props => `${props.color}${OPACITY_65}`};
     font-size: ${({ theme }) => theme.fontSizes.medium};
     padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
     border-radius: ${({ theme }) => theme.borderRadius.circle};
     margin-right: ${({ theme }) => theme.spacing.xs};
     min-width: ${({ theme }) => theme.hitZone.medium};
     min-height: ${({ theme }) => theme.hitZone.medium};
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: ${({ theme }) => theme.display.flex};
+    justify-content:${({ theme }) => theme.justify.center};
+    align-items: ${({ theme }) => theme.align_items.center};
 `;
 
 export const AddTaskCard = styled.button < AddTaskCardPropsStyles > `
-  background-color:  ${ props => `${props.color}33`};
-  border: none;
+  background-color:  ${ props => `${props.color}${THIRD_PART_OPACITY}`};
+  border: ${({ theme }) => theme.nothing.none};
   color: ${ props => props.color };
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};
-  cursor: pointer;
+  cursor: ${({ theme }) => theme.cursor.point};
   font-size: ${({ theme }) => theme.fontSizes.small};
-  text-align: center;
-  width: auto;
-  display: inline-block;
-  transition: background-color 0.2s ease;
+  text-align: ${({ theme }) => theme.align_items.center};
+  width: ${({ theme }) => theme.width.auto};
+  display: ${({ theme }) => theme.display.inline_block};
+  transition: ${({ theme }) => theme.transition.xxl};
 
   &:hover {
-        background-color: ${ props => `${props.color}55`};
+    background-color: ${ props => `${props.color}${HALF}`};
   }
 
-  @media (max-width: 699px) {
-        display: none;
+  @media (max-width: ${({ theme }) => theme.width.max}) {
+    display: ${({ theme }) => theme.nothing.none};
   }
 `;
 
 export const ColumnEditInput = styled.input`
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: left;
-  padding: 4px 8px;
-  border-radius: 20px;
-  outline: none;
-  width: 100%;
+  background-color: ${TRANSPARENT};
+  border: ${({ theme }) => theme.nothing.none};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.fontSizes.regular};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  text-align: ${({ theme }) => theme.align_items.left};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.ms};
+  border-radius: ${({ theme }) => theme.borderRadius.xxl};
+  outline: ${({ theme }) => theme.nothing.none};
+  width: ${({ theme }) => theme.width.page};
 `;

@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { AddColumnButton, AppContainer, AppHeader, AppTitle } from './App.styles';
+import { AddColumnButton, AppContainer, AppHeader, AppTitle, BurgerButton } from './App.styles';
 import Board from './components/Board';
 import ColumnModal from './components/ColumnModal';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import NotFound from "./components/NotFound/NotFound";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { DASH } from './constants/labels';
 import { theme } from './theme/theme';
 import useBoardActions from "./utils/useBoardActions";
@@ -17,6 +18,7 @@ import useLocalStorageColumns from './utils/useLocalStorage';
 const App: React.FC = () => {
     const [columns, setColumns] = useLocalStorageColumns();
     const [isColumnModalOpen, setColumnModalOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const {handleNewColumn,
         handleCloseColumnModal,
@@ -30,11 +32,16 @@ const App: React.FC = () => {
     const {dropPosition, handleDragStart, handleDrop, handleOnDragEnter} = useBoardDragAndDrop({setColumns})
     const { handleColumnDrop, handleColumnDragStart } = useBoardColumnDragAndDrop({ setColumns });
 
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
     return (
         <BrowserRouter>
             <ThemeProvider theme={theme}>
                 <AppContainer>
                     <AppHeader>
+                        <BurgerButton onClick={toggleSidebar}>☰</BurgerButton>
                         <AppTitle>{DASH}</AppTitle>
                         <AddColumnButton onClick={handleAddColumn}>+</AddColumnButton>
                     </AppHeader>
@@ -63,6 +70,11 @@ const App: React.FC = () => {
                                 <Route path="*" element={<NotFound />} />
                         </Routes>
                     </ErrorBoundary>
+                    <Sidebar
+                        isOpen={isSidebarOpen}
+                        onClose={toggleSidebar}
+                        onAddColumn={handleAddColumn}
+                    />
                 </AppContainer>
             </ThemeProvider>
         </BrowserRouter>

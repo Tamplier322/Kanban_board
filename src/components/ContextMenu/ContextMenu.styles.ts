@@ -8,8 +8,8 @@ export const StyledButton = styled.button`
   border: ${({ theme }) => theme.borderWidth} ${({ theme }) => theme.borderStyle} ${({ theme }) => theme.colors.lightGray};
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.textPrimary};
-  cursor: pointer;
-  transition: ${({ theme }) => theme.transition};
+  cursor: ${({ theme }) => theme.cursor.point};
+  transition: ${({ theme }) => theme.transition.sm};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.light};
@@ -17,20 +17,20 @@ export const StyledButton = styled.button`
 `;
 
 export const ContextMenuContainer = styled.div<ContextMenuContainerProps>`
-  position: absolute;
+  position: ${({ theme }) => theme.position.absolute};
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => theme.borderWidth} ${({ theme }) => theme.borderStyle} ${({ theme }) => theme.colors.lightGray};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  padding: ${({ theme }) => theme.spacing.xs} 0;
-  min-width: 150px;
-  z-index: 1000;
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.zero};
+  min-width: ${({ theme }) => theme.width.sm};
+  z-index: ${({ theme }) => theme.z_index.xl};
   
 `;
 
 export const ContextMenuOption = styled.div`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xl};
-  cursor: pointer;
+  cursor: ${({ theme }) => theme.cursor.point};
   &:hover {
     background-color: ${({ theme }) => theme.colors.light};
   }
