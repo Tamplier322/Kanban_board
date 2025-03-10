@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import { BUTTON_CANCEL, BUTTON_SAVE, INPUT_TEXT, PRIORITY_HIGH, PRIORITY_LOW, PRIORITY_MEDIUM } from '../../constants/labels';
 import { TaskFormProps } from '../../types';
 import useTaskFormHandlers from '../../utils/useTaskFormHandlers';
@@ -16,12 +18,16 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
         handleDescriptionChange,
     } = useTaskFormHandlers({ title, description, setTitle, setDescription });
 
+    const handlePriorityChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+        setPriority(e.target.value);
+    }, [setPriority]);
+
     return (
         <>
             <PrioritySelectContainer>
                 <SelectContainer>
                     <PriorityLabel priority={priority} >
-                        <StyledSelect value={priority} onChange={(e) => setPriority(e.target.value)}>
+                        <StyledSelect value={priority} onChange={handlePriorityChange} aria-label="Priority">
                             <option value={PRIORITY_HIGH}>{PRIORITY_HIGH}</option>
                             <option value={PRIORITY_MEDIUM}>{PRIORITY_MEDIUM}</option>
                             <option value={PRIORITY_LOW}>{PRIORITY_LOW}</option>
@@ -36,6 +42,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
                     onChange={handleTitleChange}
                     onFocus={handleTitleFocus}
                     onBlur={handleTitleBlur}
+                    aria-label="Title"
                 />
             </div>
             <div>
@@ -44,6 +51,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
                     onChange={handleDescriptionChange}
                     onFocus={handleDescriptionFocus}
                     onBlur={handleDescriptionBlur}
+                    aria-label="Description"
                 />
             </div>
             <ButtonContainer>

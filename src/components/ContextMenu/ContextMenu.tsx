@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { ContextMenuProps } from '../../types/index';
 import useClickOutside from '../../utils/useClickOutside';
@@ -8,14 +8,18 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose, options }) => 
     const menuRef = useClickOutside<HTMLDivElement>(onClose);
 
     const renderOption = useCallback((option: { label: string; onClick: () => void }, index: number) => (
-        <ContextMenuOption key={index} onClick={option.onClick}>
+        <ContextMenuOption key={index} onClick={option.onClick} role="menuitem">
             {option.label}
         </ContextMenuOption>
     ), []);
 
+    const optionElements = useMemo(() => {
+        return options.map(renderOption);
+    }, [options, renderOption]);
+
     return (
-        <ContextMenuContainer ref={menuRef} x={x} y={y}>
-            {options.map(renderOption)}
+        <ContextMenuContainer ref={menuRef} x={x} y={y} role="menu">
+            {optionElements}
         </ContextMenuContainer>
     );
 };
