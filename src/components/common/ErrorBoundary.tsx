@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "../../constants/errors";
 import { ErrorBoundaryProps, ErrorBoundaryState } from '../../types/index';
-import { ErrorBoundaryContainer, ErrorBoundaryTitle,ErrorMessage, StyledButton } from './ErrorBoundary.styles';
+import { ErrorBoundaryContainer, ErrorBoundaryTitle, ErrorMessage, StyledButton } from './ErrorBoundary.styles';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
@@ -19,21 +19,23 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         this.setState({ errorInfo: info });
     }
 
+    handleReloadClick = () => {
+        window.location.reload();
+    }
+
     render() {
         if (this.state.hasError) {
-        return (
-            <ErrorBoundaryContainer>
-                <ErrorBoundaryTitle>{SOMETHING_WENT_WRONG}</ErrorBoundaryTitle>
-                <StyledButton onClick={() => {
-                    window.location.reload()
-                }}>{TRY_AGAIN_LABEL}</StyledButton>
-                <ErrorMessage>
-                    {this.state.error && this.state.error.toString()}
-                    <br />
-                    {this.state.errorInfo && this.state.errorInfo.componentStack}
-                </ErrorMessage>
-            </ErrorBoundaryContainer>
-        );
+            return (
+                <ErrorBoundaryContainer>
+                    <ErrorBoundaryTitle>{SOMETHING_WENT_WRONG}</ErrorBoundaryTitle>
+                    <StyledButton onClick={this.handleReloadClick}>{TRY_AGAIN_LABEL}</StyledButton>
+                    <ErrorMessage>
+                        {this.state.error && this.state.error.toString()}
+                        <br />
+                        {this.state.errorInfo && this.state.errorInfo.componentStack}
+                    </ErrorMessage>
+                </ErrorBoundaryContainer>
+            );
         }
 
         return this.props.children;

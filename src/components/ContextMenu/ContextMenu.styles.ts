@@ -25,7 +25,7 @@ export const ContextMenuContainer = styled.div<ContextMenuContainerProps>`
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.zero};
   min-width: ${({ theme }) => theme.width.sm};
   z-index: ${({ theme }) => theme.z_index.xl};
-  
+  role: menu;
 `;
 
 export const ContextMenuOption = styled.div`
@@ -34,4 +34,5 @@ export const ContextMenuOption = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.light};
   }
+  role: menuitem;
 `;
