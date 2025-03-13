@@ -1,5 +1,6 @@
-import { ADD_COLUMN, CLOSE_BUTTON, MENU } from '../../constants/labels';
-import { SidebarProps } from '../../types';
+import { ADD_COLUMN, CLOSE_BUTTON, MENU } from '@constants/labels';
+import { SidebarProps } from '@types';
+
 import { CloseButton, SidebarButton, SidebarContainer, SidebarHeader, SidebarTitle } from './Sidebar.styles';
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onAddColumn }) => {

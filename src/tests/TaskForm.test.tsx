@@ -1,8 +1,8 @@
 import { fireEvent,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import TaskForm from '../components/TaskForm/TaskForm';
+import TaskForm from '@components/TaskForm/TaskForm';
+import { theme } from '@theme/theme';
 
 const mockSetTitle = jest.fn();
 const mockSetDescription = jest.fn();

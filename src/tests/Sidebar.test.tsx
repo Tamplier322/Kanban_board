@@ -3,9 +3,9 @@ import '@testing-library/jest-dom';
 import { fireEvent,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { ADD_COLUMN, CLOSE_BUTTON, MENU } from '../constants/labels';
-import { theme } from '../theme/theme';
-import Sidebar from '../components/Sidebar/Sidebar';
+import Sidebar from '@components/Sidebar/Sidebar';
+import { ADD_COLUMN, CLOSE_BUTTON, MENU } from '@constants/labels';
+import { theme } from '@theme/theme';
 
 const mockOnClose = jest.fn();
 const mockOnAddColumn = jest.fn();

@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import useBoardRender from '../utils/useBoardRender';
+import useBoardRender from '@utils/useBoardRender';
 
 const mockOnDrop = jest.fn();
 

@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import useClickOutside from '../utils/useClickOutside';
+import useClickOutside from '@utils/useClickOutside';
 
 describe('useClickOutside Hook', () => {
     it('should call onClose when clicked outside the ref', () => {

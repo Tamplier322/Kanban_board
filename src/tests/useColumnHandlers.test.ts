@@ -1,7 +1,7 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { ColumnType, DropPosition } from '../types';
-import useColumnHandlers from '../utils/useColumnHandlers';
+import { ColumnType, DropPosition } from '@types';
+import useColumnHandlers from '@utils/useColumnHandlers';
 
 const mockOnDrop = jest.fn();
 const mockOnDeleteColumn = jest.fn();

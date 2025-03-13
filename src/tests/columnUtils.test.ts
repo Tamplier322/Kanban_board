@@ -1,5 +1,5 @@
-import { CardType,ColumnType } from '../types';
-import { addCard,addNewColumn, deleteCard, deleteColumn } from '../utils/columnUtils';
+import { CardType,ColumnType } from '@types';
+import { addCard,addNewColumn, deleteCard, deleteColumn } from '@utils/columnUtils';
 
 describe('Column Utils', () => {
     const initialColumns: ColumnType[] = [

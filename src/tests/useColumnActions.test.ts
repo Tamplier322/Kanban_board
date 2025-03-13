@@ -1,7 +1,7 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { ColumnType } from '../types';
-import useColumnActions from '../utils/useColumnActions';
+import { ColumnType } from '@types';
+import useColumnActions from '@utils/useColumnActions';
 
 const mockOnDeleteColumn = jest.fn();
 const mockHandleCloseContextMenu = jest.fn();

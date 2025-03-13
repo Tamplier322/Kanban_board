@@ -1,8 +1,8 @@
 import { act,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import Alert from '../components/Alert/Alert';
+import Alert from '@components/Alert/Alert';
+import { theme } from '@theme/theme';
 
 const mockOnClose = jest.fn();
 

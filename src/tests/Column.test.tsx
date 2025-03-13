@@ -1,8 +1,8 @@
 import { fireEvent,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import Column from '../components/Column/Column';
+import Column from '@components/Column/Column';
+import { theme } from '@theme/theme';
 
 const mockColumn = {
     id: '1',

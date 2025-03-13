@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { THIRD_PART_OPACITY, TRANSPARENT } from '../../constants/labels';
+import { THIRD_PART_OPACITY, TRANSPARENT } from '@constants/labels';
 
 export const StyledSelect = styled.select`
   padding: ${({ theme }) => theme.spacing.xxs} ${({ theme }) => theme.spacing.sm};

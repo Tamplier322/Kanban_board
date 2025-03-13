@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
-import { ONE, ZERO } from "../../constants/labels";
-import { AlertContainerProps } from '../../types/index';
+import { ONE, ZERO } from "@constants/labels";
+import { AlertContainerProps } from '@types';
 
 const fadeIn = keyframes`
     from {

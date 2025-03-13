@@ -1,8 +1,8 @@
 import { fireEvent,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import ContextMenu from '../components/ContextMenu/ContextMenu';
+import ContextMenu from '@components/ContextMenu/ContextMenu';
+import { theme } from '@theme/theme';
 
 const mockOnClose = jest.fn();
 const mockOptions = [

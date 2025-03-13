@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 
-import { ADDING_CARD_DATA_ERROR, DELETING_CARD_DATA_ERROR, DELETING_COLUMN_DATA_ERROR } from "../constants/errors";
-import { LOCAL_STORAGE_KEY } from "../constants/labels"
-import { CardType,ColumnType } from '../types';
-import { UseBoardActionsProps, UseBoardActionsResult } from '../types';
-import { addCard, addNewColumn, deleteCard, deleteColumn } from '../utils/columnUtils';
+import { ADDING_CARD_DATA_ERROR, DELETING_CARD_DATA_ERROR, DELETING_COLUMN_DATA_ERROR } from "@constants/errors";
+import { LOCAL_STORAGE_KEY } from "@constants/labels"
+import { CardType,ColumnType } from '@types';
+import { UseBoardActionsProps, UseBoardActionsResult } from '@types';
+import { addCard, addNewColumn, deleteCard, deleteColumn } from '@utils/columnUtils';
 
 export const useBoardActions = ({ setColumns, setColumnModalOpen }: UseBoardActionsProps): UseBoardActionsResult => {
 

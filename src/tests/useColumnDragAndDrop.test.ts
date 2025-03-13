@@ -1,7 +1,7 @@
-import { act,renderHook } from '@testing-library/react';
 import { DragEvent } from 'react';
+import { act,renderHook } from '@testing-library/react';
 
-import useColumnDragAndDrop from '../utils/useColumnDragAndDrop';
+import useColumnDragAndDrop from '@utils/useColumnDragAndDrop';
 
 const mockOnSetDropPosition = jest.fn();
 const mockOnColumnDragStart = jest.fn();

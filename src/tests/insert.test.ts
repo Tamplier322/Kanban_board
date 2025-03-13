@@ -1,5 +1,5 @@
-import { CardType } from '../types';
-import { insertItem } from '../utils/insert';
+import { CardType } from '@types';
+import { insertItem } from '@utils/insert';
 
 describe('insertItem Function', () => {
     const initialArray: CardType[] = [

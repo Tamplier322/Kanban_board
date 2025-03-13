@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import useBoardDragAndDrop from '../utils/useBoardDragAndDrop';
+import useBoardDragAndDrop from '@utils/useBoardDragAndDrop';
 
 const mockSetColumns = jest.fn();
 

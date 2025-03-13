@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ContextMenuState, UseContextMenuResult } from '../types/index';
+import { ContextMenuState, UseContextMenuResult } from '@types';
 
 function useContextMenu(): UseContextMenuResult {
     const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null);

@@ -1,8 +1,8 @@
 import { act,fireEvent, render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import ColumnModal from '../components/ColumnModal/ColumnModal';
+import ColumnModal from '@components/ColumnModal/ColumnModal';
+import { theme } from '@theme/theme';
 
 const mockOnAddColumn = jest.fn();
 const mockOnClose = jest.fn();

@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import useAlert from '../utils/useAlert';
+import useAlert from '@utils/useAlert';
 
 describe('useAlert Hook', () => {
     it('should return initial state of null', () => {

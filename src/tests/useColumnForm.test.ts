@@ -1,7 +1,7 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { ColumnType } from '../types';
-import useColumnForm from '../utils/useColumnForm';
+import { ColumnType } from '@types';
+import useColumnForm from '@utils/useColumnForm';
 
 const mockOnEditColumn = jest.fn();
 const mockHandleCloseContextMenu = jest.fn();

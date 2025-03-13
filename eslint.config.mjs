@@ -20,9 +20,30 @@ export default [
     "simple-import-sort": simpleImportSort,
   },
   rules: {
-    "simple-import-sort/imports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^\\u0000"],
+          ["^node:"],
+          ["^react", "^@?\\w"],
+          [
+            "^@components",
+            "^@constants",
+            "^@types",
+            "^@utils",
+            "^@theme",
+            "^@?\\w"
+          ],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^.+\\.?(css)$"]
+        ]
+      }
+    ],
     "simple-import-sort/exports": "error",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-  },}
+  },
+  }
 ];

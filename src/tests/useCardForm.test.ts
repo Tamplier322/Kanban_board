@@ -1,7 +1,7 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { CardType } from '../types';
-import useCardForm from '../utils/useCardForm';
+import { CardType } from '@types';
+import useCardForm from '@utils/useCardForm';
 
 const mockOnEditCard = jest.fn();
 

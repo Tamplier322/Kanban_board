@@ -1,4 +1,5 @@
-import { NOT_FOUND, NOT_FOUND_TEXT } from '../../constants/errors';
+import { NOT_FOUND, NOT_FOUND_TEXT } from '@constants/errors';
+
 import { NotFoundContainer, NotFoundMessage,NotFoundTitle } from './NotFound.styles';
 
 const NotFound: React.FC = () => {

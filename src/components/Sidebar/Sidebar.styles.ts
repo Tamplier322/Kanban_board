@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { SidebarContainerProps } from '../../types';
+import { SidebarContainerProps } from '@types';
 
 export const SidebarContainer = styled.div<SidebarContainerProps>`
     position: ${({ theme }) => theme.position.fixed};

@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import useContextMenu from '../utils/useContextMenu';
+import useContextMenu from '@utils/useContextMenu';
 
 describe('useContextMenu Hook', () => {
     it('should initialize with contextMenu as null', () => {

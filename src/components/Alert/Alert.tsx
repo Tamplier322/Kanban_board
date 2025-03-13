@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { AlertProps } from '../../types/index'
+import { AlertProps } from '@types'
+
 import { AlertContainer } from './Alert.styles';
 
 const Alert: React.FC<AlertProps> = ({ message, onClose }) => {

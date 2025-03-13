@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TRANSPARENT } from '../../constants/labels';
+import { TRANSPARENT } from '@constants/labels';
 
 export const ModalContainer = styled.div`
   position: ${({ theme }) => theme.position.fixed};

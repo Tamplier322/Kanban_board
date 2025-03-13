@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
 
-import { BoardProps, ColumnType } from '../../types/index';
-import useBoardRender from "../../utils/useBoardRender";
-import Column from '../Column';
+import Column from '@components/Column';
+import { BoardProps, ColumnType } from '@types';
+import useBoardRender from "@utils/useBoardRender";
+
 import { BoardContainer } from './Board.styles';
 
 const Board: React.FC<BoardProps> = ({ columns, onAddCard, onDeleteCard, onDeleteColumn, onDragStart, onDrop, onEditCard, onColumnDrop, onColumnDragStart, onEditColumn }) => {
