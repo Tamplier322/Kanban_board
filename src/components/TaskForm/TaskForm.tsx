@@ -4,7 +4,7 @@ import { BUTTON_CANCEL, BUTTON_SAVE, INPUT_TEXT, PRIORITY_HIGH, PRIORITY_LOW, PR
 import { TaskFormProps } from '../../types';
 import useTaskFormHandlers from '../../utils/useTaskFormHandlers';
 import { PriorityLabel } from '../Card/Card.styles';
-import { ButtonContainer, PrioritySelectContainer, SelectContainer, StyledButton, StyledInputDescription, StyledInputTitle, StyledSelect } from '../NewTaskCard/NewTaskCard.styles';
+import { ButtonContainer, PrioritySelectContainer, SelectContainer, StyledButton, StyledDiv, StyledInputDescription, StyledInputTitle, StyledSelect } from '../NewTaskCard/NewTaskCard.styles';
 
 const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTitle, setDescription, setPriority, onSave, onCancel }) => {
     const {
@@ -35,7 +35,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
                     </PriorityLabel>
                 </SelectContainer>
             </PrioritySelectContainer>
-            <div>
+            <StyledDiv>
                 <StyledInputTitle
                     type={INPUT_TEXT}
                     value={titleValue}
@@ -44,8 +44,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
                     onBlur={handleTitleBlur}
                     aria-label="Title"
                 />
-            </div>
-            <div>
+            </StyledDiv>
+            <StyledDiv>
                 <StyledInputDescription
                     value={descriptionValue}
                     onChange={handleDescriptionChange}
@@ -53,7 +53,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTi
                     onBlur={handleDescriptionBlur}
                     aria-label="Description"
                 />
-            </div>
+            </StyledDiv>
             <ButtonContainer>
                 <StyledButton onClick={onSave}>{BUTTON_SAVE}</StyledButton>
                 <StyledButton onClick={onCancel}>{BUTTON_CANCEL}</StyledButton>
