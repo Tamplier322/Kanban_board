@@ -94,3 +94,7 @@ export const SelectContainer = styled.div`
   justify-content: ${({ theme }) => theme.justify.space};
   align-items: ${({ theme }) => theme.align_items.center};
 `;
+
+export const StyledDiv = styled.div`
+  
+`;
