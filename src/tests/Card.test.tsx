@@ -1,8 +1,8 @@
 import { fireEvent,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import Card from '../components/Card/Card';
+import Card from '@components/Card/Card';
+import { theme } from '@theme/theme';
 
 const mockCard = {
     id: '1',

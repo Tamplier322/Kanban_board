@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import useColumnModalHandlers from '../utils/useColumnModalHandlers';
+import useColumnModalHandlers from '@utils/useColumnModalHandlers';
 
 const mockSetTitle = jest.fn();
 const mockSetColor = jest.fn();

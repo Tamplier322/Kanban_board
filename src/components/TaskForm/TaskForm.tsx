@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 
-import { BUTTON_CANCEL, BUTTON_SAVE, INPUT_TEXT, PRIORITY_HIGH, PRIORITY_LOW, PRIORITY_MEDIUM } from '../../constants/labels';
-import { TaskFormProps } from '../../types';
-import useTaskFormHandlers from '../../utils/useTaskFormHandlers';
-import { PriorityLabel } from '../Card/Card.styles';
-import { ButtonContainer, PrioritySelectContainer, SelectContainer, StyledButton, StyledDiv, StyledInputDescription, StyledInputTitle, StyledSelect } from '../NewTaskCard/NewTaskCard.styles';
+import { PriorityLabel } from '@components/Card/Card.styles';
+import { ButtonContainer, PrioritySelectContainer, SelectContainer, StyledButton, StyledDiv, StyledInputDescription, StyledInputTitle, StyledSelect } from '@components/NewTaskCard/NewTaskCard.styles';
+import { BUTTON_CANCEL, BUTTON_SAVE, INPUT_TEXT, PRIORITY_HIGH, PRIORITY_LOW, PRIORITY_MEDIUM } from '@constants/labels';
+import { TaskFormProps } from '@types';
+import useTaskFormHandlers from '@utils/useTaskFormHandlers';
 
 const TaskForm: React.FC<TaskFormProps> = ({ title, description, priority, setTitle, setDescription, setPriority, onSave, onCancel }) => {
     const {

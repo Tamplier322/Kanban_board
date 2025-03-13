@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import { FILL_ALL_FIELDS } from "../../constants/errors";
-import { DEFAULT_PRIORITY, TASK_DESCRIPTION_PLACEHOLDER, TASK_TITLE_PLACEHOLDER } from "../../constants/labels";
-import { NewTaskCardProps } from '../../types/index';
-import useAlert from "../../utils/useAlert";
-import Alert from "../Alert/Alert";
-import { CardItem } from '../Card/Card.styles';
-import TaskForm from "../TaskForm/TaskForm";
+import Alert from "@components/Alert";
+import { CardItem } from '@components/Card/Card.styles';
+import TaskForm from "@components/TaskForm";
+import { FILL_ALL_FIELDS } from "@constants/errors";
+import { DEFAULT_PRIORITY, TASK_DESCRIPTION_PLACEHOLDER, TASK_TITLE_PLACEHOLDER } from "@constants/labels";
+import { NewTaskCardProps } from '@types';
+import useAlert from "@utils/useAlert";
 
 const NewTaskCard: React.FC<NewTaskCardProps> = ({ onClose, onSave }) => {
     const [title, setTitle] = useState(TASK_TITLE_PLACEHOLDER);

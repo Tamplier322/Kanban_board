@@ -1,4 +1,4 @@
-import { CardType } from "../types";
+import { CardType } from "@types";
 
 export const insertItem = (array: CardType[], item: CardType, index: number): CardType[] => {
     const newArray = [...array];

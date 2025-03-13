@@ -1,6 +1,6 @@
 import { useCallback,useState } from 'react';
 
-import { UseBoardColumnDragAndDropProps, UseBoardColumnDragAndDropResult } from '../types';
+import { UseBoardColumnDragAndDropProps, UseBoardColumnDragAndDropResult } from '@types';
 
 const useBoardColumnDragAndDrop = ({ setColumns }: UseBoardColumnDragAndDropProps): UseBoardColumnDragAndDropResult => {
     const [draggedColumnId, setDraggedColumnId] = useState<string | null>(null);

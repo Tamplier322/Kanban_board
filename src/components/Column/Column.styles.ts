@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { HALF, OPACITY_65, THIRD_PART_OPACITY, TRANSPARENT } from '../../constants/labels';
-import { AddCardButtonProps, AddTaskCardPropsStyles, ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, CountBadgeProps } from '../../types/index';
+import { HALF, OPACITY_65, THIRD_PART_OPACITY, TRANSPARENT } from '@constants/labels';
+import { AddCardButtonProps, AddTaskCardPropsStyles, ColumnContainerProps, ColumnHeaderProps, ColumnTitleProps, CountBadgeProps } from '@types';
 
 export const ColumnContainer = styled.div < ColumnContainerProps > `
   background-color: ${({ theme }) => theme.colors.appBackground};

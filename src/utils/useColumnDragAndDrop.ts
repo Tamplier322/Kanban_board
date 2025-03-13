@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { UseColumnDragAndDropProps, UseColumnDragAndDropResult } from '../types/index';
+import { UseColumnDragAndDropProps, UseColumnDragAndDropResult } from '@types';
 
 const useColumnDragAndDrop = ({ columnId, onSetDropPosition, onColumnDragStart, onColumnDrop, onDrop, dropPosition }: UseColumnDragAndDropProps): UseColumnDragAndDropResult => {
 

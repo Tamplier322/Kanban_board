@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { useBoardActions } from '../utils/useBoardActions';
+import { useBoardActions } from '@utils/useBoardActions';
 
 const mockSetColumns = jest.fn();
 const mockSetColumnModalOpen = jest.fn();

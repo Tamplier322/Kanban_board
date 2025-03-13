@@ -1,16 +1,17 @@
 import { useCallback } from 'react';
 
-import { ADD_LABEL, ADD_TASK_LABEL, DELETE_COLUMN_LABEL, EDIT_COLUMN_LABEL, INPUT_TEXT } from "../../constants/labels";
-import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
-import { CardType, ColumnProps } from '../../types/index';
-import useColumnDragAndDrop from "../../utils/useColumnDragAndDrop";
-import useColumnForm from '../../utils/useColumnForm';
-import useContextMenu from '../../utils/useContextMenu';
-import useTask from '../../utils/useTask';
-import Card from '../Card';
-import { AddTaskCardItem } from "../Card/Card.styles";
-import ContextMenu from "../ContextMenu/ContextMenu";
-import NewTaskCard from "../NewTaskCard/NewTaskCard";
+import Card from '@components/Card';
+import { AddTaskCardItem } from "@components/Card/Card.styles";
+import ContextMenu from '@components/ContextMenu';
+import NewTaskCard from "@components/NewTaskCard";
+import { ADD_LABEL, ADD_TASK_LABEL, DELETE_COLUMN_LABEL, EDIT_COLUMN_LABEL, INPUT_TEXT } from "@constants/labels";
+import { MAX_COLUMN_TITLE_LENGTH } from '@constants/numbers';
+import { CardType, ColumnProps } from '@types';
+import useColumnDragAndDrop from "@utils/useColumnDragAndDrop";
+import useColumnForm from '@utils/useColumnForm';
+import useContextMenu from '@utils/useContextMenu';
+import useTask from '@utils/useTask';
+
 import {
     AddCardButton,
     AddTaskCard,

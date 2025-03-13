@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { DropPosition,UseBoardRenderProps, UseBoardRenderResult } from '../types/index';
+import { DropPosition,UseBoardRenderProps, UseBoardRenderResult } from '@types';
 
 const useBoardRender = ({ onDrop }: UseBoardRenderProps): UseBoardRenderResult => {
     const [dropPosition, setDropPosition] = useState<DropPosition>({ columnId: null, index: null, position: 'before' });

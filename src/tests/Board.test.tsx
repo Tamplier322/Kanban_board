@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import Board from '../components/Board/Board';
+import Board from '@components/Board/Board';
+import { theme } from '@theme/theme';
 
 const mockColumns = [
     { id: '1', title: 'Column 1', color: '#fff', cards: [] },

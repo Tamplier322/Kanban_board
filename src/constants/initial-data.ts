@@ -1,4 +1,4 @@
-import { ColumnType } from '../types/index';
+import { ColumnType } from '@types';
 
 export const initialData: ColumnType[] = [
     { id: 'todo', title: 'To Do', color: 'rgb(79, 70, 229)', cards: [] },

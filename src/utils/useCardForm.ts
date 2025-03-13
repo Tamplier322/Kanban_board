@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { UseCardFormProps, UseCardFormResult } from '../types';
+import { UseCardFormProps, UseCardFormResult } from '@types';
 
 const useCardForm = ({ card, onEditCard, columnId }: UseCardFormProps): UseCardFormResult => {
     const [isEditing, setIsEditing] = useState(false);

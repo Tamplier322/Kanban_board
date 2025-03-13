@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { UseColumnHandlersProps,  UseColumnHandlersResult} from '../types';
+import { UseColumnHandlersProps,  UseColumnHandlersResult} from '@types';
 
 const useColumnHandlers = ({ column, onDrop, dropPosition }: UseColumnHandlersProps): UseColumnHandlersResult => {
 

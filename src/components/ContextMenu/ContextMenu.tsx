@@ -1,7 +1,8 @@
 import { useCallback, useMemo } from 'react';
 
-import { ContextMenuProps } from '../../types/index';
-import useClickOutside from '../../utils/useClickOutside';
+import { ContextMenuProps } from '@types';
+import useClickOutside from '@utils/useClickOutside';
+
 import { ContextMenuContainer, ContextMenuOption } from './ContextMenu.styles';
 
 const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose, options }) => {

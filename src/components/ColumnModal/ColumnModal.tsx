@@ -1,13 +1,14 @@
 import { useCallback } from "react";
 
-import { COLUMN_TITLE_ERROR } from "../../constants/errors";
-import { ADD_TITLE_PLACEHOLDER, BUTTON_CANCEL, BUTTON_SAVE, INPUT_COLOR, INPUT_TEXT } from '../../constants/labels';
-import { MAX_COLUMN_TITLE_LENGTH } from '../../constants/numbers';
-import { ColumnModalProps } from "../../types/index";
-import useAlert from "../../utils/useAlert";
-import useColumnModalForm from "../../utils/useColumnModalForm";
-import useColumnModalHandlers from "../../utils/useColumnModalHandlers";
-import Alert from "../Alert/Alert";
+import Alert from "@components/Alert";
+import { COLUMN_TITLE_ERROR } from "@constants/errors";
+import { ADD_TITLE_PLACEHOLDER, BUTTON_CANCEL, BUTTON_SAVE, INPUT_COLOR, INPUT_TEXT } from '@constants/labels';
+import { MAX_COLUMN_TITLE_LENGTH } from '@constants/numbers';
+import { ColumnModalProps } from "@types";
+import useAlert from "@utils/useAlert";
+import useColumnModalForm from "@utils/useColumnModalForm";
+import useColumnModalHandlers from "@utils/useColumnModalHandlers";
+
 import {
     ButtonContainer,
     ModalContainer,

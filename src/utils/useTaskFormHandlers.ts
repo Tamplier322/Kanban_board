@@ -1,7 +1,7 @@
 import { useCallback,useState } from 'react';
 
-import { TASK_DESCRIPTION_PLACEHOLDER,TASK_TITLE_PLACEHOLDER } from '../constants/labels';
-import { UseTaskFormHandlersProps, UseTaskFormHandlersResult } from '../types/index';
+import { TASK_DESCRIPTION_PLACEHOLDER,TASK_TITLE_PLACEHOLDER } from '@constants/labels';
+import { UseTaskFormHandlersProps, UseTaskFormHandlersResult } from '@types';
 
 
 const useTaskFormHandlers = ({ title, description, setTitle, setDescription }: UseTaskFormHandlersProps): UseTaskFormHandlersResult => {

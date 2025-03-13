@@ -1,6 +1,6 @@
 import { useCallback, useEffect,useRef, useState } from 'react';
 
-import { ColumnType } from '../types';
+import { ColumnType } from '@types';
 
 interface UseColumnFormProps {
     column: ColumnType;

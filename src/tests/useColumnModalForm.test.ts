@@ -1,9 +1,9 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { DEFAULT_COLUMN_COLOR } from '../constants/colors';
-import { ADD_TITLE_PLACEHOLDER } from '../constants/labels';
-import { rgbToHex } from '../utils/colorUtils';
-import useColumnModalForm from '../utils/useColumnModalForm';
+import { DEFAULT_COLUMN_COLOR } from '@constants/colors';
+import { ADD_TITLE_PLACEHOLDER } from '@constants/labels';
+import { rgbToHex } from '@utils/colorUtils';
+import useColumnModalForm from '@utils/useColumnModalForm';
 
 const mockOnAddColumn = jest.fn();
 const mockOnClose = jest.fn();

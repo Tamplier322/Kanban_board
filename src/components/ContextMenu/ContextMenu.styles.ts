@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ContextMenuContainerProps } from '../../types/index';
+import { ContextMenuContainerProps } from '@types';
 
 export const StyledButton = styled.button`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};

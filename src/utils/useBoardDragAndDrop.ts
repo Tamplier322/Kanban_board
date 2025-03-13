@@ -1,8 +1,8 @@
 import { useCallback,useState } from 'react';
 
-import { CardType, ColumnType } from '../types';
-import { DraggedItem, DropPositionDND, UseBoardDragAndDropProps, UseBoardDragAndDropResult } from '../types';
-import { insertItem } from "../utils/insert";
+import { CardType, ColumnType } from '@types';
+import { DraggedItem, DropPositionDND, UseBoardDragAndDropProps, UseBoardDragAndDropResult } from '@types';
+import { insertItem } from "@utils/insert";
 
 const useBoardDragAndDrop = ({ setColumns }: UseBoardDragAndDropProps): UseBoardDragAndDropResult => {
     const [draggedItem, setDraggedItem] = useState<DraggedItem | null>(null);

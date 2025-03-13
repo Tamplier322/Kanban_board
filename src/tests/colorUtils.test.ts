@@ -1,4 +1,4 @@
-import { rgbToHex } from '../utils/colorUtils';
+import { rgbToHex } from '@utils/colorUtils';
 
 describe('rgbToHex Function', () => {
     it('should convert rgb color to hex color', () => {

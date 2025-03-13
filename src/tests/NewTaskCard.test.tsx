@@ -1,9 +1,9 @@
 import { fireEvent,render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { DEFAULT_COLUMN_COLOR } from '../constants/colors';
-import { theme } from '../theme/theme';
-import NewTaskCard from '../components/NewTaskCard/NewTaskCard';
+import NewTaskCard from '@components/NewTaskCard/NewTaskCard';
+import { DEFAULT_COLUMN_COLOR } from '@constants/colors';
+import { theme } from '@theme/theme';
 
 const mockOnClose = jest.fn();
 const mockOnSave = jest.fn();

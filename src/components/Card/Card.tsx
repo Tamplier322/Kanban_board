@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
 
-import { DELETE_CARD_LABEL, EDIT_CARD_LABEL } from "../../constants/labels";
-import { CardProps } from '../../types';
-import useCardForm from "../../utils/useCardForm";
-import useContextMenu from '../../utils/useContextMenu';
-import ContextMenu from "../ContextMenu/ContextMenu";
-import TaskForm from "../TaskForm/TaskForm";
+import ContextMenu from "@components/ContextMenu";
+import TaskForm from "@components/TaskForm/TaskForm";
+import { DELETE_CARD_LABEL, EDIT_CARD_LABEL } from "@constants/labels";
+import { CardProps } from '@types';
+import useCardForm from "@utils/useCardForm";
+import useContextMenu from '@utils/useContextMenu';
+
 import { CardDescription, CardItem, CardTitle, PriorityLabel } from './Card.styles';
 
 const Card: React.FC<CardProps> = ({ card, onDeleteCard, columnId, onDragStart, onEditCard }) => {

@@ -1,8 +1,8 @@
 import { act,renderHook } from '@testing-library/react';
 
-import { initialData } from '../constants/initial-data';
-import { ColumnType } from '../types';
-import useLocalStorageColumns from '../utils/useLocalStorage';
+import { initialData } from '@constants/initial-data';
+import { ColumnType } from '@types';
+import useLocalStorageColumns from '@utils/useLocalStorage';
 
 const localStorageMock = (() => {
     let store: { [key: string]: string } = {};

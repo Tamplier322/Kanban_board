@@ -1,10 +1,10 @@
 import { useCallback, useEffect,useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { DEFAULT_COLUMN_COLOR } from "../constants/colors";
-import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "../constants/labels";
-import { UseColumnModalFormProps, UseColumnModalFormResult } from '../types/index';
-import { rgbToHex } from "../utils/colorUtils";
+import { DEFAULT_COLUMN_COLOR } from "@constants/colors";
+import { ADD_TITLE_PLACEHOLDER, EMPLTY_INPUT } from "@constants/labels";
+import { UseColumnModalFormProps, UseColumnModalFormResult } from '@types';
+import { rgbToHex } from "@utils/colorUtils";
 
 
 const useColumnModalForm = ({ onAddColumn, onClose, isOpen }: UseColumnModalFormProps): UseColumnModalFormResult => {

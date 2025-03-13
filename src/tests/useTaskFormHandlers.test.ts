@@ -1,7 +1,7 @@
-import { act,renderHook } from '@testing-library/react';
 import { ChangeEvent } from 'react';
+import { act,renderHook } from '@testing-library/react';
 
-import useTaskFormHandlers from '../utils/useTaskFormHandlers';
+import useTaskFormHandlers from '@utils/useTaskFormHandlers';
 
 const mockSetTitle = jest.fn();
 const mockSetDescription = jest.fn();

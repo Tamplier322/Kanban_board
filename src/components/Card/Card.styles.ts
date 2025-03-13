@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { priorityColors } from '../../constants/colors';
-import { THIRD_PART, TRANSPARENT } from '../../constants/labels';
-import { AddTaskCardProps,CardItemPropsStyles,PriorityLabelPropsStyles } from '../../types/index';
+import { priorityColors } from '@constants/colors';
+import { THIRD_PART, TRANSPARENT } from '@constants/labels';
+import { AddTaskCardProps,CardItemPropsStyles,PriorityLabelPropsStyles } from '@types';
 
 export const CardItem = styled.div<CardItemPropsStyles>`
 background-color: ${({ theme }) => theme.colors.cardBackground};

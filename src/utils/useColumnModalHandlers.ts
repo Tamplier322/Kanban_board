@@ -1,7 +1,7 @@
 import { useCallback, useEffect,useState } from "react";
 
-import { ADD_TITLE_PLACEHOLDER } from '../constants/labels';
-import { UseColumnModalHandlersProps, UseColumnModalHandlersResult } from '../types/index';
+import { ADD_TITLE_PLACEHOLDER } from '@constants/labels';
+import { UseColumnModalHandlersProps, UseColumnModalHandlersResult } from '@types';
 
 const useColumnModalHandlers = ({ title, setTitle, setColor, isOpen }: UseColumnModalHandlersProps): UseColumnModalHandlersResult => {
     const [titleValue, setTitleValue] = useState(title);

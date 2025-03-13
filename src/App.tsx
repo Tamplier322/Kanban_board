@@ -2,18 +2,19 @@ import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import Board from '@components/Board';
+import ColumnModal from '@components/ColumnModal';
+import ErrorBoundary from '@components/common/ErrorBoundary';
+import NotFound from "@components/NotFound/NotFound";
+import Sidebar from "@components/Sidebar/Sidebar";
+import { DASH } from '@constants/labels';
+import useBoardActions from "@utils/useBoardActions";
+import useBoardColumnDragAndDrop from "@utils/useBoardColumnDragAndDrop";
+import useBoardDragAndDrop from "@utils/useBoardDragAndDrop";
+import useLocalStorageColumns from '@utils/useLocalStorage';
+import { theme } from '@theme/index';
+
 import { AddColumnButton, AppContainer, AppHeader, AppTitle, BurgerButton } from './App.styles';
-import Board from './components/Board';
-import ColumnModal from './components/ColumnModal';
-import ErrorBoundary from './components/common/ErrorBoundary';
-import NotFound from "./components/NotFound/NotFound";
-import Sidebar from "./components/Sidebar/Sidebar";
-import { DASH } from './constants/labels';
-import { theme } from './theme/theme';
-import useBoardActions from "./utils/useBoardActions";
-import useBoardColumnDragAndDrop from "./utils/useBoardColumnDragAndDrop";
-import useBoardDragAndDrop from "./utils/useBoardDragAndDrop";
-import useLocalStorageColumns from './utils/useLocalStorage';
 
 const App: React.FC = () => {
     const [columns, setColumns] = useLocalStorageColumns();

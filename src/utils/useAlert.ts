@@ -1,6 +1,6 @@
 import { useCallback,useState } from 'react';
 
-import { UseAlertResult } from '../types/index'
+import { UseAlertResult } from '@types'
 
 function useAlert(): UseAlertResult {
     const [AlertMessage, setAlertMessage] = useState<string | null>(null);

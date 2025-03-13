@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
@@ -23,12 +24,21 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write './src/**/*.{ts,tsx,js,jsx,json}'",
     "prepare": "husky"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@constants/(.*)$": "<rootDir>/src/constants/$1",
+      "^@types/(.*)$": "<rootDir>/src/types/$1",
+      "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^@theme/(.*)$": "<rootDir>/src/theme/$1"
+    }
   },
   "eslintConfig": {
     "extends": [

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { UseColumnActionsProps, UseColumnActionsResult } from '../types/index';
+import { UseColumnActionsProps, UseColumnActionsResult } from '@types';
 
 const useColumnActions = ({ onDeleteColumn, handleCloseContextMenu, contextMenu, column }: UseColumnActionsProps): UseColumnActionsResult => {
 

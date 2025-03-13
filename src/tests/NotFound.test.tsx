@@ -2,9 +2,9 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { NOT_FOUND, NOT_FOUND_TEXT } from '../constants/errors';
-import { theme } from '../theme/theme';
-import NotFound from '../components/NotFound/NotFound';
+import NotFound from '@components/NotFound/NotFound';
+import { NOT_FOUND, NOT_FOUND_TEXT } from '@constants/errors';
+import { theme } from '@theme/theme';
 
 describe('NotFound Component', () => {
     it('should render without errors', () => {

@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "../../constants/errors";
-import { ErrorBoundaryProps, ErrorBoundaryState } from '../../types/index';
+import { CAUGHT_AN_ERROR, SOMETHING_WENT_WRONG, TRY_AGAIN_LABEL } from "@constants/errors";
+import { ErrorBoundaryProps, ErrorBoundaryState } from '@types';
+
 import { ErrorBoundaryContainer, ErrorBoundaryTitle, ErrorMessage, StyledButton } from './ErrorBoundary.styles';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {

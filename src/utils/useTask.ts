@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { UseTaskProps, UseTaskResult } from '../types/index';
+import { UseTaskProps, UseTaskResult } from '@types';
 
 const useTask = ({ columnId, onAddCard }: UseTaskProps): UseTaskResult => {
     const [isAddingTask, setIsAddingTask] = useState(false);

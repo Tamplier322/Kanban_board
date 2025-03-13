@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../theme/theme';
-import ErrorBoundary from '../components/common/ErrorBoundary';
+import ErrorBoundary from '@components/common/ErrorBoundary';
+import { theme } from '@theme/theme';
 
 const ThrowError = () => {
     throw new Error('Test error');

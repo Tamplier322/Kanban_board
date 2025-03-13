@@ -1,6 +1,6 @@
 import { act,renderHook } from '@testing-library/react';
 
-import useTask from '../utils/useTask';
+import useTask from '@utils/useTask';
 
 const mockOnAddCard = jest.fn();
 
